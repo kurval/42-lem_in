@@ -6,13 +6,13 @@
 #    By: vkurkela <vkurkela@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/05 11:23:46 by vkurkela          #+#    #+#              #
-#    Updated: 2020/03/05 11:48:16 by vkurkela         ###   ########.fr        #
+#    Updated: 2020/03/05 11:50:09 by vkurkela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = lem-in
 
-SRC = main.c
+SRC = ./sources/main.c
 
 OBJ = $(SRC:.c=.o)
 

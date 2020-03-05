@@ -6,11 +6,11 @@
 /*   By: vkurkela <vkurkela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:34:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/05 11:47:33 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/05 11:50:43 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/lem_in.h"
+#include "../includes/lem_in.h"
 
 int main(void)
 {
