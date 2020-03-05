@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:34:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/05 11:50:43 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/05 12:08:27 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 int main(void)
 {
-    ft_printf("seppo, suppo, teppo\n");
+    ft_printf("seppo, suppo, teppo!\n");
     return (0);
 }

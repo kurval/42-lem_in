@@ -6,7 +6,7 @@
 #    By: vkurkela <vkurkela@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/05 11:23:46 by vkurkela          #+#    #+#              #
-#    Updated: 2020/03/05 11:50:09 by vkurkela         ###   ########.fr        #
+#    Updated: 2020/03/05 12:08:30 by vkurkela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,21 +22,24 @@ LIBFT = libft/libft.a
 
 CC = gcc
 
-FLAGS = -Wall -Wextra -Werror -I$(HEADERS)
+FLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
 %.o:%.c
-	$(CC) $(CFLAGS) -o $@ -c $<
+	$(CC) $(FLAGS) -I$(HEADERS) -o $@ -c $<
 
 $(LIBFT):
 	@${MAKE} -C libft
 
 $(NAME): $(LIBFT) $(OBJ)
 	$(CC) $(FLAGS) -o $(NAME) $(OBJ) $(LIBFT)
+	mkdir -p obj
+	mv $(OBJ) ./obj
 
 clean:
 	/bin/rm -f $(OBJ)
+	/bin/rm -Rf obj
 	@${MAKE} -C libft clean
 
 fclean: clean
