@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:32:55 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/11 16:47:56 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/11 18:52:29 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ typedef struct	s_room
 
 typedef struct	s_link
 {
-	char				*from_room;
-	char				*to_room;
+	char				*from;
+	char				*to;
 	struct s_link		*next;
 }				t_link;
 
@@ -57,9 +57,13 @@ int     parse_map(t_lem_in *ant_hill);
 int     add_room(t_room **root, char *name, int x_c, int y_c);
 t_room	*new_node(char *data, int x_c, int y_c);
 void	print_rooms(t_room *root);
-void	check_start_end(char *line, int *nbr);
+void	check_start_end(t_lem_in *ant_hill, char *line, int *nbr);
 int		is_empty(t_room *root);
 void	free_rooms(t_room *root);
 void    check_rooms(t_lem_in **ant_hill, char *line, int *nbr);
+void    check_links(t_lem_in **ant_hill, char *line);
 void	free_tab(char **tab);
+void	free_links(t_link *root);
+int		add_link(t_link **root, char *from, char *to);
+void	print_links(t_link *root);
 #endif
