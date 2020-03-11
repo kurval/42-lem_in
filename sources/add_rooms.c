@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 12:38:06 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/11 18:19:24 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/11 19:44:35 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	print_rooms(t_room *root)
 {
 	while(root)
 	{
-		ft_printf("%s %d %d\n", root->name, root->x, root->y);
+		ft_printf("%s x-%d y-%d\n", root->name, root->x, root->y);
 		root = root->next;
 	}
 }

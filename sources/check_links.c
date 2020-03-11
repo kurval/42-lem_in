@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 18:20:36 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/11 19:33:44 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/11 19:45:18 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static void error_check(t_lem_in **ant_hill, char **tab, int *i)
     if (*i != 2)
     {
         free_links((*ant_hill)->link);
+        free_rooms((*ant_hill)->room);
         free(tab);
         exit(0);
     }
@@ -40,16 +41,18 @@ static void error_check(t_lem_in **ant_hill, char **tab, int *i)
     !is_valid_room((*ant_hill)->room, tab[1]))
     {
         free_links((*ant_hill)->link);
+        free_rooms((*ant_hill)->room);
         free(tab);
         exit(0);
     }
 }
 
-static void push_links(t_lem_in **ant_hill, char **tab)
+static void push_link(t_lem_in **ant_hill, char **tab)
 {
     if (!(add_link(&(*ant_hill)->link, tab[0], tab[1])))
     {
         free_links((*ant_hill)->link);
+        free_rooms((*ant_hill)->room);
         free(tab);
         exit(0);
     }
@@ -62,8 +65,11 @@ void check_links(t_lem_in **ant_hill, char *line)
 
     i = 0;
     if (!(tab = ft_strsplit(line, '-')))
+    {
+        free_rooms((*ant_hill)->room);
         exit(0);
+    }
     error_check(ant_hill, tab, &i);
-    push_links(ant_hill, tab);
+    push_link(ant_hill, tab);
     free(tab);
 }
