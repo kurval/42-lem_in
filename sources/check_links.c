@@ -6,17 +6,38 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 18:20:36 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/11 19:10:31 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/11 19:33:44 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
+
+static int  is_valid_room(t_room *root, char *name)
+{
+    int len;
+
+    len = ft_strlen(name);
+    while(root)
+	{
+		if (!ft_strncmp_end(root->name, name, len))
+            return (1);
+		root = root->next;
+	}
+    return (0);
+}
 
 static void error_check(t_lem_in **ant_hill, char **tab, int *i)
 {
     while (tab[*i])
         *i += 1;
     if (*i != 2)
+    {
+        free_links((*ant_hill)->link);
+        free(tab);
+        exit(0);
+    }
+    if (!is_valid_room((*ant_hill)->room, tab[0]) ||\
+    !is_valid_room((*ant_hill)->room, tab[1]))
     {
         free_links((*ant_hill)->link);
         free(tab);
