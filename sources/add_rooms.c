@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 12:38:06 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/11 15:15:46 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/11 16:48:14 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,23 @@ t_room	*new_node(char *data, int x_c, int y_c)
 {
 	t_room *room;
 
-	room = (t_room*)malloc(sizeof(t_room));
-	room->name = ft_strdup(data);
+	if (!(room = (t_room*)malloc(sizeof(t_room))))
+		return (NULL);
+	if (!(room->name = ft_strdup(data)))
+		return (NULL);
 	room->x = x_c;
 	room->y = y_c;
 	room->next = NULL;
 	return (room);
 }
 
-void	add_room(t_room **root, char *name, int x_c, int y_c)
+int		add_room(t_room **root, char *name, int x_c, int y_c)
 {
 	t_room	*node;
 
-	node = new_node(name, x_c, y_c);
+	if (!(node = new_node(name, x_c, y_c)))
+		return (0);
 	node->next = *root;
 	*root = node;
+	return (1);
 }
