@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 12:29:55 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/02/27 20:35:14 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/11 13:20:06 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,16 @@ int				ft_atoi_err(const char *str)
 	sign = 1;
 	i = starting_point(str);
 	if (!check_sign(str, &i, &sign))
-		return (-1);
+		return (0);
 	while (str[i] != '\0')
 	{
 		if (str[i] >= '0' && str[i] <= '9')
 			res = res * 10 + str[i] - '0';
 		else
-			return (-1);
+			return (0);
 		i++;
 	}
-	if (sign * res > 2147483647 || sign * res < -2147483648 ||\
-	(sign == -1 && res == 0))
-		return (-1);
+	if (sign == -1 && res == 0)
+		return (0);
 	return (1);
 }

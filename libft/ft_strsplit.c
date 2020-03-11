@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkurkela <vkurkela@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 15:35:12 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/02 11:43:28 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/11 12:30:43 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static char		**allocate_tab(char const *s, char c)
 	char	**tab;
 
 	if (!s || (!(tab = (char **)malloc(sizeof(char *) * \
-						(ft_words(s, c) + 2)))))
+						(ft_words(s, c) + 1)))))
 		return (NULL);
 	return (tab);
 }
@@ -61,10 +61,9 @@ char			**ft_strsplit(char const *s, char c)
 	int		i;
 	char	**tab;
 
-	j = 1;
+	j = 0;
 	i = 0;
 	tab = allocate_tab(s, c);
-	tab[0] = ft_strnew(1);
 	while (*s)
 	{
 		while (*s == c && *s)

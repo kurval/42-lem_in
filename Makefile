@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vkurkela <vkurkela@student.42.fr>          +#+  +:+       +#+         #
+#    By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/05 11:23:46 by vkurkela          #+#    #+#              #
-#    Updated: 2020/03/05 12:08:30 by vkurkela         ###   ########.fr        #
+#    Updated: 2020/03/11 13:03:31 by vkurkela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = lem-in
 
-SRC = ./sources/main.c
+SRC = ./sources/main.c ./sources/parse_map.c ./sources/add_rooms.c
 
 OBJ = $(SRC:.c=.o)
 
