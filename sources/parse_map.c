@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 11:09:19 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/12 12:53:13 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/12 20:31:01 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void check_ants(t_lem_in **ant_hill, char *line, int *nbr)
         *nbr = ROOMS;
     }
     else
-        exit(0);
+        (*ant_hill)->errnbr = 8;
 }
 
 int         parse_map(t_lem_in *ant_hill)

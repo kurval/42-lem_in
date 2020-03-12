@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:32:55 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/12 20:21:51 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/12 20:30:13 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define MESSAGE5 "link format: (room-room)"
 # define MESSAGE6 "invalid room name in link"
 # define MESSAGE7 "malloc error"
+# define MESSAGE8 "ants must be a number"
 
 # include "../libft/libft.h"
 
