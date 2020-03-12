@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 16:15:31 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/12 12:55:30 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/12 14:28:39 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,13 @@ static int error_check(t_lem_in **ant_hill, char **tab, char *line, int *i)
         *i += 1;
     if (*i == 1)
         return (1);
-    (line[0] == 'L') ? (*ant_hill)->errnbr = 1 : 0;
-    (*i != 3 && *i != 1) ? (*ant_hill)->errnbr = 2 : 0;
-    (!ft_atoi_err(tab[1])) ? (*ant_hill)->errnbr = 3 : 0;
-    (!ft_atoi_err(tab[2])) ? (*ant_hill)->errnbr = 3 : 0;
+    (line[0] == 'L') ? (*ant_hill)->errnbr = 2 : 0;
+    (*i != 3 && *i != 1) ? (*ant_hill)->errnbr = 3 : 0;
+    if (*i == 3)
+    {
+        (!ft_atoi_err(tab[1])) ? (*ant_hill)->errnbr = 4 : 0;
+        (!ft_atoi_err(tab[2])) ? (*ant_hill)->errnbr = 4 : 0;
+    }
     if ((*ant_hill)->errnbr)
     {
         free_rooms((*ant_hill)->room);
