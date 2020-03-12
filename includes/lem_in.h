@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:32:55 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/12 20:30:13 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/12 20:56:01 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define MESSAGE6 "invalid room name in link"
 # define MESSAGE7 "malloc error"
 # define MESSAGE8 "ants must be a number"
+# define MESSAGE9 "start or end badly formatted"
 
 # include "../libft/libft.h"
 
@@ -37,6 +38,7 @@ typedef struct	s_lem_in
     struct s_room		*start;
 	struct s_room		*end;
 	int					errnbr;
+	int					p;
 }				t_lem_in;
 
 typedef struct	s_room
@@ -68,8 +70,8 @@ int     add_room(t_room **root, char *name, int x_c, int y_c);
 int		add_link(t_link **root, char *from, char *to);
 void	print_rooms(t_room *root);
 void	print_links(t_link *root);
-void	check_start_end(t_lem_in *ant_hill, char *line, int *nbr);
-void    check_rooms(t_lem_in **ant_hill, char *line, int *nbr);
+void	check_start_end(t_lem_in *ant_hill, char *line);
+void    check_rooms(t_lem_in **ant_hill, char *line);
 void    check_links(t_lem_in **ant_hill, char *line);
 void	free_tab(char **tab);
 void	free_links(t_link *root);

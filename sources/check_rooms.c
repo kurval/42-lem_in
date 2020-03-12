@@ -6,20 +6,30 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 16:15:31 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/12 20:19:08 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/12 21:22:40 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
+void	check_start_end(t_lem_in *ant_hill, char *line)
+{
+	if (!ft_strncmp_end(line, "##start", 7))
+		ant_hill->p = START;
+	else if (!ft_strncmp_end(line, "##end", 5))
+		ant_hill->p = END;
+	else
+	    ant_hill->errnbr = 9;
+}
+
 static int error_check(t_lem_in **ant_hill, char **tab, char *line, int *i)
 {
     while (tab[*i])
         *i += 1;
-    if (*i == 1)
+    if (*i == 1 && (*ant_hill)->p != START && (*ant_hill)->p != END)
         return (1);
     (line[0] == 'L') ? (*ant_hill)->errnbr = 2 : 0;
-    (*i != 3 && *i != 1) ? (*ant_hill)->errnbr = 3 : 0;
+    (*i != 3) ? (*ant_hill)->errnbr = 3 : 0;
     if (*i == 3)
     {
         (!ft_atoi_err(tab[1])) ? (*ant_hill)->errnbr = 4 : 0;
@@ -34,19 +44,19 @@ static int error_check(t_lem_in **ant_hill, char **tab, char *line, int *i)
         return (1);
 }
 
-static void push_room(t_lem_in **ant_hill, char **tab, int *nbr)
+static void push_room(t_lem_in **ant_hill, char **tab)
 {
     if (!(add_room(&(*ant_hill)->room, tab[0], ft_atoi(tab[1]), ft_atoi(tab[2]))))
     {
         (*ant_hill)->errnbr = 7;
         return;
     }
-    *nbr == START ? (*ant_hill)->start = (*ant_hill)->room : 0;
-    *nbr == END ? (*ant_hill)->end = (*ant_hill)->room : 0;
-    *nbr = ROOMS;
+    (*ant_hill)->p == START ? (*ant_hill)->start = (*ant_hill)->room : 0;
+    (*ant_hill)->p == END ? (*ant_hill)->end = (*ant_hill)->room : 0;
+    (*ant_hill)->p = ROOMS;
 }
 
-void check_rooms(t_lem_in **ant_hill, char *line, int *nbr)
+void check_rooms(t_lem_in **ant_hill, char *line)
 {
     char    **tab;
     int     i;
@@ -60,10 +70,10 @@ void check_rooms(t_lem_in **ant_hill, char *line, int *nbr)
     if (!error_check(ant_hill, tab, line, &i))
         return;
     if (i == 3)
-        push_room(ant_hill, tab, nbr);
+        push_room(ant_hill, tab);
     else if (i == 1)
     {
-        *nbr = LINKS;
+        (*ant_hill)->p = LINKS;
         check_links(ant_hill, line);
     }
     free(tab);

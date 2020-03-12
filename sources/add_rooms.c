@@ -6,24 +6,11 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 12:38:06 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/12 10:57:44 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/12 20:36:53 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
-
-void	check_start_end(t_lem_in *ant_hill, char *line, int *nbr)
-{
-	if (!ft_strncmp_end(line, "##start", 7))
-		*nbr = 2;
-	else if (!ft_strncmp_end(line, "##end", 5))
-		*nbr = 3;
-	else
-	{
-		free_rooms(ant_hill->room);
-		exit(0);
-	}
-}
 
 void	print_rooms(t_room *root)
 {
