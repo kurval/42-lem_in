@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 11:09:19 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/11 18:21:26 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/12 12:53:13 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ int         parse_map(t_lem_in *ant_hill)
     int     nbr;
 
     nbr = 0;
-	while ((ret = get_next_line(0, &line)) > 0)
+    ant_hill->errnbr = 0;
+	while ((ret = get_next_line(0, &line)) > 0 && ant_hill->errnbr == 0)
 	{
         if (!nbr)
 		    check_ants(&ant_hill, line, &nbr);

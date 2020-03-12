@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 12:38:06 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/11 19:44:35 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/12 10:57:44 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	print_rooms(t_room *root)
 	}
 }
 
-t_room	*new_node(char *data, int x_c, int y_c)
+static t_room	*new_node(char *data, int x_c, int y_c)
 {
 	t_room *room;
 

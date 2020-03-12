@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 18:27:03 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/11 18:53:13 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/12 10:57:54 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,28 +18,6 @@ void	print_links(t_link *root)
 	{
 		ft_printf("%s-%s\n", root->from, root->to);
 		root = root->next;
-	}
-}
-
-static int  is_links(t_link *root)
-{
-	return (!root);
-}
-
-void	free_links(t_link *root)
-{
-	t_link *temp;
-
-	temp = NULL;
-	if (is_links(root))
-		return ;
-	while (root)
-	{
-		temp = root;
-		root = root->next;
-        free(temp->to);
-        free(temp->from);
-		free(temp);
 	}
 }
 
