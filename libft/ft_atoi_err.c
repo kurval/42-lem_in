@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 12:29:55 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/11 13:20:06 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/12 21:26:20 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int				ft_atoi_err(const char *str)
 			return (0);
 		i++;
 	}
-	if (sign == -1 && res == 0)
+	if (sign == -1)
 		return (0);
 	return (1);
 }
