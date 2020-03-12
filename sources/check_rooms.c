@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 16:15:31 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/12 14:28:39 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/12 20:19:08 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ static int error_check(t_lem_in **ant_hill, char **tab, char *line, int *i)
     }
     if ((*ant_hill)->errnbr)
     {
-        free_rooms((*ant_hill)->room);
         free(tab);
         return (0);
     }
@@ -39,9 +38,8 @@ static void push_room(t_lem_in **ant_hill, char **tab, int *nbr)
 {
     if (!(add_room(&(*ant_hill)->room, tab[0], ft_atoi(tab[1]), ft_atoi(tab[2]))))
     {
-        free_rooms((*ant_hill)->room);
-        free(tab);
-        exit(0);
+        (*ant_hill)->errnbr = 7;
+        return;
     }
     *nbr == START ? (*ant_hill)->start = (*ant_hill)->room : 0;
     *nbr == END ? (*ant_hill)->end = (*ant_hill)->room : 0;
@@ -55,7 +53,10 @@ void check_rooms(t_lem_in **ant_hill, char *line, int *nbr)
 
     i = 0;
     if (!(tab = ft_strsplit(line, ' ')))
-        exit(0);
+    {
+        (*ant_hill)->errnbr = 7;
+        return;
+    }
     if (!error_check(ant_hill, tab, line, &i))
         return;
     if (i == 3)

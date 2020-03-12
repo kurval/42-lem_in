@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:32:55 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/12 17:55:16 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/12 20:21:51 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define MESSAGE4 "rooms coordinate is invalid"
 # define MESSAGE5 "link format: (room-room)"
 # define MESSAGE6 "invalid room name in link"
+# define MESSAGE7 "malloc error"
 
 # include "../libft/libft.h"
 
@@ -72,7 +73,7 @@ void    check_links(t_lem_in **ant_hill, char *line);
 void	free_tab(char **tab);
 void	free_links(t_link *root);
 void	free_rooms(t_room *root);
-void    print_error(int errno);
 int		is_empty(t_room *root);
 int 	is_links(t_link *root);
+void    print_error(int errno, t_lem_in *ant_hill);
 #endif

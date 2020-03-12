@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 18:20:36 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/12 14:30:50 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/12 20:21:39 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ static int error_check(t_lem_in **ant_hill, char **tab, int *i)
     }
     if ((*ant_hill)->errnbr)
     {
-        free_links((*ant_hill)->link);
-        free_rooms((*ant_hill)->room);
         free(tab);
         return (0);
     }
@@ -49,12 +47,7 @@ static int error_check(t_lem_in **ant_hill, char **tab, int *i)
 static void push_link(t_lem_in **ant_hill, char **tab)
 {
     if (!(add_link(&(*ant_hill)->link, tab[0], tab[1])))
-    {
-        free_links((*ant_hill)->link);
-        free_rooms((*ant_hill)->room);
-        free(tab);
-        exit(0);
-    }
+        (*ant_hill)->errnbr = 7;
 }
 
 void check_links(t_lem_in **ant_hill, char *line)
@@ -65,7 +58,7 @@ void check_links(t_lem_in **ant_hill, char *line)
     i = 0;
     if (!(tab = ft_strsplit(line, '-')))
     {
-        free_rooms((*ant_hill)->room);
+        (*ant_hill)->errnbr = 7;
         return;
     }
     if (!error_check(ant_hill, tab, &i))
