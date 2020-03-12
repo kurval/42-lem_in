@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:32:55 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/12 12:41:33 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/12 17:55:16 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@
 # define START 2
 # define END 3
 # define LINKS 4
+# define ERROR(message) ft_printf("Error: %s\n", message)
+# define MESSAGE1 "usage: ./lem-in < [source file]"
+# define MESSAGE2 "room name is invalid"
+# define MESSAGE3 "room format: (room x y)"
+# define MESSAGE4 "rooms coordinate is invalid"
+# define MESSAGE5 "link format: (room-room)"
+# define MESSAGE6 "invalid room name in link"
 
 # include "../libft/libft.h"
 
