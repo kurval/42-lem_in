@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:32:55 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/13 13:55:26 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/13 14:13:03 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define MESSAGE12 "no links"
 # define MESSAGE13 "start doesn't exist"
 # define MESSAGE14 "end doesn't exist"
+# define MESSAGE15 "link is connected to itself"
 
 # include "../libft/libft.h"
 
@@ -85,6 +86,5 @@ int		is_empty(t_room *root);
 int 	is_links(t_link *root);
 void    print_error(int errno, t_lem_in *ant_hill);
 int 	is_valid_room(t_room *root, char *name);
-int		is_valid_link(t_link *root, char *room1, char *room2);
 int		validate_map(t_lem_in *ant_hill);
 #endif

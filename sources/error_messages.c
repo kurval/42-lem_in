@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 11:12:08 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/13 13:55:43 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/13 14:22:46 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void    print_error(int errno, t_lem_in *ant_hill)
     errno == 12 ? ERROR(MESSAGE12) : 0;
     errno == 13 ? ERROR(MESSAGE13) : 0;
     errno == 14 ? ERROR(MESSAGE14) : 0;
+    errno == 15 ? ERROR(MESSAGE15) : 0;
     free_links((*ant_hill).link);
     free_rooms((*ant_hill).room);
     exit(0);
