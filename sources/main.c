@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:34:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/13 13:52:16 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/13 21:11:21 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ int main(int arg, char **argc)
     ft_printf("end: %s\n", ant_hill.end->name);
     ft_printf("\nlinks:\n");
     print_links(ant_hill.link);
+    ft_printf("\nANTS:\n");
+    print_ants(ant_hill.ant_lst);
     free_links(ant_hill.link);
     free_rooms(ant_hill.room);
+    free_ants(ant_hill.ant_lst);
     return (0);
 }

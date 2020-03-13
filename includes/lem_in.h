@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:32:55 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/13 14:43:38 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/13 21:09:48 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct	s_lem_in
 	struct s_room		*end;
 	int					errnbr;
 	int					p;
+	struct s_ants		*ant_lst;
 }				t_lem_in;
 
 typedef struct	s_room
@@ -52,7 +53,7 @@ typedef struct	s_room
 	int     			x;
 	int					y;
 	struct s_room		*next;
-	int                 ant_here;
+	struct s_ants		*ant_here;
 }				t_room;
 
 typedef struct	s_link
@@ -61,6 +62,12 @@ typedef struct	s_link
 	char				*to;
 	struct s_link		*next;
 }				t_link;
+
+typedef struct	s_ants
+{
+	long				name;
+	struct s_ants		*next;
+}				t_ants;
 
 typedef struct	s_hashtable
 {
@@ -86,4 +93,7 @@ int 	is_links(t_link *root);
 void    print_error(int errno, t_lem_in *ant_hill);
 int 	is_valid_room(t_room *root, char *name);
 int		validate_map(t_lem_in *ant_hill);
+int		add_ants(t_ants **root, long name);
+void	print_ants(t_ants *root);
+void	free_ants(t_ants *root);
 #endif

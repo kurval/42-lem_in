@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 11:09:19 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/12 20:53:53 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/13 21:05:13 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@ static void check_ants(t_lem_in **ant_hill, char *line)
     if (ft_atoi_err(line))
     {
         (*ant_hill)->ants = ft_atoi(line);
+        if (!add_ants(&(*ant_hill)->ant_lst, (*ant_hill)->ants))
+        {
+            (*ant_hill)->errnbr = 7;
+            return;
+        }
+        (*ant_hill)->room = NULL;
         (*ant_hill)->p = ROOMS;
     }
     else
