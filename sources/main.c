@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:34:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/12 21:17:57 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/13 13:52:16 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ int main(int arg, char **argc)
     if (arg != 1)
         print_error(1, &ant_hill);
     parse_map(&ant_hill);
+    validate_map(&ant_hill);
     if (ant_hill.errnbr)
         print_error(ant_hill.errnbr, &ant_hill);
+    
     ft_printf("ants: %d\n", ant_hill.ants);
     ft_printf("\nrooms:\n");
     print_rooms(ant_hill.room);
