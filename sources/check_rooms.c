@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 16:15:31 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/13 13:15:06 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/13 14:40:17 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ int  is_valid_room(t_room *root, char *name)
 
 void	check_start_end(t_lem_in *ant_hill, char *line)
 {
-	if (!ft_strncmp_end(line, "##start", 7))
+	if (!ft_strncmp_end(line, "##start", 7) && !ant_hill->start)
 		ant_hill->p = START;
-	else if (!ft_strncmp_end(line, "##end", 5))
+	else if (!ft_strncmp_end(line, "##end", 5) && !ant_hill->end)
 		ant_hill->p = END;
 	else
 	    ant_hill->errnbr = 9;

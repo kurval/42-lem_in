@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:32:55 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/13 14:13:03 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/13 14:43:38 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define LINKS 4
 # define ERROR(message) ft_printf("Error: %s\n", message)
 # define MESSAGE1 "usage: ./lem-in < [source file]"
-# define MESSAGE2 "room name is invalid"
+# define MESSAGE2 "room name starts with L"
 # define MESSAGE3 "room format: (room x y)"
 # define MESSAGE4 "rooms coordinate is invalid"
 # define MESSAGE5 "link format: (room-room)"
@@ -28,11 +28,10 @@
 # define MESSAGE9 "start or end badly formatted"
 # define MESSAGE10 "room allready exist"
 # define MESSAGE11 "link allready exist"
-# define MESSAGE12 "no links"
+# define MESSAGE12 "no links or empty map"
 # define MESSAGE13 "start doesn't exist"
 # define MESSAGE14 "end doesn't exist"
 # define MESSAGE15 "link is connected to itself"
-
 # include "../libft/libft.h"
 
 typedef struct	s_lem_in
