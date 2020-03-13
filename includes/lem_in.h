@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:32:55 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/12 21:27:07 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/13 13:35:02 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 # define MESSAGE7 "malloc error"
 # define MESSAGE8 "ants must be a positive number"
 # define MESSAGE9 "start or end badly formatted"
+# define MESSAGE10 "room allready exist"
+# define MESSAGE11 "link allready exist"
 
 # include "../libft/libft.h"
 
@@ -79,4 +81,6 @@ void	free_rooms(t_room *root);
 int		is_empty(t_room *root);
 int 	is_links(t_link *root);
 void    print_error(int errno, t_lem_in *ant_hill);
+int 	is_valid_room(t_room *root, char *name);
+int		is_valid_link(t_link *root, char *room1, char *room2);
 #endif

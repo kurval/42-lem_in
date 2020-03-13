@@ -6,11 +6,25 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 16:15:31 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/12 21:22:40 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/13 13:15:06 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
+
+int  is_valid_room(t_room *root, char *name)
+{
+    int len;
+
+    len = ft_strlen(name);
+    while(root)
+	{
+		if (!ft_strncmp_end(root->name, name, len))
+            return (1);
+		root = root->next;
+	}
+    return (0);
+}
 
 void	check_start_end(t_lem_in *ant_hill, char *line)
 {
@@ -32,6 +46,7 @@ static int error_check(t_lem_in **ant_hill, char **tab, char *line, int *i)
     (*i != 3) ? (*ant_hill)->errnbr = 3 : 0;
     if (*i == 3)
     {
+        (is_valid_room((*ant_hill)->room, tab[0])) ? (*ant_hill)->errnbr = 10 : 0;;
         (!ft_atoi_err(tab[1])) ? (*ant_hill)->errnbr = 4 : 0;
         (!ft_atoi_err(tab[2])) ? (*ant_hill)->errnbr = 4 : 0;
     }
