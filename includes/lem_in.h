@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:32:55 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/14 16:12:02 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/14 19:31:53 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@
 # define START 2
 # define END 3
 # define LINKS 4
-# define ERROR(line, message) ft_printf(BOLDRED "Error in line %d: %s\n" RESET, line, message)
+# define ERROR(line, message) ft_printf(BOLDRED "ERROR Line %d: %s\n" RESET, line, message)
 # define MESSAGE1 "usage: ./lem-in < [source file]"
 # define MESSAGE2 "room name starts with L"
 # define MESSAGE3 "room format: (room x y)"
 # define MESSAGE4 "rooms coordinate is invalid"
 # define MESSAGE5 "link format: (room-room)"
-# define MESSAGE6 "invalid room name in link"
+# define MESSAGE6 "room name doesn't exist"
 # define MESSAGE7 "malloc error"
 # define MESSAGE8 "ants must be a positive number"
 # define MESSAGE9 "start or end badly formatted"
