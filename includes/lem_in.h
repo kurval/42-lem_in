@@ -6,17 +6,19 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:32:55 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/14 12:14:55 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/14 16:12:02 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEM_IN_H
 # define LEM_IN_H
+# define BOLDRED "\033[1m\033[31m"
+# define RESET "\033[0m"
 # define ROOMS 1
 # define START 2
 # define END 3
 # define LINKS 4
-# define ERROR(message) ft_printf("Error: %s\n", message)
+# define ERROR(line, message) ft_printf(BOLDRED "Error in line %d: %s\n" RESET, line, message)
 # define MESSAGE1 "usage: ./lem-in < [source file]"
 # define MESSAGE2 "room name starts with L"
 # define MESSAGE3 "room format: (room x y)"
@@ -45,6 +47,7 @@ typedef struct	s_lem_in
 	struct s_room		*end;
 	int					errnbr;
 	int					p;
+	int					line;
 }				t_lem_in;
 
 typedef struct	s_room

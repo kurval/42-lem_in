@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 11:12:08 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/14 12:06:34 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/14 15:46:40 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,21 @@
 void    print_error(int errno, t_lem_in *anthill)
 {
     ft_printf("errno is %d\n", errno);
-    errno == 1 ? ERROR(MESSAGE1) : 0;
-    errno == 2 ? ERROR(MESSAGE2) : 0;
-    errno == 3 ? ERROR(MESSAGE3) : 0;
-    errno == 4 ? ERROR(MESSAGE4) : 0;
-    errno == 5 ? ERROR(MESSAGE5) : 0;
-    errno == 6 ? ERROR(MESSAGE6) : 0;
-    errno == 7 ? ERROR(MESSAGE7) : 0;
-    errno == 8 ? ERROR(MESSAGE8) : 0;
-    errno == 9 ? ERROR(MESSAGE9) : 0;
-    errno == 10 ? ERROR(MESSAGE10) : 0;
-    errno == 11 ? ERROR(MESSAGE11) : 0;
-    errno == 12 ? ERROR(MESSAGE12) : 0;
-    errno == 13 ? ERROR(MESSAGE13) : 0;
-    errno == 14 ? ERROR(MESSAGE14) : 0;
-    errno == 15 ? ERROR(MESSAGE15) : 0;
+    errno == 1 ? ERROR(anthill->line, MESSAGE1) : 0;
+    errno == 2 ? ERROR(anthill->line, MESSAGE2) : 0;
+    errno == 3 ? ERROR(anthill->line, MESSAGE3) : 0;
+    errno == 4 ? ERROR(anthill->line, MESSAGE4) : 0;
+    errno == 5 ? ERROR(anthill->line, MESSAGE5) : 0;
+    errno == 6 ? ERROR(anthill->line, MESSAGE6) : 0;
+    errno == 7 ? ERROR(anthill->line, MESSAGE7) : 0;
+    errno == 8 ? ERROR(anthill->line, MESSAGE8) : 0;
+    errno == 9 ? ERROR(anthill->line, MESSAGE9) : 0;
+    errno == 10 ? ERROR(anthill->line, MESSAGE10) : 0;
+    errno == 11 ? ERROR(anthill->line, MESSAGE11) : 0;
+    errno == 12 ? ERROR(anthill->line, MESSAGE12) : 0;
+    errno == 13 ? ERROR(anthill->line, MESSAGE13) : 0;
+    errno == 14 ? ERROR(anthill->line, MESSAGE14) : 0;
+    errno == 15 ? ERROR(anthill->line, MESSAGE15) : 0;
     free_links(anthill->link);
     free_rooms(anthill->room);
     free_ants(anthill->ant_lst);

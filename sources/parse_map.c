@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 11:09:19 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/14 12:14:43 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/14 16:00:54 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,14 @@ int         parse_map(t_lem_in *anthill)
         if (!anthill->p)
 		    check_ants(&anthill, line);
         else if (line[0] == '#' && line[1] != '#')
-            continue;
+            ;
         else if (line[0] == '#' && line[1] == '#')
             check_start_end(anthill, line);
         else if (anthill->p == ROOMS || anthill->p == START || anthill->p == END)
             check_rooms(&anthill, line);
         else if (anthill->p == LINKS)
             check_links(&anthill, line);
+        anthill->line += 1;
         free(line);
 	}
 	if (ret == -1)

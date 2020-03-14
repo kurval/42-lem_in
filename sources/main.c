@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:34:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/14 12:15:01 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/14 16:58:55 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void    init_anthill(t_lem_in *anthill)
 	anthill->end = NULL;
 	anthill->errnbr = 0;
 	anthill->p = 0;
+    anthill->line = 0;
 }
 
 int main(int arg, char **argc)
@@ -34,10 +35,8 @@ int main(int arg, char **argc)
     if (arg != 1)
         print_error(1, &anthill);
     parse_map(&anthill);
-    validate_map(&anthill);
-    if (anthill.errnbr)
+    if (!validate_map(&anthill))
         print_error(anthill.errnbr, &anthill);
-    
     ft_printf("ants: %d\n", anthill.ants);
     ft_printf("\nrooms:\n");
     print_rooms(anthill.room);
