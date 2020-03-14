@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 16:15:31 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/13 21:05:37 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/14 12:06:34 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,31 +26,31 @@ int  is_valid_room(t_room *root, char *name)
     return (0);
 }
 
-void	check_start_end(t_lem_in *ant_hill, char *line)
+void	check_start_end(t_lem_in *anthill, char *line)
 {
-	if (!ft_strncmp_end(line, "##start", 7) && !ant_hill->start)
-		ant_hill->p = START;
-	else if (!ft_strncmp_end(line, "##end", 5) && !ant_hill->end)
-		ant_hill->p = END;
+	if (!ft_strncmp_end(line, "##start", 7) && !anthill->start)
+		anthill->p = START;
+	else if (!ft_strncmp_end(line, "##end", 5) && !anthill->end)
+		anthill->p = END;
 	else
-	    ant_hill->errnbr = 9;
+	    anthill->errnbr = 9;
 }
 
-static int error_check(t_lem_in **ant_hill, char **tab, char *line, int *i)
+static int error_check(t_lem_in **anthill, char **tab, char *line, int *i)
 {
     while (tab[*i])
         *i += 1;
-    if (*i == 1 && (*ant_hill)->p != START && (*ant_hill)->p != END)
+    if (*i == 1 && (*anthill)->p != START && (*anthill)->p != END)
         return (1);
-    (line[0] == 'L') ? (*ant_hill)->errnbr = 2 : 0;
-    (*i != 3) ? (*ant_hill)->errnbr = 3 : 0;
+    (line[0] == 'L') ? (*anthill)->errnbr = 2 : 0;
+    (*i != 3) ? (*anthill)->errnbr = 3 : 0;
     if (*i == 3)
     {
-        (is_valid_room((*ant_hill)->room, tab[0])) ? (*ant_hill)->errnbr = 10 : 0;
-        (!ft_atoi_err(tab[1])) ? (*ant_hill)->errnbr = 4 : 0;
-        (!ft_atoi_err(tab[2])) ? (*ant_hill)->errnbr = 4 : 0;
+        (is_valid_room((*anthill)->room, tab[0])) ? (*anthill)->errnbr = 10 : 0;
+        (!ft_atoi_err(tab[1])) ? (*anthill)->errnbr = 4 : 0;
+        (!ft_atoi_err(tab[2])) ? (*anthill)->errnbr = 4 : 0;
     }
-    if ((*ant_hill)->errnbr)
+    if ((*anthill)->errnbr)
     {
         free(tab);
         return (0);
@@ -59,19 +59,19 @@ static int error_check(t_lem_in **ant_hill, char **tab, char *line, int *i)
         return (1);
 }
 
-static void push_room(t_lem_in **ant_hill, char **tab)
+static void push_room(t_lem_in **anthill, char **tab)
 {
-    if (!(add_room(&(*ant_hill)->room, tab[0], ft_atoi(tab[1]), ft_atoi(tab[2]))))
+    if (!(add_room(&(*anthill)->room, tab[0], ft_atoi(tab[1]), ft_atoi(tab[2]))))
     {
-        (*ant_hill)->errnbr = 7;
+        (*anthill)->errnbr = 7;
         return;
     }
-    (*ant_hill)->p == START ? (*ant_hill)->start = (*ant_hill)->room : 0;
-    (*ant_hill)->p == END ? (*ant_hill)->end = (*ant_hill)->room : 0;
-    (*ant_hill)->p = ROOMS;
+    (*anthill)->p == START ? (*anthill)->start = (*anthill)->room : 0;
+    (*anthill)->p == END ? (*anthill)->end = (*anthill)->room : 0;
+    (*anthill)->p = ROOMS;
 }
 
-void check_rooms(t_lem_in **ant_hill, char *line)
+void check_rooms(t_lem_in **anthill, char *line)
 {
     char    **tab;
     int     i;
@@ -79,17 +79,17 @@ void check_rooms(t_lem_in **ant_hill, char *line)
     i = 0;
     if (!(tab = ft_strsplit(line, ' ')))
     {
-        (*ant_hill)->errnbr = 7;
+        (*anthill)->errnbr = 7;
         return;
     }
-    if (!error_check(ant_hill, tab, line, &i))
+    if (!error_check(anthill, tab, line, &i))
         return;
     if (i == 3)
-        push_room(ant_hill, tab);
+        push_room(anthill, tab);
     else if (i == 1)
     {
-        (*ant_hill)->p = LINKS;
-        check_links(ant_hill, line);
+        (*anthill)->p = LINKS;
+        check_links(anthill, line);
     }
     free(tab);
 }

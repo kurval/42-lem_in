@@ -6,13 +6,13 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 11:12:08 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/13 21:11:44 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/14 12:06:34 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-void    print_error(int errno, t_lem_in *ant_hill)
+void    print_error(int errno, t_lem_in *anthill)
 {
     ft_printf("errno is %d\n", errno);
     errno == 1 ? ERROR(MESSAGE1) : 0;
@@ -30,8 +30,8 @@ void    print_error(int errno, t_lem_in *ant_hill)
     errno == 13 ? ERROR(MESSAGE13) : 0;
     errno == 14 ? ERROR(MESSAGE14) : 0;
     errno == 15 ? ERROR(MESSAGE15) : 0;
-    free_links(ant_hill->link);
-    free_rooms(ant_hill->room);
-    free_ants(ant_hill->ant_lst);
+    free_links(anthill->link);
+    free_rooms(anthill->room);
+    free_ants(anthill->ant_lst);
     exit(0);
 }

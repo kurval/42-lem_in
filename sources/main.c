@@ -6,35 +6,49 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:34:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/13 21:11:21 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/14 12:15:01 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
+void    init_anthill(t_lem_in *anthill)
+{
+    anthill->ants = 0;
+	anthill->room_count = 0;
+	anthill->ant_lst = NULL;
+	anthill->room = NULL;
+	anthill->link = NULL;
+    anthill->start = NULL;
+	anthill->end = NULL;
+	anthill->errnbr = 0;
+	anthill->p = 0;
+}
+
 int main(int arg, char **argc)
 {
-    t_lem_in    ant_hill;
+    t_lem_in    anthill;
 
     argc = NULL;
+    init_anthill(&anthill);
     if (arg != 1)
-        print_error(1, &ant_hill);
-    parse_map(&ant_hill);
-    validate_map(&ant_hill);
-    if (ant_hill.errnbr)
-        print_error(ant_hill.errnbr, &ant_hill);
+        print_error(1, &anthill);
+    parse_map(&anthill);
+    validate_map(&anthill);
+    if (anthill.errnbr)
+        print_error(anthill.errnbr, &anthill);
     
-    ft_printf("ants: %d\n", ant_hill.ants);
+    ft_printf("ants: %d\n", anthill.ants);
     ft_printf("\nrooms:\n");
-    print_rooms(ant_hill.room);
-    ft_printf("\nstart: %s\n", ant_hill.start->name);
-    ft_printf("end: %s\n", ant_hill.end->name);
+    print_rooms(anthill.room);
+    ft_printf("\nstart: %s\n", anthill.start->name);
+    ft_printf("end: %s\n", anthill.end->name);
     ft_printf("\nlinks:\n");
-    print_links(ant_hill.link);
+    print_links(anthill.link);
     ft_printf("\nANTS:\n");
-    print_ants(ant_hill.ant_lst);
-    free_links(ant_hill.link);
-    free_rooms(ant_hill.room);
-    free_ants(ant_hill.ant_lst);
+    print_ants(anthill.ant_lst);
+    free_links(anthill.link);
+    free_rooms(anthill.room);
+    free_ants(anthill.ant_lst);
     return (0);
 }

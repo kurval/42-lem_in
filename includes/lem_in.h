@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:32:55 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/13 21:09:48 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/14 12:14:55 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ typedef struct	s_lem_in
 {
 	long				ants;
 	unsigned int		room_count;
+	struct s_ants		*ant_lst;
 	struct s_room		*room;
 	struct s_link		*link;
     struct s_room		*start;
 	struct s_room		*end;
 	int					errnbr;
 	int					p;
-	struct s_ants		*ant_lst;
 }				t_lem_in;
 
 typedef struct	s_room
@@ -77,23 +77,24 @@ typedef struct	s_hashtable
 }               t_hashtable;
 
 int     main(int arg, char **argc);
-int     parse_map(t_lem_in *ant_hill);
+int     parse_map(t_lem_in *anthill);
 int     add_room(t_room **root, char *name, int x_c, int y_c);
 int		add_link(t_link **root, char *from, char *to);
 void	print_rooms(t_room *root);
 void	print_links(t_link *root);
-void	check_start_end(t_lem_in *ant_hill, char *line);
-void    check_rooms(t_lem_in **ant_hill, char *line);
-void    check_links(t_lem_in **ant_hill, char *line);
+void	check_start_end(t_lem_in *anthill, char *line);
+void    check_rooms(t_lem_in **anthill, char *line);
+void    check_links(t_lem_in **anthill, char *line);
 void	free_tab(char **tab);
 void	free_links(t_link *root);
 void	free_rooms(t_room *root);
 int		is_empty(t_room *root);
 int 	is_links(t_link *root);
-void    print_error(int errno, t_lem_in *ant_hill);
+void    print_error(int errno, t_lem_in *anthill);
 int 	is_valid_room(t_room *root, char *name);
-int		validate_map(t_lem_in *ant_hill);
+int		validate_map(t_lem_in *anthill);
 int		add_ants(t_ants **root, long name);
 void	print_ants(t_ants *root);
 void	free_ants(t_ants *root);
+void    init_anthill(t_lem_in *anthill);
 #endif

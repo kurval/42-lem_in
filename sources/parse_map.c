@@ -6,48 +6,45 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 11:09:19 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/13 21:05:13 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/14 12:14:43 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-static void check_ants(t_lem_in **ant_hill, char *line)
+static void check_ants(t_lem_in **anthill, char *line)
 {
     if (ft_atoi_err(line))
     {
-        (*ant_hill)->ants = ft_atoi(line);
-        if (!add_ants(&(*ant_hill)->ant_lst, (*ant_hill)->ants))
+        (*anthill)->ants = ft_atoi(line);
+        if (!add_ants(&(*anthill)->ant_lst, (*anthill)->ants))
         {
-            (*ant_hill)->errnbr = 7;
+            (*anthill)->errnbr = 7;
             return;
         }
-        (*ant_hill)->room = NULL;
-        (*ant_hill)->p = ROOMS;
+        (*anthill)->p = ROOMS;
     }
     else
-        (*ant_hill)->errnbr = 8;
+        (*anthill)->errnbr = 8;
 }
 
-int         parse_map(t_lem_in *ant_hill)
+int         parse_map(t_lem_in *anthill)
 {
     int		ret;
 	char	*line;
 
-    ant_hill->p = 0;
-    ant_hill->errnbr = 0;
-	while ((ret = get_next_line(0, &line)) > 0 && ant_hill->errnbr == 0)
+	while ((ret = get_next_line(0, &line)) > 0 && anthill->errnbr == 0)
 	{
-        if (!ant_hill->p)
-		    check_ants(&ant_hill, line);
+        if (!anthill->p)
+		    check_ants(&anthill, line);
         else if (line[0] == '#' && line[1] != '#')
             continue;
         else if (line[0] == '#' && line[1] == '#')
-            check_start_end(ant_hill, line);
-        else if (ant_hill->p == ROOMS || ant_hill->p == START || ant_hill->p == END)
-            check_rooms(&ant_hill, line);
-        else if (ant_hill->p == LINKS)
-            check_links(&ant_hill, line);
+            check_start_end(anthill, line);
+        else if (anthill->p == ROOMS || anthill->p == START || anthill->p == END)
+            check_rooms(&anthill, line);
+        else if (anthill->p == LINKS)
+            check_links(&anthill, line);
         free(line);
 	}
 	if (ret == -1)
