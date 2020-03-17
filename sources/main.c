@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:34:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/17 22:59:52 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/17 23:10:18 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,6 @@ int main(int arg, char **argc)
     if (!validate_map(&anthill))
         print_error(anthill.errnbr, &anthill);
     print_map(&anthill);
-    free_links(anthill.link);
-    free_rooms(anthill.room);
-    free_ants(anthill.ant_lst);
-    free_map(anthill.map);
+    free_all(&anthill);
     return (0);
 }

@@ -6,27 +6,11 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 16:15:31 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/17 22:55:30 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/17 23:11:58 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
-
-void	free_map(t_map *root)
-{
-	t_map *temp;
-
-	temp = NULL;
-	if (!root)
-		return ;
-	while (root)
-	{
-		temp = root;
-		root = root->next;
-        free(temp->line);
-		free(temp);
-	}
-}
 
 void	print_map(t_lem_in *root)
 {

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:32:55 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/17 22:58:45 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/17 23:14:07 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,16 +97,13 @@ void	check_start_end(t_lem_in *anthill, char *line);
 void    check_rooms(t_lem_in **anthill, char *line);
 void    check_links(t_lem_in **anthill, char *line);
 void	free_tab(char **tab);
-void	free_links(t_link *root);
-void	free_rooms(t_room *root);
 void    print_error(int errno, t_lem_in *anthill);
 int 	is_valid_room(t_room *root, char *name);
 int		validate_map(t_lem_in *anthill);
 int		add_ants(t_ants **root, long name);
 void	print_ants(t_ants *root);
-void	free_ants(t_ants *root);
 void    init_anthill(t_lem_in *anthill);
 int		add_to_map(t_map **root, char *rule);
 void	print_map(t_lem_in *root);
-void	free_map(t_map *root);
+void    free_all(t_lem_in *anthill);
 #endif

@@ -6,31 +6,11 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/13 20:16:51 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/13 21:15:24 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/17 23:11:00 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
-
-static int  is_ants(t_ants *root)
-{
-	return (!root);
-}
-
-void	free_ants(t_ants *root)
-{
-	t_ants *temp;
-
-	temp = NULL;
-	if (is_ants(root))
-		return ;
-	while (root)
-	{
-		temp = root;
-		root = root->next;
-		free(temp);
-	}
-}
 
 void	print_ants(t_ants *root)
 {

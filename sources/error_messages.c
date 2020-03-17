@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 11:12:08 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/17 22:59:44 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/17 23:12:50 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,6 @@ void    print_error(int errno, t_lem_in *anthill)
     errno == 13 ? ERROR(anthill->line, MESSAGE13) : 0;
     errno == 14 ? ERROR(anthill->line, MESSAGE14) : 0;
     errno == 15 ? ERROR(anthill->line, MESSAGE15) : 0;
-    free_links(anthill->link);
-    free_rooms(anthill->room);
-    free_ants(anthill->ant_lst);
-    free_map(anthill->map);
+    free_all(anthill);
     exit(0);
 }

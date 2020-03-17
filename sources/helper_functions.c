@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 15:57:24 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/17 22:57:44 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/17 23:11:22 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,37 +23,4 @@ void	free_tab(char **tab)
 		i++;
 	}
 	free(tab);
-}
-
-void	free_links(t_link *root)
-{
-	t_link *temp;
-
-	temp = NULL;
-	if (!root)
-		return ;
-	while (root)
-	{
-		temp = root;
-		root = root->next;
-        free(temp->to);
-        free(temp->from);
-		free(temp);
-	}
-}
-
-void	free_rooms(t_room *root)
-{
-	t_room *temp;
-
-	temp = NULL;
-	if (!root)
-		return ;
-	while (root)
-	{
-		temp = root;
-		root = root->next;
-        free(temp->name);
-		free(temp);
-	}
 }
