@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 16:15:31 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/17 19:16:20 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/17 19:34:42 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ void	check_start_end(t_lem_in *anthill, char *line)
 		anthill->p = START;
 	else if (!ft_strncmp_end(line, "##end", 5) && !anthill->end)
 		anthill->p = END;
-	else
-	    anthill->errnbr = 9;
 }
 
 static int error_check(t_lem_in **anthill, char **tab, char *line, int *i)

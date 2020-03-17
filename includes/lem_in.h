@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:32:55 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/17 19:29:42 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/17 19:34:16 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 # define MESSAGE6 "room name doesn't exist"
 # define MESSAGE7 "malloc error"
 # define MESSAGE8 "ants must be a positive number"
-# define MESSAGE9 "unknown command"
 # define MESSAGE10 "room allready exist"
 # define MESSAGE11 "link allready exist"
 # define MESSAGE12 "no links or empty map"

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 11:12:08 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/17 17:03:01 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/17 19:35:08 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void    print_error(int errno, t_lem_in *anthill)
     errno == 6 ? ERROR(anthill->line, MESSAGE6) : 0;
     errno == 7 ? ERROR(anthill->line, MESSAGE7) : 0;
     errno == 8 ? ERROR(anthill->line, MESSAGE8) : 0;
-    errno == 9 ? ERROR(anthill->line, MESSAGE9) : 0;
     errno == 10 ? ERROR(anthill->line, MESSAGE10) : 0;
     errno == 11 ? ERROR(anthill->line, MESSAGE11) : 0;
     errno == 12 ? ERROR(anthill->line, MESSAGE12) : 0;
