@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 18:20:36 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/14 12:06:34 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/17 14:30:31 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static int error_check(t_lem_in **anthill, char **tab, int *i)
     }
     if ((*anthill)->errnbr)
     {
-        free(tab);
+        free_tab(tab);
         return (0);
     }
     return (1);

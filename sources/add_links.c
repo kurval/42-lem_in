@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 18:27:03 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/12 10:57:54 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/17 13:38:28 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ static t_link   *new_link(char *from, char *to)
     if (!(link->to = ft_strdup(to)))
 		return (NULL);
 	link->next = NULL;
+	free (from);
+	free (to);
 	return (link);
 }
 
