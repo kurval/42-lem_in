@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 11:09:19 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/17 14:16:29 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/17 14:40:50 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,10 @@ int         parse_map(t_lem_in *anthill)
         free(line);
 	}
 	if (ret == -1)
+    {
+        free(line);
 		return (0);
+    }
     free(line);
 	return (1);
 }

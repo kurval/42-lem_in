@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 16:15:31 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/17 14:29:57 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/17 14:36:29 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,7 @@ static int error_check(t_lem_in **anthill, char **tab, char *line, int *i)
     while (tab[*i])
         *i += 1;
     if (*i == 1 && (*anthill)->p != START && (*anthill)->p != END)
-    {
-        free(tab[0]);
         return (1);
-    }
     (line[0] == 'L') ? (*anthill)->errnbr = 2 : 0;
     (*i != 3) ? (*anthill)->errnbr = 3 : 0;
     if (*i == 3)
@@ -54,10 +51,7 @@ static int error_check(t_lem_in **anthill, char **tab, char *line, int *i)
         (!ft_atoi_err(tab[2])) ? (*anthill)->errnbr = 4 : 0;
     }
     if ((*anthill)->errnbr)
-    {
-        free(tab);
         return (0);
-    }
     else
         return (1);
 }
@@ -72,8 +66,6 @@ static void push_room(t_lem_in **anthill, char **tab)
     (*anthill)->p == START ? (*anthill)->start = (*anthill)->room : 0;
     (*anthill)->p == END ? (*anthill)->end = (*anthill)->room : 0;
     (*anthill)->p = ROOMS;
-    free(tab[1]);
-    free(tab[2]);
 }
 
 void check_rooms(t_lem_in **anthill, char *line)
@@ -95,8 +87,8 @@ void check_rooms(t_lem_in **anthill, char *line)
     {
         (*anthill)->p = LINKS;
         check_links(anthill, line);
-        free(tab);
+        free_tab(tab);
         return ;
     }
-    free(tab);
+    free_tab(tab);
 }

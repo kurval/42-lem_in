@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:34:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/17 13:20:51 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/17 14:42:37 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,5 @@ int main(int arg, char **argc)
     free_links(anthill.link);
     free_rooms(anthill.room);
     free_ants(anthill.ant_lst);
-    while (1);
     return (0);
 }

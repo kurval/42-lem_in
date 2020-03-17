@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 18:20:36 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/17 14:30:31 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/17 14:37:44 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,5 @@ void check_links(t_lem_in **anthill, char *line)
     if (!error_check(anthill, tab, &i))
         return;
     push_link(anthill, tab);
-    free(tab);
+    free_tab(tab);
 }
