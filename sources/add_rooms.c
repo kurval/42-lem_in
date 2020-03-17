@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 12:38:06 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/17 14:39:04 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/17 17:07:09 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static t_room	*new_node(char *data, int x_c, int y_c)
 		return (NULL);
 	room->x = x_c;
 	room->y = y_c;
+	room->checked = 0;
 	room->next = NULL;
 	return (room);
 }
