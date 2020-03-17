@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:32:55 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/17 20:53:44 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/17 22:58:45 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # define START 2
 # define END 3
 # define LINKS 4
+# define COMMAND 5
 # define ERROR(line, message) ft_printf(BOLDRED "ERROR Line %d: %s\n" RESET, line, message)
 # define MESSAGE1 "usage: ./lem-in < [source file]"
 # define MESSAGE2 "room name starts with L"
@@ -44,6 +45,7 @@ typedef struct	s_lem_in
 	struct s_link		*link;
     struct s_room		*start;
 	struct s_room		*end;
+	struct s_map		*map;
 	int					errnbr;
 	int					p;
 	int					line;
@@ -79,6 +81,12 @@ typedef struct	s_hashtable
 	struct s_room		*connect;
 }               t_hashtable;
 
+typedef struct	s_map
+{
+	char				*line;
+	struct s_map		*next;
+}				t_map;
+
 int     main(int arg, char **argc);
 int     parse_map(t_lem_in *anthill);
 int     add_room(t_room **root, char *name, int x_c, int y_c);
@@ -91,8 +99,6 @@ void    check_links(t_lem_in **anthill, char *line);
 void	free_tab(char **tab);
 void	free_links(t_link *root);
 void	free_rooms(t_room *root);
-int		is_empty(t_room *root);
-int 	is_links(t_link *root);
 void    print_error(int errno, t_lem_in *anthill);
 int 	is_valid_room(t_room *root, char *name);
 int		validate_map(t_lem_in *anthill);
@@ -100,5 +106,7 @@ int		add_ants(t_ants **root, long name);
 void	print_ants(t_ants *root);
 void	free_ants(t_ants *root);
 void    init_anthill(t_lem_in *anthill);
-void    print_map(t_lem_in *map);
+int		add_to_map(t_map **root, char *rule);
+void	print_map(t_lem_in *root);
+void	free_map(t_map *root);
 #endif

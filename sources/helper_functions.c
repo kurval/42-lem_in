@@ -6,21 +6,11 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 15:57:24 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/17 13:48:01 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/17 22:57:44 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
-
-int	is_empty(t_room *root)
-{
-	return (!root);
-}
-
-int  is_links(t_link *root)
-{
-	return (!root);
-}
 
 void	free_tab(char **tab)
 {
@@ -40,7 +30,7 @@ void	free_links(t_link *root)
 	t_link *temp;
 
 	temp = NULL;
-	if (is_links(root))
+	if (!root)
 		return ;
 	while (root)
 	{
@@ -57,7 +47,7 @@ void	free_rooms(t_room *root)
 	t_room *temp;
 
 	temp = NULL;
-	if (is_empty(root))
+	if (!root)
 		return ;
 	while (root)
 	{
