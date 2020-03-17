@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:32:55 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/17 19:34:16 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/17 20:53:44 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int     main(int arg, char **argc);
 int     parse_map(t_lem_in *anthill);
 int     add_room(t_room **root, char *name, int x_c, int y_c);
 int		add_link(t_link **root, char *from, char *to);
-void	print_rooms(t_room *root);
+void	print_rooms(t_lem_in *root);
 void	print_links(t_link *root);
 void	check_start_end(t_lem_in *anthill, char *line);
 void    check_rooms(t_lem_in **anthill, char *line);
@@ -100,4 +100,5 @@ int		add_ants(t_ants **root, long name);
 void	print_ants(t_ants *root);
 void	free_ants(t_ants *root);
 void    init_anthill(t_lem_in *anthill);
+void    print_map(t_lem_in *map);
 #endif

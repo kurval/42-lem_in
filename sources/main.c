@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:34:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/17 17:03:52 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/17 20:52:39 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,7 @@ int main(int arg, char **argc)
     parse_map(&anthill);
     if (!validate_map(&anthill))
         print_error(anthill.errnbr, &anthill);
-    ft_printf("ants: %d\n", anthill.ants);
-    ft_printf("\nrooms:\n");
-    print_rooms(anthill.room);
-    ft_printf("\nstart: %s\n", anthill.start->name);
-    ft_printf("end: %s\n", anthill.end->name);
-    ft_printf("\nlinks:\n");
-    print_links(anthill.link);
-    ft_printf("\nANTS:\n");
-    print_ants(anthill.ant_lst);
+    print_map(&anthill);
     free_links(anthill.link);
     free_rooms(anthill.room);
     free_ants(anthill.ant_lst);

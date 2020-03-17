@@ -6,18 +6,25 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 12:38:06 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/17 17:07:09 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/17 20:47:43 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-void	print_rooms(t_room *root)
+void	print_rooms(t_lem_in *root)
 {
-	while(root)
+	t_room *current;
+
+	current = root->room;
+	while(current)
 	{
-		ft_printf("%s x-%d y-%d\n", root->name, root->x, root->y);
-		root = root->next;
+		if (current == root->start)
+			ft_printf("##start\n");
+		else if (current == root->end)
+			ft_printf("##end\n");
+		ft_printf("%s x-%d y-%d\n", current->name, current->x, current->y);
+		current = current->next;
 	}
 }
 
