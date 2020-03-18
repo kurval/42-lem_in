@@ -25,8 +25,7 @@ unsigned long       hash(char *str, int count)
 
     while ((c = *str++))
         hash = ((hash << 5) + hash) + c;
-
-    return (hash % count);
+    return (hash % (count * 100));
 }
 
 static t_hashtable  *create_bucket(t_room *room, unsigned long key)
@@ -46,7 +45,8 @@ static void     chain_collission(t_lem_in **anthill, t_room *room, unsigned long
 {
 	t_hashtable *new;
 
-    new = create_bucket(room, key);
+    if (!(new = create_bucket(room, key)))
+        (*anthill)->errnbr = 7;
     new->next = (*anthill)->hashtable[key];
 	(*anthill)->hashtable[key] = new;
 }
@@ -76,7 +76,10 @@ void            create_hashtable(t_lem_in *anthill)
 	i = 0;
 	if (!(anthill->hashtable = (t_hashtable**)malloc(sizeof(t_hashtable)\
 	* anthill->room_count * SIZE)))
+    {
         anthill->errnbr = 7;
+        print_error(anthill);
+    }
 	while (i < anthill->room_count * SIZE)
 		anthill->hashtable[i++] = NULL;
     insert_data(anthill);
