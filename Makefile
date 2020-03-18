@@ -6,7 +6,7 @@
 #    By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/05 11:23:46 by vkurkela          #+#    #+#              #
-#    Updated: 2020/03/17 23:10:46 by vkurkela         ###   ########.fr        #
+#    Updated: 2020/03/18 13:41:48 by vkurkela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ SRC = ./sources/main.c ./sources/parse_map.c ./sources/add_rooms.c \
 	./sources/helper_functions.c ./sources/check_rooms.c \
 	./sources/add_links.c ./sources/check_links.c \
 	./sources/error_messages.c ./sources/map_validation.c \
-	./sources/add_ants.c ./sources/add_to_map.c ./sources/free_all.c
+	./sources/add_ants.c ./sources/add_to_map.c ./sources/free_all.c \
+	./sources/add_hash_table.c
 
 OBJ = $(SRC:.c=.o)
 

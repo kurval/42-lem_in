@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:34:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/17 23:10:18 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/18 16:38:41 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void    init_anthill(t_lem_in *anthill)
     anthill->start = NULL;
 	anthill->end = NULL;
     anthill->map = NULL;
+    anthill->hashtable = NULL;
 	anthill->errnbr = 0;
 	anthill->p = 0;
     anthill->line = 0;
@@ -38,7 +39,10 @@ int main(int arg, char **argc)
     parse_map(&anthill);
     if (!validate_map(&anthill))
         print_error(anthill.errnbr, &anthill);
+    count_rooms(&anthill);
+    create_hashtable(&anthill);
     print_map(&anthill);
+    print_hashes(&anthill);
     free_all(&anthill);
     return (0);
 }

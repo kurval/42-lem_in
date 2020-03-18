@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:32:55 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/17 23:14:07 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/18 16:36:40 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # define END 3
 # define LINKS 4
 # define COMMAND 5
+# define SIZE 1000
 # define ERROR(line, message) ft_printf(BOLDRED "ERROR Line %d: %s\n" RESET, line, message)
 # define MESSAGE1 "usage: ./lem-in < [source file]"
 # define MESSAGE2 "room name starts with L"
@@ -46,6 +47,7 @@ typedef struct	s_lem_in
     struct s_room		*start;
 	struct s_room		*end;
 	struct s_map		*map;
+	struct s_hashtable	**hashtable;
 	int					errnbr;
 	int					p;
 	int					line;
@@ -79,6 +81,7 @@ typedef struct	s_hashtable
 	unsigned int		key;
     struct s_room		*current;
 	struct s_room		*connect;
+	struct s_hashtable	*next;
 }               t_hashtable;
 
 typedef struct	s_map
@@ -87,23 +90,27 @@ typedef struct	s_map
 	struct s_map		*next;
 }				t_map;
 
-int     main(int arg, char **argc);
-int     parse_map(t_lem_in *anthill);
-int     add_room(t_room **root, char *name, int x_c, int y_c);
-int		add_link(t_link **root, char *from, char *to);
-void	print_rooms(t_lem_in *root);
-void	print_links(t_link *root);
-void	check_start_end(t_lem_in *anthill, char *line);
-void    check_rooms(t_lem_in **anthill, char *line);
-void    check_links(t_lem_in **anthill, char *line);
-void	free_tab(char **tab);
-void    print_error(int errno, t_lem_in *anthill);
-int 	is_valid_room(t_room *root, char *name);
-int		validate_map(t_lem_in *anthill);
-int		add_ants(t_ants **root, long name);
-void	print_ants(t_ants *root);
-void    init_anthill(t_lem_in *anthill);
-int		add_to_map(t_map **root, char *rule);
-void	print_map(t_lem_in *root);
-void    free_all(t_lem_in *anthill);
+int						main(int arg, char **argc);
+int						parse_map(t_lem_in *anthill);
+int						add_room(t_room **root, char *name, int x_c, int y_c);
+int						add_link(t_link **root, char *from, char *to);
+void					print_rooms(t_lem_in *root);
+void					print_links(t_link *root);
+void					check_start_end(t_lem_in *anthill, char *line);
+void					check_rooms(t_lem_in **anthill, char *line);
+void					check_links(t_lem_in **anthill, char *line);
+void					free_tab(char **tab);
+void					print_error(int errno, t_lem_in *anthill);
+int						is_valid_room(t_room *root, char *name);
+int						validate_map(t_lem_in *anthill);
+int						add_ants(t_ants **root, long name);
+void					print_ants(t_ants *root);
+void					init_anthill(t_lem_in *anthill);
+int						add_to_map(t_map **root, char *rule);
+void					print_map(t_lem_in *root);
+void					free_all(t_lem_in *anthill);
+void					count_rooms(t_lem_in *lem_in);
+unsigned long			hash(char *str, int count);
+void					create_hashtable(t_lem_in *anthill);
+void					print_hashes(t_lem_in *anthill);
 #endif
