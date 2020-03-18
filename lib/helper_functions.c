@@ -6,11 +6,11 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 15:57:24 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/18 17:01:32 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/18 20:44:32 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/lem_in.h"
+#include "lib.h"
 
 void	print_hashes(t_lem_in *anthill)
 {

@@ -6,11 +6,11 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/17 23:08:38 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/17 23:14:55 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/18 20:44:26 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/lem_in.h"
+#include "lib.h"
 
 static void	free_links(t_link *root)
 {

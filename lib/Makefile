@@ -5,55 +5,36 @@
 #                                                     +:+ +:+         +:+      #
 #    By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/03/05 11:23:46 by vkurkela          #+#    #+#              #
-#    Updated: 2020/03/18 21:10:52 by vkurkela         ###   ########.fr        #
+#    Created: 2020/03/18 20:35:59 by vkurkela          #+#    #+#              #
+#    Updated: 2020/03/18 21:11:07 by vkurkela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = lem-in
+NAME = lib.a
 
-SRC = ./sources/main.c ./sources/parse_map.c  \
-	 ./sources/check_rooms.c ./sources/check_links.c \
-	./sources/map_validation.c \
-	
+SRC = add_ants.c add_to_map.c free_all.c \
+	add_hash_table.c add_links.c helper_functions.c \
+	add_rooms.c error_messages.c
 
-OBJ = $(SRC:.c=.o)
+HEADERS = lib.h
 
-HEADERS = lem_in.h
+OBJECTS = $(SRC:.c=.o)
 
-LIBFT = libft/libft.a
-LIB = lib/lib.a
+FLAGS = -Wall -Wextra -Werror -I$(HEADERS)
 
 CC = gcc
 
-FLAGS = -Wall -Wextra -Werror
-
 all: $(NAME)
 
-%.o:%.c
-	$(CC) $(FLAGS) -I$(HEADERS) -o $@ -c $<
-
-$(LIBFT):
-	@${MAKE} -C libft
-
-$(LIB):
-	@${MAKE} -C lib
-
-$(NAME): $(LIBFT) $(LIB) $(OBJ)
-	$(CC) $(FLAGS) -o $(NAME) $(OBJ) $(LIBFT) $(LIB)
-	mkdir -p obj
-	mv $(OBJ) ./obj
+$(NAME):
+	$(CC) $(FLAGS) -c $(SRC)
+	ar rc $(NAME) $(OBJECTS)
 
 clean:
-	/bin/rm -f $(OBJ)
-	/bin/rm -Rf obj
-	@${MAKE} -C libft clean
-	@${MAKE} -C lib clean
+	/bin/rm -f $(OBJECTS)
 
 fclean: clean
 	/bin/rm -f $(NAME)
-	@${MAKE} -C libft fclean
-	@${MAKE} -C lib fclean
 
 re: fclean all
 

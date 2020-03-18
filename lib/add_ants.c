@@ -6,11 +6,11 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/13 20:16:51 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/17 23:11:00 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/18 20:51:08 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/lem_in.h"
+#include "lib.h"
 
 void	print_ants(t_ants *root)
 {

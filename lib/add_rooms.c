@@ -6,11 +6,11 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 12:38:06 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/17 20:47:43 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/18 20:44:15 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/lem_in.h"
+#include "lib.h"
 
 void	print_rooms(t_lem_in *root)
 {

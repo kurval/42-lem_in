@@ -6,11 +6,11 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 16:15:31 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/17 23:11:58 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/18 20:44:20 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/lem_in.h"
+#include "lib.h"
 
 void	print_map(t_lem_in *root)
 {

@@ -6,13 +6,12 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 12:28:21 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/14 18:13:36 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/18 21:22:53 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PRINTF_H
 # define PRINTF_H
-
 # include "../../libft.h"
 # include <stdarg.h>
 
