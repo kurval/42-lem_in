@@ -46,7 +46,10 @@ static void     chain_collission(t_lem_in **anthill, t_room *room, unsigned long
 	t_hashtable *new;
 
     if (!(new = create_bucket(room, key)))
+	{
         (*anthill)->errnbr = 7;
+        print_error(*anthill);
+    }
     new->next = (*anthill)->hashtable[key];
 	(*anthill)->hashtable[key] = new;
 }

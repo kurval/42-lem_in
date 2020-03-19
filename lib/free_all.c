@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/17 23:08:38 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/18 20:44:26 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/19 20:36:49 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ static void free_map(t_map *root)
 
 void        free_all(t_lem_in *anthill)
 {
+	free_hashtable(anthill);
     free_links(anthill->link);
     free_rooms(anthill->room);
     free_ants(anthill->ant_lst);

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/19 15:41:13 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/19 19:20:44 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/19 20:09:19 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,10 @@ void       create_connections(t_lem_in *anthill)
         from = check_room(anthill->hashtable[key_from], tmp->from);
         to = check_room(anthill->hashtable[key_to], tmp->to);
         if (!(add_connection(&from->connect, to->current)))
-             anthill->errnbr = 7;
+        {
+            anthill->errnbr = 7;
+            print_error(anthill);
+        }
 		tmp = tmp->next;
 	}
 }

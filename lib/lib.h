@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/19 19:14:04 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/19 20:31:06 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ typedef struct	s_map
 
 typedef struct	s_connect
 {
-	char				*line;
     struct s_room       *room;
 	struct s_connect	*next;
 }				t_connect;
@@ -108,4 +107,5 @@ void					count_rooms(t_lem_in *lem_in);
 void                    create_hashtable(t_lem_in *anthill);
 unsigned long			hash(char *str, int count);
 void                    create_connections(t_lem_in *anthill);
+void                    free_hashtable(t_lem_in *anthill);
 #endif
