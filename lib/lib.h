@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/18 21:23:08 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/19 19:14:04 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ typedef struct	s_hashtable
 {
 	unsigned int		key;
     struct s_room		*current;
-	struct s_room		*connect;
+	struct s_connect	*connect;
 	struct s_hashtable	*next;
 }               t_hashtable;
 
@@ -85,11 +85,18 @@ typedef struct	s_map
 	struct s_map		*next;
 }				t_map;
 
+typedef struct	s_connect
+{
+	char				*line;
+    struct s_room       *room;
+	struct s_connect	*next;
+}				t_connect;
+
 int						add_room(t_room **root, char *name, int x_c, int y_c);
 int						add_link(t_link **root, char *from, char *to);
 int						add_ants(t_ants **root, long name);
 int						add_to_map(t_map **root, char *rule);
-void					print_rooms(t_lem_in *root);
+void	                print_connections(t_connect *root);
 void					print_links(t_link *root);
 void					print_ants(t_ants *root);
 void					print_map(t_lem_in *root);
@@ -100,4 +107,5 @@ void					free_tab(char **tab);
 void					count_rooms(t_lem_in *lem_in);
 void                    create_hashtable(t_lem_in *anthill);
 unsigned long			hash(char *str, int count);
+void                    create_connections(t_lem_in *anthill);
 #endif

@@ -6,27 +6,11 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 12:38:06 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/18 20:44:15 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/19 17:24:08 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
-
-void	print_rooms(t_lem_in *root)
-{
-	t_room *current;
-
-	current = root->room;
-	while(current)
-	{
-		if (current == root->start)
-			ft_printf("##start\n");
-		else if (current == root->end)
-			ft_printf("##end\n");
-		ft_printf("%s x-%d y-%d\n", current->name, current->x, current->y);
-		current = current->next;
-	}
-}
 
 static t_room	*new_node(char *data, int x_c, int y_c)
 {

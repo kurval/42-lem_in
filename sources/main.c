@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:34:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/18 20:15:34 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/19 18:38:53 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int main(int arg, char **argc)
         print_error(&anthill);
     count_rooms(&anthill);
     create_hashtable(&anthill);
+    create_connections(&anthill);
     print_map(&anthill);
     print_hashes(&anthill);
     free_all(&anthill);

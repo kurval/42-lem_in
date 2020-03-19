@@ -6,7 +6,7 @@
 #    By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/18 20:35:59 by vkurkela          #+#    #+#              #
-#    Updated: 2020/03/18 21:11:07 by vkurkela         ###   ########.fr        #
+#    Updated: 2020/03/19 15:55:33 by vkurkela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME = lib.a
 
 SRC = add_ants.c add_to_map.c free_all.c \
 	add_hash_table.c add_links.c helper_functions.c \
-	add_rooms.c error_messages.c
+	add_rooms.c error_messages.c \
+	add_connections.c
 
 HEADERS = lib.h
 
