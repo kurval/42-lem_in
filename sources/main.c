@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:34:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/19 20:38:29 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/20 11:15:23 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,7 @@ int main(int arg, char **argc)
     arg != 1 ? anthill.errnbr = 1 : 0;
     arg != 1 ? print_error(&anthill) : 0;
     parse_map(&anthill);
-    if (!validate_map(&anthill))
-        print_error(&anthill);
-    count_rooms(&anthill);
-    create_hashtable(&anthill);
-    create_connections(&anthill);
+    validate_map(&anthill);
     print_map(&anthill);
     print_hashes(&anthill);
     free_all(&anthill);

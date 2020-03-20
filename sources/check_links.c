@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 18:20:36 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/17 14:37:44 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/20 18:41:12 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void is_valid_link(t_lem_in *anthill, char *room1, char *room2)
     if (!ft_strncmp_end(room1, room2, len1))
     {
         anthill->errnbr = 15;
-        return;
+        return ;
     }
     current = anthill->link;
     while(current)
@@ -32,7 +32,7 @@ static void is_valid_link(t_lem_in *anthill, char *room1, char *room2)
         !ft_strncmp_end(current->to, room2, len2))
         {
             anthill->errnbr = 11;
-            return;
+            return ;
         }
 		current = current->next;
 	}
@@ -57,12 +57,6 @@ static int error_check(t_lem_in **anthill, char **tab, int *i)
     return (1);
 }
 
-static void push_link(t_lem_in **anthill, char **tab)
-{
-    if (!(add_link(&(*anthill)->link, tab[0], tab[1])))
-        (*anthill)->errnbr = 7;
-}
-
 void check_links(t_lem_in **anthill, char *line)
 {
     char    **tab;
@@ -72,10 +66,11 @@ void check_links(t_lem_in **anthill, char *line)
     if (!(tab = ft_strsplit(line, '-')))
     {
         (*anthill)->errnbr = 7;
-        return;
+        return ;
     }
     if (!error_check(anthill, tab, &i))
-        return;
-    push_link(anthill, tab);
+        return ;
+    if (!(add_link(&(*anthill)->link, tab[0], tab[1])))
+        (*anthill)->errnbr = 7;
     free_tab(tab);
 }
