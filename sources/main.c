@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:34:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/21 14:00:16 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/21 19:18:47 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ int main(int arg, char **argc)
     parse_map(&anthill);
     validate_map(&anthill);
     print_map(&anthill);
-    print_hashes(&anthill);
+    //print_hashes(&anthill);
+    print_connections(anthill.room);
     free_all(&anthill);
     return (0);
 }

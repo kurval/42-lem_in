@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/21 13:52:09 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/21 19:22:18 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ typedef struct	s_lem_in
 typedef struct	s_room
 {
 	char				*name;
-	int     			x;
-	int					y;
 	int					checked;
     int                 key;
 	struct s_room		*next;
@@ -93,11 +91,11 @@ typedef struct	s_connect
 	struct s_connect	*next;
 }				t_connect;
 
-int						add_room(t_room **root, char *name, int x_c, int y_c);
+int						add_room(t_room **root, char *name);
 int						add_link(t_link **root, char *from, char *to);
 int						add_ants(t_ants **root, long name);
 int						add_to_map(t_map **root, char *rule);
-void	                print_connections(t_connect *root);
+void                    print_connections(t_room *root);
 void					print_links(t_link *root);
 void					print_ants(t_ants *root);
 void					print_map(t_lem_in *root);

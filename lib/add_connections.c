@@ -6,22 +6,29 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/19 15:41:13 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/21 13:56:18 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/21 19:19:30 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
 
-void	print_connections(t_connect *root)
+void	print_connections(t_room *root)
 {
-	t_connect *current;
+	t_connect   *current;
+    t_room      *room;
 
-	current = root;
-	while(current)
-	{
-		ft_printf("%s\n", current->room->name);
-		current = current->next;
-	}
+    room = root;
+    while(room)
+    {
+        ft_printf("room's %s connections:\n", room->name);
+        current = room->connections;
+        while(current)
+        {
+            ft_printf("%s\n", current->room->name);
+            current = current->next;
+        }
+        room = room->next;
+    }
 }
 
 static t_connect	*new_connect(t_room *to)
