@@ -34,6 +34,7 @@ static t_hashtable  *create_bucket(t_room *room, unsigned long key)
 
 	if (!(bucket = (t_hashtable*)malloc(sizeof(t_hashtable))))
 		return (NULL);
+	room->key = key;
     bucket->current = room;
     bucket->key = key;
     bucket->connect = NULL;

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/19 15:41:13 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/19 20:09:19 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/21 13:56:18 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void       create_connections(t_lem_in *anthill)
             anthill->errnbr = 7;
             print_error(anthill);
         }
+        from->current->connections = from->connect;
 		tmp = tmp->next;
 	}
 }

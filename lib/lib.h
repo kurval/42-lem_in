@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/19 20:31:06 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/21 13:52:09 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,10 @@ typedef struct	s_room
 	int     			x;
 	int					y;
 	int					checked;
+    int                 key;
 	struct s_room		*next;
 	struct s_ants		*ant_here;
+    struct s_connect	*connections;
 }				t_room;
 
 typedef struct	s_link
