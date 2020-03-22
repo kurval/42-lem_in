@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/19 15:41:13 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/21 19:19:30 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/22 11:46:47 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,16 +56,14 @@ static int		add_connection(t_connect **root, t_room *to)
 static t_hashtable   *check_room(t_hashtable *table, char *room)
 {
     t_hashtable *ptr;
-    int         len;
 
     ptr = table;
-    len = ft_strlen(room);
-    if (!ft_strncmp_end(ptr->current->name, room, len))
+    if (ft_strequ(ptr->current->name, room))
         return (ptr);
     else
         while (ptr)
         {
-            if (!ft_strncmp_end(ptr->current->name, room, len))
+            if (ft_strequ(ptr->current->name, room))
                 return (ptr);
             ptr = ptr->next;
         }

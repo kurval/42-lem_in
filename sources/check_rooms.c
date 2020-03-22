@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 16:15:31 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/21 19:22:00 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/22 11:45:38 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,9 @@
 
 int  is_valid_room(t_room *root, char *name)
 {
-    int len;
-
-    len = ft_strlen(name);
     while(root)
 	{
-		if (!ft_strncmp_end(root->name, name, len))
+		if (ft_strequ(root->name, name))
             return (1);
 		root = root->next;
 	}
