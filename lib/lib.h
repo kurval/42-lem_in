@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/22 12:28:01 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/22 23:58:59 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,12 @@ typedef struct	s_connect
     struct s_room       *room;
 	struct s_connect	*next;
 }				t_connect;
+
+typedef struct	s_path
+{
+    struct s_connect	*route;
+	struct s_path		*next;
+}				t_path;
 
 int						add_room(t_room **root, char *name);
 int						add_link(t_link **root, char *from, char *to);
