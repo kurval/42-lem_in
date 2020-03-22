@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 16:15:31 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/22 11:45:38 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/22 12:29:02 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,16 @@ int  is_valid_room(t_room *root, char *name)
 void	check_start_end(t_lem_in *anthill, char *line)
 {
 	if (!ft_strncmp_end(line, "##start", 7) && !anthill->start)
-		anthill->p = START;
+		anthill->section= START;
 	else if (!ft_strncmp_end(line, "##end", 5) && !anthill->end)
-		anthill->p = END;
+		anthill->section= END;
 }
 
 static int error_check(t_lem_in **anthill, char **tab, char *line, int *i)
 {
     while (tab[*i])
         *i += 1;
-    if (*i == 1 && (*anthill)->p != START && (*anthill)->p != END)
+    if (*i == 1 && (*anthill)->section!= START && (*anthill)->section!= END)
         return (1);
     (line[0] == 'L') ? (*anthill)->errnbr = 2 : 0;
     (*i != 3) ? (*anthill)->errnbr = 3 : 0;
@@ -58,9 +58,9 @@ static void push_room(t_lem_in **anthill, char **tab)
         (*anthill)->errnbr = 7;
         return;
     }
-    (*anthill)->p == START ? (*anthill)->start = (*anthill)->room : 0;
-    (*anthill)->p == END ? (*anthill)->end = (*anthill)->room : 0;
-    (*anthill)->p = ROOMS;
+    (*anthill)->section== START ? (*anthill)->start = (*anthill)->room : 0;
+    (*anthill)->section== END ? (*anthill)->end = (*anthill)->room : 0;
+    (*anthill)->section= ROOMS;
 }
 
 void check_rooms(t_lem_in **anthill, char *line)
@@ -80,7 +80,7 @@ void check_rooms(t_lem_in **anthill, char *line)
         push_room(anthill, tab);
     else if (i == 1)
     {
-        (*anthill)->p = LINKS;
+        (*anthill)->section= LINKS;
         check_links(anthill, line);
         free_tab(tab);
         return ;

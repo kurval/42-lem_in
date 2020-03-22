@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/21 19:22:18 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/22 12:28:01 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct	s_lem_in
 	struct s_map		*map;
 	struct s_hashtable	**hashtable;
 	int					errnbr;
-	int					p;
+	int					section;
 	int					line;
 }				t_lem_in;
 

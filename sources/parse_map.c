@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 11:09:19 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/17 22:22:32 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/22 12:29:57 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void check_ants(t_lem_in **anthill, char *line)
             (*anthill)->errnbr = 7;
             return;
         }
-        (*anthill)->p = ROOMS;
+        (*anthill)->section= ROOMS;
     }
     else
         (*anthill)->errnbr = 8;
@@ -35,15 +35,15 @@ int         parse_map(t_lem_in *anthill)
 
 	while ((ret = get_next_line(0, &line)) > 0 && anthill->errnbr == 0)
 	{
-        if (!anthill->p)
+        if (!anthill->section)
 		    check_ants(&anthill, line);
         else if (line[0] == '#' && line[1] != '#')
             ;
         else if (line[0] == '#' && line[1] == '#')
             check_start_end(anthill, line);
-        else if (anthill->p == ROOMS || anthill->p == START || anthill->p == END)
+        else if (anthill->section== ROOMS || anthill->section== START || anthill->section== END)
             check_rooms(&anthill, line);
-        else if (anthill->p == LINKS)
+        else if (anthill->section== LINKS)
             check_links(&anthill, line);
         if (!anthill->errnbr)
             add_to_map(&(*anthill).map, line);
