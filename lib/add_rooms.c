@@ -6,13 +6,13 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 12:38:06 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/21 19:21:32 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/23 11:41:09 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
 
-static t_room	*new_node(char *data)
+static t_room	*new_node(char *data, int nbr)
 {
 	t_room *room;
 
@@ -22,17 +22,18 @@ static t_room	*new_node(char *data)
 		return (NULL);
 	room->checked = 0;
 	room->key = 0;
+	room->id = nbr;
 	room->connections = NULL;
 	room->ant_here = NULL;
 	room->next = NULL;
 	return (room);
 }
 
-int		add_room(t_room **root, char *name)
+int		add_room(t_room **root, char *name, int id)
 {
 	t_room	*node;
 
-	if (!(node = new_node(name)))
+	if (!(node = new_node(name, id)))
 		return (0);
 	node->next = *root;
 	*root = node;

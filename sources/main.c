@@ -6,12 +6,24 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:34:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/23 10:47:44 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/23 11:54:45 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
+/*
+static void	print_rooms(t_room *root)
+{
+	t_room   *current;
 
+    current = root;
+    while(current)
+    {
+        ft_printf("room's %s id %d\n", current->name, current->id);
+        current = current->next;
+    }
+}
+*/
 void    init_anthill(t_lem_in *anthill)
 {
     anthill->ants = 0;
@@ -27,6 +39,7 @@ void    init_anthill(t_lem_in *anthill)
 	anthill->errnbr = 0;
 	anthill->section = 0;
     anthill->line = 0;
+    anthill->id = 0;
 }
 
 int main(int arg, char **argc)
