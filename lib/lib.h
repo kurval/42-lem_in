@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/22 23:58:59 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/23 10:46:30 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@
 typedef struct	s_lem_in
 {
 	long				ants;
+	int					errnbr;
+	int					section;
+	int					line;
 	unsigned int		room_count;
 	struct s_ants		*ant_lst;
 	struct s_room		*room;
@@ -43,9 +46,7 @@ typedef struct	s_lem_in
 	struct s_room		*end;
 	struct s_map		*map;
 	struct s_hashtable	**hashtable;
-	int					errnbr;
-	int					section;
-	int					line;
+	struct s_path		*paths;
 }				t_lem_in;
 
 typedef struct	s_room

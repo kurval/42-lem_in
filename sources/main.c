@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:34:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/22 12:28:10 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/23 10:47:44 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void    init_anthill(t_lem_in *anthill)
 	anthill->end = NULL;
     anthill->map = NULL;
     anthill->hashtable = NULL;
+    anthill->paths = NULL;
 	anthill->errnbr = 0;
 	anthill->section = 0;
     anthill->line = 0;
