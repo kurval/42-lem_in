@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:34:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/24 20:30:36 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/24 20:53:52 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,21 @@ static void	print_path(t_lem_in *lem_in)
 
 	tmp = lem_in->end;
     add_path(&lem_in->paths);
+    add_connection(&lem_in->paths->route, tmp);
 	while (tmp && tmp->path_prev && tmp->path_prev != lem_in->start)
 	{
 		tmp->path_prev->path_next = tmp;
 		tmp = tmp->path_prev;
+        add_connection(&lem_in->paths->route, tmp);
 	}
 	tmp = lem_in->start;
+    add_connection(&lem_in->paths->route, tmp);
     ft_printf("Path:\n");
     while (tmp && tmp != lem_in->end)
     {
-        add_connection(&lem_in->paths->route, tmp);
         ft_printf("%s -> ", tmp->name);
         tmp = tmp->path_next;
     }
-    
     ft_printf("%s\n", lem_in->end->name);
 }
 

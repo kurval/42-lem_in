@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 11:12:08 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/18 21:09:52 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/24 21:02:33 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void    print_error(t_lem_in *anthill)
 {
-    ft_printf("anthill->errnbr is %d\n", anthill->errnbr);
     anthill->errnbr == 1 ? ERROR(anthill->line, MESSAGE1) : 0;
     anthill->errnbr == 2 ? ERROR(anthill->line, MESSAGE2) : 0;
     anthill->errnbr == 3 ? ERROR(anthill->line, MESSAGE3) : 0;
@@ -23,6 +22,7 @@ void    print_error(t_lem_in *anthill)
     anthill->errnbr == 6 ? ERROR(anthill->line, MESSAGE6) : 0;
     anthill->errnbr == 7 ? ERROR(anthill->line, MESSAGE7) : 0;
     anthill->errnbr == 8 ? ERROR(anthill->line, MESSAGE8) : 0;
+    anthill->errnbr == 9 ? ERROR(anthill->line, MESSAGE9) : 0;
     anthill->errnbr == 10 ? ERROR(anthill->line, MESSAGE10) : 0;
     anthill->errnbr == 11 ? ERROR(anthill->line, MESSAGE11) : 0;
     anthill->errnbr == 12 ? ERROR(anthill->line, MESSAGE12) : 0;

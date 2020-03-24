@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 12:29:54 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/24 20:16:56 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/24 21:04:08 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,14 +107,15 @@ void			solve(t_lem_in *anthill)
 	if (!(array = (t_room **)malloc(sizeof(t_room*) * 2)))
 	{
         anthill->errnbr = 7;
-        return;
+        print_error(anthill);
     }
 	array[0] = anthill->start;
 	array[1] = NULL;
 	if (!(recursive_check(anthill, array, NULL, 0)))
     {
-        anthill->errnbr = 7;
-        return;
+        anthill->errnbr = 9;
+		free(array);
+        print_error(anthill);
     }
 	free(array);
 }
