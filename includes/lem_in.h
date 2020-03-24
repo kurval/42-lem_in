@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:32:55 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/20 11:12:23 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/24 12:56:51 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,5 @@ void	check_start_end(t_lem_in *anthill, char *line);
 void	check_rooms(t_lem_in **anthill, char *line);
 void	check_links(t_lem_in **anthill, char *line);
 int		is_valid_room(t_room *root, char *name);
+void	solve(t_lem_in *anthill);
 #endif
