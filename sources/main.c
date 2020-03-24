@@ -6,17 +6,30 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:34:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/24 13:41:11 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/24 20:30:36 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
+/*
+static int  add_route(t_connect **root, t_room *to)
+{
+	t_connect	*node;
 
+	if (!(node = (t_connect*)malloc(sizeof(t_connect))))
+		return (0);
+    node->room = to;
+	node->next = *root;
+	*root = node;
+	return (1);
+}
+*/
 static void	print_path(t_lem_in *lem_in)
 {
 	t_room	*tmp;
 
 	tmp = lem_in->end;
+    add_path(&lem_in->paths);
 	while (tmp && tmp->path_prev && tmp->path_prev != lem_in->start)
 	{
 		tmp->path_prev->path_next = tmp;
@@ -26,24 +39,26 @@ static void	print_path(t_lem_in *lem_in)
     ft_printf("Path:\n");
     while (tmp && tmp != lem_in->end)
     {
+        add_connection(&lem_in->paths->route, tmp);
         ft_printf("%s -> ", tmp->name);
         tmp = tmp->path_next;
     }
+    
     ft_printf("%s\n", lem_in->end->name);
 }
-/*
-static void	print_rooms(t_room *root)
+
+void	print_rooms(t_room *root)
 {
 	t_room   *current;
 
     current = root;
     while(current)
     {
-        ft_printf("room's %s id %d\n", current->name, current->id);
+        ft_printf("room %s\n", current->name);
         current = current->next;
     }
 }
-*/
+
 void    init_anthill(t_lem_in *anthill)
 {
     anthill->ants = 0;
@@ -75,10 +90,11 @@ int main(int arg, char **argc)
     validate_map(&anthill);
     print_map(&anthill);
     //print_hashes(&anthill);
-    print_connections(anthill.room);
+    //print_connections(anthill.room);
     //print_rooms(anthill.room);
     solve(&anthill);
     print_path(&anthill);
+    print_connections(anthill.paths->route);
     free_all(&anthill);
     return (0);
 }
