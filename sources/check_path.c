@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 12:29:54 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/25 18:40:43 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/25 19:12:28 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,10 @@ static void	reset_checked_rooms(t_lem_in *anthill)
 	}
 }
 
+/*
+** Links previous node to end of the shortest path.
+*/
+
 static int		link_to_end(t_lem_in *lem_in, t_room **tmp)
 {
 	(*tmp)->path_next = lem_in->end;
@@ -52,6 +56,10 @@ static int		link_to_end(t_lem_in *lem_in, t_room **tmp)
 	lem_in->reverse_path = *tmp;
 	return (1);
 }
+
+/*
+** Links shortest path back to start.
+*/
 
 static void		link_path(t_lem_in *lem_in, t_room **array, t_room **new)
 {
@@ -76,6 +84,10 @@ static void		link_path(t_lem_in *lem_in, t_room **array, t_room **new)
 	}
 	free(new);
 }
+
+/*
+** Creates an array of next level connections.
+*/
 
 static t_room	**connect_array(t_room **array, int rooms)
 {
@@ -102,6 +114,11 @@ static t_room	**connect_array(t_room **array, int rooms)
 	new[i] = NULL;
 	return (new);
 }
+
+/*
+** Checks each connections of every room untill
+** end is reached or function fails to find path.
+*/
 
 static int		find_path(t_lem_in *lem_in, t_room **array,
 t_room **new, int rooms)
@@ -132,6 +149,13 @@ t_room **new, int rooms)
 	link_path(lem_in, array, new);
 	return (1);
 }
+
+/*
+** Creates an array of rooms which is used to check
+** each level of rooms untill it finds end or
+** no paths are found. Check_short check if the start 
+** and end is linked with only single link.
+*/
 
 int			solver(t_lem_in *anthill)
 {
