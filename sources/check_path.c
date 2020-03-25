@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 12:29:54 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/24 21:04:08 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/25 07:47:35 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,5 +117,6 @@ void			solve(t_lem_in *anthill)
 		free(array);
         print_error(anthill);
     }
+	save_path(anthill);
 	free(array);
 }

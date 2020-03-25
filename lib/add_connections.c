@@ -6,23 +6,11 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/19 15:41:13 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/24 20:03:23 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/25 07:22:12 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
-
-void	print_connections(t_connect *root)
-{
-	t_connect   *current;
-
-    current = root;
-    while (current)
-    {
-        ft_printf("room: %s\n", current->room->name);
-        current = current->next;
-    }
-}
 
 static t_connect	*new_connect(t_room *to)
 {

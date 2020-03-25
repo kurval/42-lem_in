@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/24 21:01:19 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/25 07:42:57 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIB_H
 # define SIZE 1000
 # define BOLDRED "\033[1m\033[31m"
+# define GREEN   "\033[32m"
 # define RESET "\033[0m"
 # define ERROR(line, message) ft_printf(BOLDRED "ERROR Line %d: %s\n" RESET, line, message)
 # define MESSAGE1 "usage: ./lem-in < [source file]"
@@ -108,7 +109,7 @@ int						add_room(t_room **root, char *name, int id);
 int						add_link(t_link **root, char *from, char *to);
 int						add_ants(t_ants **root, long name);
 int						add_to_map(t_map **root, char *rule);
-void					print_connections(t_connect *root);
+void					print_path(t_lem_in *anthill);
 void					print_links(t_link *root);
 void					print_ants(t_ants *root);
 void					print_map(t_lem_in *root);
@@ -123,4 +124,5 @@ void                    create_connections(t_lem_in *anthill);
 void                    free_hashtable(t_lem_in *anthill);
 int						add_path(t_path **root);
 int						add_connection(t_connect **root, t_room *to);
+void					save_path(t_lem_in *lem_in);
 #endif
