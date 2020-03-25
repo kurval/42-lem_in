@@ -6,11 +6,23 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 12:38:06 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/24 12:51:53 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/25 07:50:35 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
+
+void	print_rooms(t_room *root)
+{
+	t_room   *current;
+
+    current = root;
+    while(current)
+    {
+        ft_printf("room %s\n", current->name);
+        current = current->next;
+    }
+}
 
 static t_room	*new_node(char *data, int nbr)
 {

@@ -6,36 +6,11 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:34:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/25 07:39:25 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/25 07:50:26 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
-/*
-static int  add_route(t_connect **root, t_room *to)
-{
-	t_connect	*node;
-
-	if (!(node = (t_connect*)malloc(sizeof(t_connect))))
-		return (0);
-    node->room = to;
-	node->next = *root;
-	*root = node;
-	return (1);
-}
-*/
-
-void	print_rooms(t_room *root)
-{
-	t_room   *current;
-
-    current = root;
-    while(current)
-    {
-        ft_printf("room %s\n", current->name);
-        current = current->next;
-    }
-}
 
 void    init_anthill(t_lem_in *anthill)
 {

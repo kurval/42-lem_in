@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/25 07:42:57 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/25 07:51:01 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,4 +125,5 @@ void                    free_hashtable(t_lem_in *anthill);
 int						add_path(t_path **root);
 int						add_connection(t_connect **root, t_room *to);
 void					save_path(t_lem_in *lem_in);
+void					print_rooms(t_room *root);
 #endif
