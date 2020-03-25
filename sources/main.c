@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:34:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/25 18:14:43 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/25 18:40:17 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ int main(int arg, char **argc)
     parse_map(&anthill);
     validate_map(&anthill);
     print_map(&anthill);
-    if (!find_path(&anthill))
+    if (!solver(&anthill))
     {
         anthill.errnbr = 9;
         print_error(&anthill);
     }
     else
-        while (find_path(&anthill))
+        while (solver(&anthill))
     print_path(&anthill);
     free_all(&anthill);
     return (0);

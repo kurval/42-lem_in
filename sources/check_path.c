@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 12:29:54 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/25 18:33:12 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/25 18:40:43 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ static t_room	**connect_array(t_room **array, int rooms)
 	return (new);
 }
 
-static int		recursive_check(t_lem_in *lem_in, t_room **array,
+static int		find_path(t_lem_in *lem_in, t_room **array,
 t_room **new, int rooms)
 {
 	t_room			**tmp;
@@ -124,7 +124,7 @@ t_room **new, int rooms)
 		tmp++;
 	}
 	if (!rooms || !(new = (connect_array(array, rooms)))
-	|| !(recursive_check(lem_in, new, NULL, 0)))
+	|| !(find_path(lem_in, new, NULL, 0)))
 	{
 		free(new);
 		return (0);
@@ -133,7 +133,7 @@ t_room **new, int rooms)
 	return (1);
 }
 
-int			find_path(t_lem_in *anthill)
+int			solver(t_lem_in *anthill)
 {
 	t_room			**array;
 
@@ -145,7 +145,7 @@ int			find_path(t_lem_in *anthill)
 	array[0] = anthill->start;
 	array[1] = NULL;
 	check_short(anthill);
-	if (!(recursive_check(anthill, array, NULL, 0)))
+	if (!(find_path(anthill, array, NULL, 0)))
     {
 		free(array);
         return (0);
