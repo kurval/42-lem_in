@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 12:38:06 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/25 15:33:31 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/25 16:32:00 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	save_path(t_lem_in *lem_in)
 	{
 		tmp->path_prev->path_next = tmp;
 		tmp = tmp->path_prev;
-		tmp->checked = 1;
+		tmp->checked = 2;
         add_connection(&lem_in->paths->route, tmp);
 	}
 	tmp = lem_in->start;
@@ -32,7 +32,7 @@ void	save_path(t_lem_in *lem_in)
 
 void	print_path(t_lem_in *anthill)
 {
-    t_path     *path;
+    t_path     	*path;
 	t_connect   *current;
 	int			i;
 

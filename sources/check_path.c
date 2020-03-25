@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 12:29:54 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/25 15:31:28 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/25 16:27:51 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ static void	reset_checked_rooms(t_lem_in *anthill)
 	current = anthill->room;
 	while (current)
 	{
-		current->checked = 0;
+		if (current->checked != 2)
+			current->checked = 0;
 		current = current->next;
 	}
 }
@@ -112,7 +113,7 @@ t_room **new, int rooms)
 	return (1);
 }
 
-void			solve(t_lem_in *anthill)
+int			find_path(t_lem_in *anthill)
 {
 	t_room			**array;
 
@@ -125,11 +126,11 @@ void			solve(t_lem_in *anthill)
 	array[1] = NULL;
 	if (!(recursive_check(anthill, array, NULL, 0)))
     {
-        anthill->errnbr = 9;
 		free(array);
-        print_error(anthill);
+        return (0);
     }
 	reset_checked_rooms(anthill);
 	save_path(anthill);
 	free(array);
+	return (1);
 }
