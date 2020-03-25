@@ -6,11 +6,31 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 12:29:54 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/25 16:27:51 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/25 18:33:12 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
+
+static void	check_short(t_lem_in *anthill)
+{
+	t_connect *current;
+
+	if (anthill->quick)
+		return ;
+	current = anthill->start->connections;
+	while (current)
+	{
+		if (current->room == anthill->end)
+		{
+			save_path(anthill);
+			anthill->quick = 1;
+			return ;
+		}
+		current = current->next;
+	}
+	anthill->quick = -1;
+}
 
 static void	reset_checked_rooms(t_lem_in *anthill)
 {
@@ -97,7 +117,7 @@ t_room **new, int rooms)
 		while (route)
 		{
 			rooms++;
-			if (route->room == lem_in->end)
+			if (route->room == lem_in->end && *tmp != lem_in->start)
 				return (link_to_end(lem_in, tmp));
 			route = route->next;
 		}
@@ -124,6 +144,7 @@ int			find_path(t_lem_in *anthill)
     }
 	array[0] = anthill->start;
 	array[1] = NULL;
+	check_short(anthill);
 	if (!(recursive_check(anthill, array, NULL, 0)))
     {
 		free(array);

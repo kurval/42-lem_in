@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/25 07:51:01 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/25 17:54:38 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct	s_lem_in
 	int					section;
 	int					line;
 	int					id;
+	int					quick;
 	unsigned int		room_count;
 	struct s_ants		*ant_lst;
 	struct s_room		*room;
