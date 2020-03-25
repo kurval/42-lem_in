@@ -6,11 +6,23 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 12:29:54 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/25 13:27:13 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/25 15:31:28 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
+
+static void	reset_checked_rooms(t_lem_in *anthill)
+{
+	t_room	*current;
+
+	current = anthill->room;
+	while (current)
+	{
+		current->checked = 0;
+		current = current->next;
+	}
+}
 
 static int		link_to_end(t_lem_in *lem_in, t_room **tmp)
 {
@@ -36,7 +48,6 @@ static void		link_path(t_lem_in *lem_in, t_room **array, t_room **new)
 				(*tmp)->path_next = lem_in->reverse_path;
 				lem_in->reverse_path->path_prev = *tmp;
 				lem_in->reverse_path = *tmp;
-				ft_printf("taalla %s\n", route->room->name);
 			}
 			route = route->next;
 		}
@@ -94,7 +105,6 @@ t_room **new, int rooms)
 	if (!rooms || !(new = (connect_array(array, rooms)))
 	|| !(recursive_check(lem_in, new, NULL, 0)))
 	{
-		ft_printf("ROOMS %d\n", rooms);
 		free(new);
 		return (0);
 	}
@@ -119,6 +129,7 @@ void			solve(t_lem_in *anthill)
 		free(array);
         print_error(anthill);
     }
+	reset_checked_rooms(anthill);
 	save_path(anthill);
 	free(array);
 }

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:34:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/25 12:22:54 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/25 15:36:33 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int main(int arg, char **argc)
     parse_map(&anthill);
     validate_map(&anthill);
     print_map(&anthill);
+    solve(&anthill);
     solve(&anthill);
     print_path(&anthill);
     print_rooms(anthill.room);
