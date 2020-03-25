@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 12:38:06 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/25 07:50:35 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/25 10:56:30 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	print_rooms(t_room *root)
     current = root;
     while(current)
     {
-        ft_printf("room %s\n", current->name);
+        ft_printf("room %s checked %d\n", current->name, current->checked);
         current = current->next;
     }
 }
