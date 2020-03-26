@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 12:29:54 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/26 11:30:09 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/26 17:54:45 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 ** Links previous node to end of the shortest path.
 */
 
-static int		link_to_end(t_lem_in *lem_in, t_room **tmp)
+static int		link_to_end(t_lem_in *anthill, t_room **tmp)
 {
-	(*tmp)->path_next = lem_in->end;
-	lem_in->end->path_prev = *tmp;
-	lem_in->reverse_path = *tmp;
+	(*tmp)->path_next = anthill->end;
+	anthill->end->path_prev = *tmp;
+	anthill->reverse_path = *tmp;
 	return (1);
 }
 
@@ -28,7 +28,7 @@ static int		link_to_end(t_lem_in *lem_in, t_room **tmp)
 ** Links shortest path back to start.
 */
 
-static void		link_path(t_lem_in *lem_in, t_room **array, t_room **new)
+static void		link_path(t_lem_in *anthill, t_room **array, t_room **new)
 {
 	t_room			**tmp;
 	t_connect       *route;
@@ -39,11 +39,11 @@ static void		link_path(t_lem_in *lem_in, t_room **array, t_room **new)
 		route = (*tmp)->connections;
 		while (route)
 		{
-			if (route->room == lem_in->reverse_path)
+			if (route->room == anthill->reverse_path)
 			{
-				(*tmp)->path_next = lem_in->reverse_path;
-				lem_in->reverse_path->path_prev = *tmp;
-				lem_in->reverse_path = *tmp;
+				(*tmp)->path_next = anthill->reverse_path;
+				anthill->reverse_path->path_prev = *tmp;
+				anthill->reverse_path = *tmp;
 			}
 			route = route->next;
 		}
@@ -87,7 +87,7 @@ static t_room	**connect_array(t_room **array, int rooms)
 ** end is reached or function fails to find path.
 */
 
-static int		find_path(t_lem_in *lem_in, t_room **array,
+static int		find_path(t_lem_in *anthill, t_room **array,
 t_room **new, int rooms)
 {
 	t_room			**tmp;
@@ -101,19 +101,19 @@ t_room **new, int rooms)
 		while (route)
 		{
 			rooms++;
-			if (route->room == lem_in->end && *tmp != lem_in->start)
-				return (link_to_end(lem_in, tmp));
+			if (route->room == anthill->end && *tmp != anthill->start)
+				return (link_to_end(anthill, tmp));
 			route = route->next;
 		}
 		tmp++;
 	}
 	if (!rooms || !(new = (connect_array(array, rooms)))
-	|| !(find_path(lem_in, new, NULL, 0)))
+	|| !(find_path(anthill, new, NULL, 0)))
 	{
 		free(new);
 		return (0);
 	}
-	link_path(lem_in, array, new);
+	link_path(anthill, array, new);
 	return (1);
 }
 
