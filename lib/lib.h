@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/26 11:17:12 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/26 13:26:57 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,4 +127,6 @@ t_path					*add_path(t_path **root);
 int						add_connection(t_connect **root, t_room *to);
 int						save_path(t_lem_in *lem_in);
 void					print_rooms(t_room *root);
+void					free_paths(t_path *root);
+void 					free_connections(t_connect *root);
 #endif
