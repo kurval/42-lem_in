@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/25 17:54:38 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/26 11:17:12 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,8 +123,8 @@ void                    create_hashtable(t_lem_in *anthill);
 unsigned long			hash(char *str, int count);
 void                    create_connections(t_lem_in *anthill);
 void                    free_hashtable(t_lem_in *anthill);
-int						add_path(t_path **root);
+t_path					*add_path(t_path **root);
 int						add_connection(t_connect **root, t_room *to);
-void					save_path(t_lem_in *lem_in);
+int						save_path(t_lem_in *lem_in);
 void					print_rooms(t_room *root);
 #endif

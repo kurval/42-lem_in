@@ -6,44 +6,11 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 12:29:54 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/25 19:12:28 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/26 11:30:09 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
-
-static void	check_short(t_lem_in *anthill)
-{
-	t_connect *current;
-
-	if (anthill->quick)
-		return ;
-	current = anthill->start->connections;
-	while (current)
-	{
-		if (current->room == anthill->end)
-		{
-			save_path(anthill);
-			anthill->quick = 1;
-			return ;
-		}
-		current = current->next;
-	}
-	anthill->quick = -1;
-}
-
-static void	reset_checked_rooms(t_lem_in *anthill)
-{
-	t_room	*current;
-
-	current = anthill->room;
-	while (current)
-	{
-		if (current->checked != 2)
-			current->checked = 0;
-		current = current->next;
-	}
-}
 
 /*
 ** Links previous node to end of the shortest path.
@@ -174,8 +141,13 @@ int			solver(t_lem_in *anthill)
 		free(array);
         return (0);
     }
+	if (!(save_path(anthill)))
+	{
+        anthill->errnbr = 7;
+		free(array);
+        print_error(anthill);
+    }
 	reset_checked_rooms(anthill);
-	save_path(anthill);
 	free(array);
 	return (1);
 }
