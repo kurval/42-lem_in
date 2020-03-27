@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/13 13:43:51 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/25 16:32:20 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/27 13:25:45 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void    validate_map(t_lem_in *anthill)
         !anthill->link && !anthill->errnbr ? anthill->errnbr = 12 : 0;
         !anthill->start && !anthill->errnbr ? anthill->errnbr = 13 : 0;
         !anthill->end && !anthill->errnbr ? anthill->errnbr = 14 : 0;
-        print_error(anthill);
+        print_error(anthill, anthill->errnbr);
     }
     else
     {

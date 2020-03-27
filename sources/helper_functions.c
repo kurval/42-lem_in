@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 10:46:37 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/27 13:16:30 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/27 13:24:29 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,7 @@ void	check_short(t_lem_in *anthill)
             new_path = add_path(&anthill->paths);
             if (!new_path || !(add_connection(&new_path->route, anthill->end)) ||\
             !(add_connection(&new_path->route, anthill->start)))
-            {
-                anthill->errnbr = 7;
-                print_error(anthill);
-            }
+                print_error(anthill, 7);
 			anthill->quick = 1;
 			return ;
 		}

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:34:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/27 13:18:37 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/27 13:31:20 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,14 @@ int main(int arg, char **argc)
 
     argc = NULL;
     init_anthill(&anthill);
-    arg != 1 ? anthill.errnbr = 1 : 0;
-    arg != 1 ? print_error(&anthill) : 0;
+    if (arg != 1)
+        print_error(&anthill, 7);
     parse_map(&anthill);
     validate_map(&anthill);
     print_map(&anthill);
     check_short(&anthill);
     if (!solver(&anthill) && anthill.quick != 1)
-    {
-        anthill.errnbr = 9;
-        print_error(&anthill);
-    }
+        print_error(&anthill, 9);
     while (solver(&anthill));
     print_path(&anthill);
     free_all(&anthill);

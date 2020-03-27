@@ -47,10 +47,7 @@ static void     chain_collission(t_lem_in **anthill, t_room *room, unsigned long
 	t_hashtable *new;
 
     if (!(new = create_bucket(room, key)))
-	{
-        (*anthill)->errnbr = 7;
-        print_error(*anthill);
-    }
+		print_error(*anthill, 7);
     new->next = (*anthill)->hashtable[key];
 	(*anthill)->hashtable[key] = new;
 }
@@ -80,10 +77,7 @@ void            create_hashtable(t_lem_in *anthill)
 	i = 0;
 	if (!(anthill->hashtable = (t_hashtable**)malloc(sizeof(t_hashtable)\
 	* anthill->room_count * SIZE)))
-    {
-        anthill->errnbr = 7;
-        print_error(anthill);
-    }
+    	print_error(anthill, 7);
 	while (i < anthill->room_count * SIZE)
 		anthill->hashtable[i++] = NULL;
     insert_data(anthill);

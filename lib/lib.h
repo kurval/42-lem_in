@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/27 13:17:55 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/27 13:21:38 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ void					print_path(t_lem_in *anthill);
 void					print_links(t_link *root);
 void					print_ants(t_ants *root);
 void					print_map(t_lem_in *root);
-void    				print_error(t_lem_in *anthill);
+void    				print_error(t_lem_in *anthill, int errnbr);
 void					print_hashes(t_lem_in *anthill);
 void					free_all(t_lem_in *anthill);
 void					free_tab(char **tab);

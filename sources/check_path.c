@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 12:29:54 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/27 13:17:07 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/27 13:23:19 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,11 @@
 static int		link_to_end(t_lem_in *anthill, t_room **tmp, t_path	*path)
 {
 	if (!(add_connection(&path->route, anthill->end)))
-    {
-        anthill->errnbr = 7;
-        print_error(anthill);
-    }
+    	print_error(anthill, 7);
 	anthill->reverse_path = *tmp;
 	(*tmp)->checked = 2;
 	if (!(add_connection(&path->route, *tmp)))
-    {
-        anthill->errnbr = 7;
-        print_error(anthill);
-    }
+    	print_error(anthill, 7);
 	return (1);
 }
 
@@ -52,10 +46,7 @@ static void		link_path(t_lem_in *anthill, t_room **array, t_path *path)
 			{
 				anthill->reverse_path = *tmp;
 				if (!(add_connection(&path->route, *tmp)))
-				{
-        			anthill->errnbr = 7;
-        			print_error(anthill);
-   				}
+					print_error(anthill, 7);
 				(*tmp)->checked = 2;
 			}
 			route = route->next;
@@ -74,9 +65,8 @@ t_path *path)
 	new = NULL;
 	if (!(new = connect_array(array, anthill->nodes)))
 	{
-        anthill->errnbr = 7;
 		free(new);
-        print_error(anthill);
+        print_error(anthill, 7);
     }
 	if (!anthill->nodes || !(find_path(anthill, new, path)))
 		ret = 0;
@@ -132,10 +122,7 @@ int			solver(t_lem_in *anthill)
     new_path = add_path(&anthill->paths);
 	array = (t_room **)malloc(sizeof(t_room*) * 2);
 	if (!new_path || !array)
-	{
-        anthill->errnbr = 7;
-        print_error(anthill);
-    }
+        print_error(anthill, 7);
 	array[0] = anthill->start;
 	array[1] = NULL;
 	check_short(anthill);
