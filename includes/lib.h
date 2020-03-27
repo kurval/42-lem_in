@@ -6,16 +6,18 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/27 14:21:23 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/27 16:24:23 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIB_H
 # define LIB_H
 # define SIZE 1000
-# define BOLDRED "\033[1m\033[31m"
-# define GREEN   "\033[32m"
-# define RESET "\033[0m"
+# define BOLDRED	"\033[1m\033[31m"
+# define BOLDCYAN	"\033[1m\033[36m"
+# define BOLDWHITE  "\033[1m\033[37m"
+# define GREEN		"\033[32m"
+# define RESET		"\033[0m"
 # define ERROR(line, message) ft_printf(BOLDRED "ERROR Line %d: %s\n" RESET, line, message)
 # define MESSAGE1 "usage: ./lem-in < [source file]"
 # define MESSAGE2 "room name starts with L"
@@ -125,4 +127,5 @@ int						add_connection(t_connect **root, t_room *to);
 void					print_rooms(t_room *root);
 void					free_paths(t_path *root);
 void 					free_connections(t_connect *root);
+void					del_last(t_path **root);
 #endif

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 16:15:31 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/27 14:52:13 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/27 16:27:18 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	print_map(t_lem_in *root)
 		ft_printf("%s\n", current->line);
 		current = current->next;
 	}
+	ft_printf("\n");
 }
 
 static t_map	*new_node(char *data)

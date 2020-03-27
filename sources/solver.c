@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_path.c                                       :+:      :+:    :+:   */
+/*   solver.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 12:29:54 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/27 13:23:19 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/27 16:12:16 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,7 @@ int			solver(t_lem_in *anthill)
 	if (!(find_path(anthill, array, new_path)))
     {
 		free(array);
+		del_last(&anthill->paths);
         return (0);
 	}
 	reset_checked_rooms(anthill);

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 12:38:06 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/27 14:56:23 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/27 16:25:06 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,12 @@ void	print_path(t_lem_in *anthill)
     while (path)
     {
         current = path->route;
-		if (current)
-			ft_printf(GREEN "PATH %d:\n" RESET, ++i);
-		else
-			return;
+		ft_printf(BOLDCYAN "PATH %d:\n" RESET, ++i);
         while (current)
         {
-            ft_printf("%s", current->room->name);
+            ft_printf(BOLDWHITE "%s" RESET, current->room->name);
 			if (current->room != anthill->end)
-				ft_printf(GREEN " -> " RESET);
+				ft_printf(GREEN " => " RESET);
             current = current->next;
         }
 		ft_printf("\n");
@@ -67,4 +64,31 @@ t_path	*add_path(t_path **root)
 		temp = temp->next;
 	temp->next = path;
 	return (path);
+}
+
+static void	del_node(t_path **node)
+{
+	if (node != NULL && *node != NULL)
+	{
+		free(*node);
+		*node = NULL;
+	}
+}
+
+void	del_last(t_path **root)
+{
+	t_path  *second_last;
+
+	if (!*root)
+		return;
+	if (!(*root)->next)
+	{
+		del_node(root);
+		return ;
+	}
+	second_last = *root;
+	while (second_last->next->next)
+		second_last = second_last->next;
+	del_node(&second_last->next);
+	second_last->next = NULL;
 }
