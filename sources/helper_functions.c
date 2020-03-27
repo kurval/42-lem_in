@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 10:46:37 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/26 19:21:44 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/27 13:16:30 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,36 @@ void	check_short(t_lem_in *anthill)
 		current = current->next;
 	}
 	anthill->quick = -1;
+}
+
+/*
+** Creates an array of next level connections.
+*/
+
+t_room	**connect_array(t_room **array, int rooms)
+{
+	t_room			**tmp;
+	t_room			**new;
+	t_connect       *route;
+	int				i;
+
+	i = 0;
+	if (!(new = (t_room **)malloc(sizeof(t_room*) * (rooms + 1))))
+		return (NULL);
+	tmp = array;
+	while (*tmp)
+	{
+		route = (*tmp)->connections;
+		while (route)
+		{
+			if (!route->room->checked)
+				new[i++] = route->room;
+			route = route->next;
+		}
+		tmp++;
+	}
+	new[i] = NULL;
+	return (new);
 }
 
 void	reset_checked_rooms(t_lem_in *anthill)

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 12:29:54 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/27 10:47:30 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/27 13:17:07 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int		link_to_end(t_lem_in *anthill, t_room **tmp, t_path	*path)
 ** Links shortest path back to start.
 */
 
-static void		link_path(t_lem_in *anthill, t_room **array, t_room **new, t_path *path)
+static void		link_path(t_lem_in *anthill, t_room **array, t_path *path)
 {
 	t_room			**tmp;
 	t_connect       *route;
@@ -62,37 +62,28 @@ static void		link_path(t_lem_in *anthill, t_room **array, t_room **new, t_path *
 		}
 		tmp++;
 	}
-	free(new);
 }
 
-/*
-** Creates an array of next level connections.
-*/
-
-static t_room	**connect_array(t_room **array, int rooms)
+static int is_link_valid(t_lem_in *anthill, t_room **array,
+t_path *path)
 {
-	t_room			**tmp;
-	t_room			**new;
-	t_connect       *route;
-	int				i;
+	int ret;
+	t_room **new;
 
-	i = 0;
-	if (!(new = (t_room **)malloc(sizeof(t_room*) * (rooms + 1))))
-		return (NULL);
-	tmp = array;
-	while (*tmp)
+	ret = 0;
+	new = NULL;
+	if (!(new = connect_array(array, anthill->nodes)))
 	{
-		route = (*tmp)->connections;
-		while (route)
-		{
-			if (!route->room->checked)
-				new[i++] = route->room;
-			route = route->next;
-		}
-		tmp++;
-	}
-	new[i] = NULL;
-	return (new);
+        anthill->errnbr = 7;
+		free(new);
+        print_error(anthill);
+    }
+	if (!anthill->nodes || !(find_path(anthill, new, path)))
+		ret = 0;
+	else
+		ret = 1;
+	free(new);
+	return (ret);
 }
 
 /*
@@ -100,33 +91,29 @@ static t_room	**connect_array(t_room **array, int rooms)
 ** end is reached or function fails to find path.
 */
 
-static int		find_path(t_lem_in *anthill, t_room **array,
-t_room **new, int rooms, t_path	*path)
+int		find_path(t_lem_in *anthill, t_room **array, t_path *path)
 {
 	t_room			**tmp;
 	t_connect       *route;
 
 	tmp = array;
+	anthill->nodes = 0;
 	while (*tmp)
 	{
 		(*tmp)->checked = 1;
 		route = (*tmp)->connections;
 		while (route)
 		{
-			rooms++;
+			anthill->nodes += 1;
 			if (route->room == anthill->end && *tmp != anthill->start)
 				return (link_to_end(anthill, tmp, path));
 			route = route->next;
 		}
 		tmp++;
 	}
-	if (!rooms || !(new = (connect_array(array, rooms)))
-	|| !(find_path(anthill, new, NULL, 0, path)))
-	{
-		free(new);
+	if (!(is_link_valid(anthill, array, path)))
 		return (0);
-	}
-	link_path(anthill, array, new, path);
+	link_path(anthill, array, path);
 	return (1);
 }
 
@@ -143,7 +130,8 @@ int			solver(t_lem_in *anthill)
 	t_path			*new_path;
 
     new_path = add_path(&anthill->paths);
-	if (!(array = (t_room **)malloc(sizeof(t_room*) * 2)))
+	array = (t_room **)malloc(sizeof(t_room*) * 2);
+	if (!new_path || !array)
 	{
         anthill->errnbr = 7;
         print_error(anthill);
@@ -151,7 +139,7 @@ int			solver(t_lem_in *anthill)
 	array[0] = anthill->start;
 	array[1] = NULL;
 	check_short(anthill);
-	if (!(find_path(anthill, array, NULL, 0, new_path)))
+	if (!(find_path(anthill, array, new_path)))
     {
 		free(array);
         return (0);
