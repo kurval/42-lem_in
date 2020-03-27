@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 12:29:54 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/26 17:54:45 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/27 10:47:30 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,20 @@
 ** Links previous node to end of the shortest path.
 */
 
-static int		link_to_end(t_lem_in *anthill, t_room **tmp)
+static int		link_to_end(t_lem_in *anthill, t_room **tmp, t_path	*path)
 {
-	(*tmp)->path_next = anthill->end;
-	anthill->end->path_prev = *tmp;
+	if (!(add_connection(&path->route, anthill->end)))
+    {
+        anthill->errnbr = 7;
+        print_error(anthill);
+    }
 	anthill->reverse_path = *tmp;
+	(*tmp)->checked = 2;
+	if (!(add_connection(&path->route, *tmp)))
+    {
+        anthill->errnbr = 7;
+        print_error(anthill);
+    }
 	return (1);
 }
 
@@ -28,7 +37,7 @@ static int		link_to_end(t_lem_in *anthill, t_room **tmp)
 ** Links shortest path back to start.
 */
 
-static void		link_path(t_lem_in *anthill, t_room **array, t_room **new)
+static void		link_path(t_lem_in *anthill, t_room **array, t_room **new, t_path *path)
 {
 	t_room			**tmp;
 	t_connect       *route;
@@ -41,9 +50,13 @@ static void		link_path(t_lem_in *anthill, t_room **array, t_room **new)
 		{
 			if (route->room == anthill->reverse_path)
 			{
-				(*tmp)->path_next = anthill->reverse_path;
-				anthill->reverse_path->path_prev = *tmp;
 				anthill->reverse_path = *tmp;
+				if (!(add_connection(&path->route, *tmp)))
+				{
+        			anthill->errnbr = 7;
+        			print_error(anthill);
+   				}
+				(*tmp)->checked = 2;
 			}
 			route = route->next;
 		}
@@ -88,7 +101,7 @@ static t_room	**connect_array(t_room **array, int rooms)
 */
 
 static int		find_path(t_lem_in *anthill, t_room **array,
-t_room **new, int rooms)
+t_room **new, int rooms, t_path	*path)
 {
 	t_room			**tmp;
 	t_connect       *route;
@@ -102,18 +115,18 @@ t_room **new, int rooms)
 		{
 			rooms++;
 			if (route->room == anthill->end && *tmp != anthill->start)
-				return (link_to_end(anthill, tmp));
+				return (link_to_end(anthill, tmp, path));
 			route = route->next;
 		}
 		tmp++;
 	}
 	if (!rooms || !(new = (connect_array(array, rooms)))
-	|| !(find_path(anthill, new, NULL, 0)))
+	|| !(find_path(anthill, new, NULL, 0, path)))
 	{
 		free(new);
 		return (0);
 	}
-	link_path(anthill, array, new);
+	link_path(anthill, array, new, path);
 	return (1);
 }
 
@@ -127,7 +140,9 @@ t_room **new, int rooms)
 int			solver(t_lem_in *anthill)
 {
 	t_room			**array;
+	t_path			*new_path;
 
+    new_path = add_path(&anthill->paths);
 	if (!(array = (t_room **)malloc(sizeof(t_room*) * 2)))
 	{
         anthill->errnbr = 7;
@@ -136,17 +151,11 @@ int			solver(t_lem_in *anthill)
 	array[0] = anthill->start;
 	array[1] = NULL;
 	check_short(anthill);
-	if (!(find_path(anthill, array, NULL, 0)))
+	if (!(find_path(anthill, array, NULL, 0, new_path)))
     {
 		free(array);
         return (0);
-    }
-	if (!(save_path(anthill)))
-	{
-        anthill->errnbr = 7;
-		free(array);
-        print_error(anthill);
-    }
+	}
 	reset_checked_rooms(anthill);
 	free(array);
 	return (1);

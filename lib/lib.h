@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/26 13:26:57 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/26 19:11:04 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct	s_lem_in
 	struct s_hashtable	**hashtable;
 	struct s_path		*paths;
 	struct s_room		*reverse_path;
+	struct s_room		**tab;
 }				t_lem_in;
 
 typedef struct	s_room
@@ -63,8 +64,6 @@ typedef struct	s_room
 	struct s_room		*next;
 	struct s_ants		*ant_here;
     struct s_connect	*connections;
-	struct s_room		*path_next;
-	struct s_room		*path_prev;
 }				t_room;
 
 typedef struct	s_link
@@ -125,7 +124,6 @@ void                    create_connections(t_lem_in *anthill);
 void                    free_hashtable(t_lem_in *anthill);
 t_path					*add_path(t_path **root);
 int						add_connection(t_connect **root, t_room *to);
-int						save_path(t_lem_in *lem_in);
 void					print_rooms(t_room *root);
 void					free_paths(t_path *root);
 void 					free_connections(t_connect *root);

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:34:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/26 17:41:47 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/27 10:56:44 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void    init_anthill(t_lem_in *anthill)
     anthill->id = 0;
     anthill->quick = 0;
     anthill->reverse_path = NULL;
+    anthill->tab = NULL;
 }
 
 int main(int arg, char **argc)
@@ -43,14 +44,16 @@ int main(int arg, char **argc)
     parse_map(&anthill);
     validate_map(&anthill);
     print_map(&anthill);
-    if (!solver(&anthill))
+    check_short(&anthill);
+    if (!solver(&anthill) && anthill.quick != 1)
     {
         anthill.errnbr = 9;
         print_error(&anthill);
     }
-    else
-        while (solver(&anthill))
+    while (solver(&anthill));
+    //ft_printf("ad\n");
     print_path(&anthill);
+    //print_rooms(anthill.room);
     free_all(&anthill);
     return (0);
 }

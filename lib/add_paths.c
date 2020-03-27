@@ -6,12 +6,12 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 12:38:06 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/26 11:18:50 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/27 10:55:09 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
-
+/*
 int		save_path(t_lem_in *lem_in)
 {
 	t_room	*tmp;
@@ -34,7 +34,7 @@ int		save_path(t_lem_in *lem_in)
         return 0;
 	return (1);
 }
-
+*/
 void	print_path(t_lem_in *anthill)
 {
     t_path     	*path;
@@ -46,7 +46,10 @@ void	print_path(t_lem_in *anthill)
     while (path)
     {
         current = path->route;
-		ft_printf(GREEN "PATH %d:\n" RESET, ++i);
+		if (current)
+			ft_printf(GREEN "PATH %d:\n" RESET, ++i);
+		else
+			return;
         while (current)
         {
             ft_printf("%s", current->room->name);
