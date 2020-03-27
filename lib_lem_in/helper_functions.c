@@ -6,42 +6,12 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 15:57:24 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/21 19:18:01 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/27 14:17:33 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
-/*
-void	print_hashes(t_lem_in *anthill)
-{
-	t_room		*current;
-	t_hashtable	*colission;
-	unsigned long	key;
 
-	current = anthill->room;
-	colission = NULL;
-	key = 0;
-	while(current)
-	{
-		key = hash(current->name, anthill->room_count);
-		ft_printf("hashtable: key %d room %s\n", key, anthill->hashtable[key]->current->name);
-		ft_printf("connections:\n");
-		print_connections(anthill->hashtable[key]->connect);
-		if (anthill->hashtable[key]->next != NULL)
-		{
-			colission = anthill->hashtable[key]->next;
-			while (colission)
-			{
-				ft_printf("	colission room %s\n", colission->current->name);
-				ft_printf("		connections:\n");
-				print_connections(colission->connect);
-				colission = colission->next;
-			}
-		}
-		current = current->next;
-	}
-}
-*/
 void	count_rooms(t_lem_in *anthill)
 {
 	t_room *current;
@@ -65,4 +35,41 @@ void	free_tab(char **tab)
 		i++;
 	}
 	free(tab);
+}
+
+void	free_paths(t_path *root)
+{
+	t_path *temp;
+
+	temp = NULL;
+	if (!root)
+		return ;
+	while (root)
+	{
+		temp = root;
+		root = root->next;
+        free_connections(temp->route);
+		free(temp);
+	}
+}
+
+void    print_error(t_lem_in *anthill, int errnbr)
+{
+    errnbr == 1 ? ERROR(anthill->line, MESSAGE1) : 0;
+    errnbr == 2 ? ERROR(anthill->line, MESSAGE2) : 0;
+    errnbr == 3 ? ERROR(anthill->line, MESSAGE3) : 0;
+    errnbr == 4 ? ERROR(anthill->line, MESSAGE4) : 0;
+    errnbr == 5 ? ERROR(anthill->line, MESSAGE5) : 0;
+    errnbr == 6 ? ERROR(anthill->line, MESSAGE6) : 0;
+    errnbr == 7 ? ERROR(anthill->line, MESSAGE7) : 0;
+    errnbr == 8 ? ERROR(anthill->line, MESSAGE8) : 0;
+    errnbr == 9 ? ERROR(anthill->line, MESSAGE9) : 0;
+    errnbr == 10 ? ERROR(anthill->line, MESSAGE10) : 0;
+    errnbr == 11 ? ERROR(anthill->line, MESSAGE11) : 0;
+    errnbr == 12 ? ERROR(anthill->line, MESSAGE12) : 0;
+    errnbr == 13 ? ERROR(anthill->line, MESSAGE13) : 0;
+    errnbr == 14 ? ERROR(anthill->line, MESSAGE14) : 0;
+    errnbr == 15 ? ERROR(anthill->line, MESSAGE15) : 0;
+    free_all(anthill);
+    exit(0);
 }
