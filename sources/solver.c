@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 12:29:54 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/27 16:12:16 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/27 16:39:52 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int		link_to_end(t_lem_in *anthill, t_room **tmp, t_path	*path)
 	if (!(add_connection(&path->route, anthill->end)))
     	print_error(anthill, 7);
 	anthill->reverse_path = *tmp;
-	(*tmp)->checked = 2;
+	(*tmp)->checked = PATH;
 	if (!(add_connection(&path->route, *tmp)))
     	print_error(anthill, 7);
 	return (1);
@@ -47,7 +47,7 @@ static void		link_path(t_lem_in *anthill, t_room **array, t_path *path)
 				anthill->reverse_path = *tmp;
 				if (!(add_connection(&path->route, *tmp)))
 					print_error(anthill, 7);
-				(*tmp)->checked = 2;
+				(*tmp)->checked = PATH;
 			}
 			route = route->next;
 		}
@@ -55,7 +55,7 @@ static void		link_path(t_lem_in *anthill, t_room **array, t_path *path)
 	}
 }
 
-static int is_link_valid(t_lem_in *anthill, t_room **array,
+static int		is_link_valid(t_lem_in *anthill, t_room **array,
 t_path *path)
 {
 	int ret;
@@ -81,7 +81,7 @@ t_path *path)
 ** end is reached or function fails to find path.
 */
 
-int		find_path(t_lem_in *anthill, t_room **array, t_path *path)
+int			find_path(t_lem_in *anthill, t_room **array, t_path *path)
 {
 	t_room			**tmp;
 	t_connect       *route;
@@ -90,7 +90,7 @@ int		find_path(t_lem_in *anthill, t_room **array, t_path *path)
 	anthill->nodes = 0;
 	while (*tmp)
 	{
-		(*tmp)->checked = 1;
+		(*tmp)->checked = VISITED;
 		route = (*tmp)->connections;
 		while (route)
 		{

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/27 16:24:23 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/27 16:42:33 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,21 @@
 # define GREEN		"\033[32m"
 # define RESET		"\033[0m"
 # define ERROR(line, message) ft_printf(BOLDRED "ERROR Line %d: %s\n" RESET, line, message)
-# define MESSAGE1 "usage: ./lem-in < [source file]"
-# define MESSAGE2 "room name starts with L"
-# define MESSAGE3 "room format: (room x y)"
-# define MESSAGE4 "rooms coordinate is invalid"
-# define MESSAGE5 "link format: (room-room)"
-# define MESSAGE6 "room name doesn't exist"
-# define MESSAGE7 "malloc error"
-# define MESSAGE8 "ants must be a positive number"
-# define MESSAGE9 "no paths"
-# define MESSAGE10 "room allready exist"
-# define MESSAGE11 "link allready exist"
-# define MESSAGE12 "no links or empty map"
-# define MESSAGE13 "start doesn't exist"
-# define MESSAGE14 "end doesn't exist"
-# define MESSAGE15 "link is connected to itself"
+# define MESSAGE1	"usage: ./lem-in < [source file]"
+# define MESSAGE2	"room name starts with L"
+# define MESSAGE3	"room format: (room x y)"
+# define MESSAGE4	"rooms coordinate is invalid"
+# define MESSAGE5	"link format: (room-room)"
+# define MESSAGE6	"room name doesn't exist"
+# define MESSAGE7	"malloc error"
+# define MESSAGE8	"ants must be a positive number"
+# define MESSAGE9	"no paths"
+# define MESSAGE10	"room allready exist"
+# define MESSAGE11	"link allready exist"
+# define MESSAGE12	"no links or empty map"
+# define MESSAGE13	"start doesn't exist"
+# define MESSAGE14	"end doesn't exist"
+# define MESSAGE15	"link is connected to itself"
 # include "../libft/libft.h"
 
 typedef struct	s_lem_in
@@ -126,6 +126,6 @@ t_path					*add_path(t_path **root);
 int						add_connection(t_connect **root, t_room *to);
 void					print_rooms(t_room *root);
 void					free_paths(t_path *root);
-void 					free_connections(t_connect *root);
+void					free_connections(t_connect *root);
 void					del_last(t_path **root);
 #endif
