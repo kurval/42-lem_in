@@ -6,11 +6,11 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/19 20:06:25 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/26 13:40:56 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/27 14:52:24 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib.h"
+#include "../includes/lib.h"
 
 void free_connections(t_connect *root)
 {

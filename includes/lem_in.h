@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:32:55 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/27 13:56:29 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/27 14:53:01 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define LINKS 4
 # define COMMAND 5
 # include "../libft/libft.h"
-# include "../lib_lem_in/lib.h"
+# include "lib.h"
 
 int		main(int arg, char **argc);
 void	init_anthill(t_lem_in *anthill);

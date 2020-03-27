@@ -6,7 +6,7 @@
 #    By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/18 20:35:59 by vkurkela          #+#    #+#              #
-#    Updated: 2020/03/27 14:17:59 by vkurkela         ###   ########.fr        #
+#    Updated: 2020/03/27 14:51:31 by vkurkela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRC = add_ants.c add_to_map.c free_all.c \
 	add_hash_table.c add_links.c helper_functions.c \
 	add_rooms.c add_paths.c add_connections.c free_hashtable.c \
 
-HEADERS = lib.h
+HEADERS = ../includes/lib.h
 
 OBJECTS = $(SRC:.c=.o)
 

@@ -6,35 +6,12 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 12:38:06 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/27 10:55:09 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/27 14:56:23 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib.h"
-/*
-int		save_path(t_lem_in *lem_in)
-{
-	t_room	*tmp;
-	t_path	*new_path;
+#include "../includes/lib.h"
 
-	tmp = lem_in->end;
-    new_path = add_path(&lem_in->paths);
-	if (!new_path || !(add_connection(&new_path->route, tmp)))
-    	return 0;
-	while (tmp && tmp->path_prev && tmp->path_prev != lem_in->start)
-	{
-		tmp->path_prev->path_next = tmp;
-		tmp = tmp->path_prev;
-		tmp->checked = 2;
-		if (!(add_connection(&new_path->route, tmp)))
-        	return 0;
-	}
-	tmp = lem_in->start;
-    if (!(add_connection(&new_path->route, tmp)))
-        return 0;
-	return (1);
-}
-*/
 void	print_path(t_lem_in *anthill)
 {
     t_path     	*path;

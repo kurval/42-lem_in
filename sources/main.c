@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:34:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/27 13:44:18 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/27 14:55:20 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,5 @@ int main(int arg, char **argc)
     while (solver(&anthill));
     print_path(&anthill);
     free_all(&anthill);
-    //while (1);
     return (0);
 }
