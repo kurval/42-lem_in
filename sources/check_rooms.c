@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 16:15:31 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/23 12:30:14 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/27 13:52:06 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int error_check(t_lem_in **anthill, char **tab, char *line, int *i)
 
 static void push_room(t_lem_in **anthill, char **tab)
 {
-    if (!(add_room(&(*anthill)->room, tab[0], (*anthill)->id++)))
+    if (!(add_room(&(*anthill)->room, tab[0])))
     {
         (*anthill)->errnbr = 7;
         return;

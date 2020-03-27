@@ -6,7 +6,7 @@
 #    By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/05 11:23:46 by vkurkela          #+#    #+#              #
-#    Updated: 2020/03/27 13:41:55 by vkurkela         ###   ########.fr        #
+#    Updated: 2020/03/27 13:58:12 by vkurkela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ OBJ = $(SRC:.c=.o)
 HEADERS = lem_in.h
 
 LIBFT = libft/libft.a
-LIB = lib/lib.a
+LIB = lib_lem_in/lib.a
 
 CC = gcc
 
@@ -37,7 +37,7 @@ $(LIBFT):
 	@${MAKE} -C libft
 
 $(LIB):
-	@${MAKE} -C lib
+	@${MAKE} -C lib_lem_in
 
 $(NAME): $(LIBFT) $(LIB) $(OBJ)
 	$(CC) $(FLAGS) -o $(NAME) $(OBJ) $(LIBFT) $(LIB)
@@ -48,12 +48,12 @@ clean:
 	/bin/rm -f $(OBJ)
 	/bin/rm -Rf obj
 	@${MAKE} -C libft clean
-	@${MAKE} -C lib clean
+	@${MAKE} -C lib_lem_in clean
 
 fclean: clean
 	/bin/rm -f $(NAME)
 	@${MAKE} -C libft fclean
-	@${MAKE} -C lib fclean
+	@${MAKE} -C lib_lem_in fclean
 
 re: fclean all
 

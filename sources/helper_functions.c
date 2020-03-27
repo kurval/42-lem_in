@@ -6,11 +6,31 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 10:46:37 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/27 13:24:29 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/27 13:51:17 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
+
+void    init_anthill(t_lem_in *anthill)
+{
+    anthill->ants = 0;
+	anthill->room_count = 0;
+	anthill->ant_lst = NULL;
+	anthill->room = NULL;
+	anthill->link = NULL;
+    anthill->start = NULL;
+	anthill->end = NULL;
+    anthill->map = NULL;
+    anthill->hashtable = NULL;
+    anthill->paths = NULL;
+	anthill->errnbr = 0;
+	anthill->section = 0;
+    anthill->line = 0;
+    anthill->quick = 0;
+    anthill->reverse_path = NULL;
+    anthill->nodes = 0;
+}
 
 void	check_short(t_lem_in *anthill)
 {

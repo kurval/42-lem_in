@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 12:38:06 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/26 19:09:39 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/27 13:52:31 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	print_rooms(t_room *root)
     }
 }
 
-static t_room	*new_node(char *data, int nbr)
+static t_room	*new_node(char *data)
 {
 	t_room *room;
 
@@ -34,18 +34,17 @@ static t_room	*new_node(char *data, int nbr)
 		return (NULL);
 	room->checked = 0;
 	room->key = 0;
-	room->id = nbr;
 	room->connections = NULL;
 	room->ant_here = NULL;
 	room->next = NULL;
 	return (room);
 }
 
-int		add_room(t_room **root, char *name, int id)
+int		add_room(t_room **root, char *name)
 {
 	t_room	*node;
 
-	if (!(node = new_node(name, id)))
+	if (!(node = new_node(name)))
 		return (0);
 	node->next = *root;
 	*root = node;
