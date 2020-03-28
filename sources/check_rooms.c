@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 16:15:31 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/27 13:52:06 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/28 15:09:21 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ static int error_check(t_lem_in **anthill, char **tab, char *line, int *i)
     if (*i == 3)
     {
         (is_valid_room((*anthill)->room, tab[0])) ? (*anthill)->errnbr = 10 : 0;
-        (!ft_atoi_err(tab[1])) ? (*anthill)->errnbr = 4 : 0;
-        (!ft_atoi_err(tab[2])) ? (*anthill)->errnbr = 4 : 0;
+        if (!ft_atoi_err(tab[1]) || !ft_atoi_err(tab[2]))
+            (*anthill)->errnbr = 4;
     }
     if ((*anthill)->errnbr)
         return (0);

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 18:20:36 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/28 12:17:35 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/28 15:08:59 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,9 @@ static int error_check(t_lem_in **anthill, char **tab, int *i)
     if (*i == 2)
     {
         is_valid_link(*anthill, tab[0], tab[1]);
-        !is_valid_room((*anthill)->room, tab[0]) ? (*anthill)->errnbr = 6 : 0;
-        !is_valid_room((*anthill)->room, tab[1]) ? (*anthill)->errnbr = 6 : 0;
+        if (!is_valid_room((*anthill)->room, tab[0]) ||\
+        !is_valid_room((*anthill)->room, tab[1]))
+            (*anthill)->errnbr = 6;
     }
     if ((*anthill)->errnbr)
     {
