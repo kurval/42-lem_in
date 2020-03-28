@@ -6,12 +6,31 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:34:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/27 14:55:20 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/28 11:38:12 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
+/*
+static void	print_connections(t_room *root)
+{
+	t_connect   *current;
+    t_room      *room;
 
+    room = root;
+    while(room)
+    {
+        ft_printf("room's %s connections:\n", room->name);
+        current = room->connections;
+        while(current)
+        {
+            ft_printf("%s\n", current->room->name);
+            current = current->next;
+        }
+        room = room->next;
+    }
+}
+*/
 int main(int arg, char **argc)
 {
     t_lem_in    anthill;
