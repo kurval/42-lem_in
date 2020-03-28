@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:34:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/28 11:38:12 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/28 20:09:49 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,20 @@ static void	print_connections(t_room *root)
         room = room->next;
     }
 }
+
+static void print_rev_path(t_lem_in *anthill)
+{
+    t_room      *room;
+
+    room = anthill->end->prev;
+    ft_printf("%s <= ", anthill->end->name);
+    while (room)
+    {
+        ft_printf("%s <= ", room->name);
+        room = room->prev;
+    }
+    ft_printf("\n");
+}
 */
 int main(int arg, char **argc)
 {
@@ -47,6 +61,7 @@ int main(int arg, char **argc)
         print_error(&anthill, 9);
     while (solver(&anthill));
     print_path(&anthill);
+    move_ants(&anthill);
     free_all(&anthill);
     return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/27 16:42:33 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/28 20:18:00 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # define GREEN		"\033[32m"
 # define RESET		"\033[0m"
 # define ERROR(line, message) ft_printf(BOLDRED "ERROR Line %d: %s\n" RESET, line, message)
+# define MOVE(ant, name) ft_printf(BOLDWHITE "L%ld-%s " RESET, ant, name)
 # define MESSAGE1	"usage: ./lem-in < [source file]"
 # define MESSAGE2	"room name starts with L"
 # define MESSAGE3	"room format: (room x y)"
@@ -62,6 +63,7 @@ typedef struct	s_room
 	int					checked;
     int                 key;
 	struct s_room		*next;
+	struct s_room		*prev;
 	struct s_ants		*ant_here;
     struct s_connect	*connections;
 }				t_room;
@@ -103,6 +105,7 @@ typedef struct	s_path
 {
     struct s_connect	*route;
 	struct s_path		*next;
+	struct s_room       *second_last;
 }				t_path;
 
 int						add_room(t_room **root, char *name);

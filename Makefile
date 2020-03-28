@@ -6,7 +6,7 @@
 #    By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/05 11:23:46 by vkurkela          #+#    #+#              #
-#    Updated: 2020/03/27 13:58:12 by vkurkela         ###   ########.fr        #
+#    Updated: 2020/03/28 16:25:44 by vkurkela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = lem-in
 SRC = ./sources/main.c ./sources/parse_map.c  \
 	./sources/check_rooms.c ./sources/check_links.c \
 	./sources/map_validation.c ./sources/solver.c \
-	./sources/helper_functions.c 
+	./sources/helper_functions.c ./sources/move_ants.c
 	
 OBJ = $(SRC:.c=.o)
 

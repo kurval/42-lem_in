@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 12:38:06 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/27 16:25:06 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/28 19:46:10 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	print_path(t_lem_in *anthill)
 		ft_printf("\n");
         path = path->next;
     }
+	ft_printf("\n");
 }
 
 static t_path	*new_path(void)
@@ -42,6 +43,7 @@ static t_path	*new_path(void)
 
 	if (!(path = (t_path*)malloc(sizeof(t_path))))
 		return (NULL);
+	path->second_last = NULL;
 	path->route = NULL;
 	path->next = NULL;
 	return (path);
