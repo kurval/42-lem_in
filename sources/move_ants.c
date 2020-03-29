@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/28 10:50:09 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/29 19:20:06 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/29 19:34:26 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ void	move_ants(t_lem_in *anthill)
     while (anthill->finish != anthill->ants)
 	{
 		shortest_path = anthill->paths;
-		anthill->end->prev = shortest_path->second_last;
-		while (shortest_path)
+		anthill->end->prev = shortest_path->next->second_last;
+		while (shortest_path && anthill->finish != anthill->ants)
 		{
-			send_ants(anthill, tmp);
+			send_ants(anthill, tmp); //one move
 			shortest_path = shortest_path->next;
 		}
 	}
