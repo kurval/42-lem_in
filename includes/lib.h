@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/28 20:18:00 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/29 16:45:26 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@
 typedef struct	s_lem_in
 {
 	long				ants;
+	long				finish;
 	int					errnbr;
 	int					section;
 	int					line;

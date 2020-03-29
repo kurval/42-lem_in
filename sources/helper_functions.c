@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 10:46:37 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/28 20:00:45 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/29 16:45:20 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void    init_anthill(t_lem_in *anthill)
     anthill->quick = 0;
     anthill->reverse_path = NULL;
     anthill->nodes = 0;
+	anthill->finish = 0;
 }
 
 void	check_short(t_lem_in *anthill)
