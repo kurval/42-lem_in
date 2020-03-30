@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/29 16:45:26 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/30 16:39:21 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,4 +132,5 @@ void					print_rooms(t_room *root);
 void					free_paths(t_path *root);
 void					free_connections(t_connect *root);
 void					del_last(t_path **root);
+void					del_first(t_path **root);
 #endif

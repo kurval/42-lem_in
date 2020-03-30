@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:34:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/28 20:09:49 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/30 16:47:48 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int main(int arg, char **argc)
     if (!solver(&anthill) && anthill.quick != 1)
         print_error(&anthill, 9);
     while (solver(&anthill));
+    del_first(&anthill.paths->next);
     print_path(&anthill);
     move_ants(&anthill);
     free_all(&anthill);

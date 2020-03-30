@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/28 10:50:09 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/29 19:34:26 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/30 20:36:13 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,37 +24,82 @@ static void send_ants(t_lem_in *anthill, t_room *tmp)
 	tmp = anthill->end;
 	while (tmp)
 	{
-		if (tmp->prev && tmp->prev->ant_here && !tmp->ant_here) //no ants at current room and ants at prev
+		if (tmp->prev && tmp->prev->ant_here && !tmp->ant_here) //next room is empty
 		{
 			tmp->ant_here = tmp->prev->ant_here; //swithches ant from previous room to point current room
 			move(anthill, tmp); //print this move
 		}
-		else if (tmp->ant_here) //ant at the current room or (previous room)
+		else if (tmp->ant_here) //move next ant at the current room
 		{
-			tmp->ant_here = tmp->ant_here->next; //switches ant to next ant (L1 -> L2)
+			//ft_printf("loop room %s ant L%ld", tmp->name, tmp->ant_here->name);
+			if (!tmp->prev && tmp != anthill->start)
+				tmp->ant_here = NULL;
+			else if (tmp->prev)
+				tmp->ant_here = tmp->prev->ant_here;
+			else 
+				tmp->ant_here = tmp->ant_here->next;
+			//ft_printf("loop tmp ant L%ld\n", tmp->ant_here->name);
 			if (tmp != anthill->start && tmp->ant_here) //if current is not start AND there is ants left
 				move(anthill, tmp);
 		}
 		tmp = tmp->prev;
 	}
-	ft_printf("\n");
+}
+
+static void	other_path(t_lem_in *anthill, t_room *tmp, t_path *path)
+{
+	t_room *other_room;
+
+	tmp = anthill->start;
+	if (!tmp->ant_here)
+		return ;
+	other_room = path->route->room;
+	other_room->ant_here = tmp->ant_here;
+	tmp->ant_here = tmp->ant_here->next;
+	move(anthill, other_room);
+}
+
+static	int count_paths(t_lem_in *anthill)
+{
+	t_path	*current;
+	int		nb;
+
+	current = anthill->paths;
+	nb = 0;
+	while (current)
+	{
+		nb++;
+		current = current->next;
+	}
+	return (nb);
 }
 
 void	move_ants(t_lem_in *anthill)
 {
 	t_room	*tmp;
 	t_path	*shortest_path;
+	int		nb_paths;
+	int		i;
 
     tmp = NULL;
+	i = 1;
+	nb_paths = count_paths(anthill);
     anthill->start->ant_here = anthill->ant_lst;
     while (anthill->finish != anthill->ants)
 	{
 		shortest_path = anthill->paths;
-		anthill->end->prev = shortest_path->next->second_last;
 		while (shortest_path && anthill->finish != anthill->ants)
 		{
-			send_ants(anthill, tmp); //one move
+			anthill->end->prev = shortest_path->second_last;
+			send_ants(anthill, tmp);
+			if (anthill->start->ant_here && nb_paths == i)
+			{
+				other_path(anthill, tmp, shortest_path);
+				break ;
+			}
+			i++;
 			shortest_path = shortest_path->next;
 		}
+		ft_printf("\n");
 	}
 }

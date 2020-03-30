@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 12:38:06 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/28 19:46:10 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/30 17:02:29 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,4 +93,16 @@ void	del_last(t_path **root)
 		second_last = second_last->next;
 	del_node(&second_last->next);
 	second_last->next = NULL;
+}
+
+void	del_first(t_path **root)
+{
+	t_connect  *tmp;
+
+	if (!(*root)->route)
+		return;
+	tmp = (*root)->route;
+	(*root)->route = (*root)->route->next;
+	(*root)->route->room->prev = NULL;
+	free(tmp);
 }
