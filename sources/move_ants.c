@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/28 10:50:09 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/30 20:36:13 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/30 21:35:25 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	move_ants(t_lem_in *anthill)
 	int		i;
 
     tmp = NULL;
-	i = 1;
+	i = 0;
 	nb_paths = count_paths(anthill);
     anthill->start->ant_here = anthill->ant_lst;
     while (anthill->finish != anthill->ants)
@@ -92,12 +92,12 @@ void	move_ants(t_lem_in *anthill)
 		{
 			anthill->end->prev = shortest_path->second_last;
 			send_ants(anthill, tmp);
+			i++;
 			if (anthill->start->ant_here && nb_paths == i)
 			{
 				other_path(anthill, tmp, shortest_path);
 				break ;
 			}
-			i++;
 			shortest_path = shortest_path->next;
 		}
 		ft_printf("\n");
