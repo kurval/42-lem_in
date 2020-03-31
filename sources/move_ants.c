@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/28 10:50:09 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/31 13:21:01 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/31 13:23:38 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static	int count_paths(t_lem_in *anthill)
 void	move_ants(t_lem_in *anthill)
 {
 	t_room	*tmp;
-	t_path	*shortest_path;
+	t_path	*current_path;
 	int		nb_paths;
 
     tmp = NULL;
@@ -83,17 +83,17 @@ void	move_ants(t_lem_in *anthill)
     anthill->start->ant_here = anthill->ant_lst;
     while (anthill->finish != anthill->ants)
 	{
-		shortest_path = anthill->paths;
-		while (shortest_path && anthill->finish != anthill->ants)
+		current_path = anthill->paths;
+		while (current_path && anthill->finish != anthill->ants)
 		{
-			anthill->end->prev = shortest_path->second_last;
+			anthill->end->prev = current_path->second_last;
 			send_ants(anthill, tmp);
-			if (anthill->start->ant_here && shortest_path != anthill->paths)
+			if (anthill->start->ant_here && current_path != anthill->paths)
 			{
-				if (shortest_path->len <= (((anthill->ants + 1) - anthill->start->ant_here->name) * anthill->paths->len))
-					other_path(anthill, tmp, shortest_path);
+				if (current_path->len <= (((anthill->ants + 1) - anthill->start->ant_here->name) * anthill->paths->len))
+					other_path(anthill, tmp, current_path);
 			}
-			shortest_path = shortest_path->next;
+			current_path = current_path->next;
 		}
 		ft_printf("\n");
 	}
