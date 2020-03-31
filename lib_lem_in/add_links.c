@@ -6,20 +6,11 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 18:27:03 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/27 14:51:58 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/31 16:52:08 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lib.h"
-
-void	print_links(t_link *root)
-{
-	while(root)
-	{
-		ft_printf("%s-%s\n", root->from, root->to);
-		root = root->next;
-	}
-}
 
 static t_link   *new_link(char *from, char *to)
 {

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 15:57:24 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/27 14:52:28 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/31 16:55:39 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,21 @@ void    print_error(t_lem_in *anthill, int errnbr)
     errnbr == 15 ? ERROR(anthill->line, MESSAGE15) : 0;
     free_all(anthill);
     exit(0);
+}
+
+int		path_len(t_path *root)
+{
+	t_connect	*tmp;
+	int			len;
+
+	len = 0;
+	if (!root->route)
+		return (0);
+	tmp = root->route;
+	while (tmp)
+	{
+		len++;
+		tmp = tmp->next;
+	}
+	return (len);
 }

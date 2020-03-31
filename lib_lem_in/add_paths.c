@@ -6,34 +6,11 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 12:38:06 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/31 12:29:50 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/31 16:56:15 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lib.h"
-
-void	print_path(t_lem_in *anthill)
-{
-    t_path     	*path;
-	t_connect   *current;
-
-    path = anthill->paths;
-    while (path)
-    {
-        current = path->route;
-		ft_printf(BOLDCYAN "PATH %d (len %d):\n" RESET, path->nb, path->len);
-        while (current)
-        {
-            ft_printf(BOLDWHITE "%s" RESET, current->room->name);
-			if (current->room != anthill->end)
-				ft_printf(GREEN " => " RESET);
-            current = current->next;
-        }
-		ft_printf("\n");
-        path = path->next;
-    }
-	ft_printf("\n");
-}
 
 static t_path	*new_path(void)
 {
@@ -105,21 +82,4 @@ void	del_start(t_path **root)
 	(*root)->route = (*root)->route->next;
 	(*root)->route->room->prev = NULL;
 	free(tmp);
-}
-
-int		path_len(t_path *root)
-{
-	t_connect	*tmp;
-	int			len;
-
-	len = 0;
-	if (!root->route)
-		return (0);
-	tmp = root->route;
-	while (tmp)
-	{
-		len++;
-		tmp = tmp->next;
-	}
-	return (len);
 }

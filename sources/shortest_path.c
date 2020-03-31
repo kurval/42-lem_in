@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   solver.c                                           :+:      :+:    :+:   */
+/*   shortest_path.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 12:29:54 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/31 12:30:29 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/31 16:10:12 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ int			find_path(t_lem_in *anthill, t_room **array, t_path *path)
 ** and end is linked with only single link.
 */
 
-int			solver(t_lem_in *anthill)
+int			shortest_path(t_lem_in *anthill)
 {
 	t_room			**array;
 	t_path			*new_path;

@@ -6,20 +6,11 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/13 20:16:51 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/27 14:51:45 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/31 16:51:52 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lib.h"
-
-void	print_ants(t_ants *root)
-{
-	while(root)
-	{
-		ft_printf("ant: L%ld\n", root->name);
-		root = root->next;
-	}
-}
 
 static t_ants   *new_node(long data)
 {

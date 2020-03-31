@@ -6,20 +6,27 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/31 12:28:01 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/31 16:51:40 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIB_H
 # define LIB_H
 # define SIZE 1000
-# define BOLDRED	"\033[1m\033[31m"
-# define BOLDCYAN	"\033[1m\033[36m"
-# define BOLDWHITE  "\033[1m\033[37m"
-# define GREEN		"\033[32m"
-# define RESET		"\033[0m"
+# define BOLDRED		"\033[1m\033[31m"
+# define BOLDCYAN		"\033[1m\033[36m"
+# define BOLDWHITE		"\033[1m\033[37m"
+# define BOLDYELLOW		"\033[1m\033[33m"
+# define BOLDBLUE		"\033[1m\033[34m"
+# define BOLDMAGENTA	"\033[1m\033[35m"
+# define GREEN			"\033[32m"
+# define RESET			"\033[0m"
 # define ERROR(line, message) ft_printf(BOLDRED "ERROR Line %d: %s\n" RESET, line, message)
-# define MOVE(ant, name) ft_printf(BOLDWHITE "L%ld-%s " RESET, ant, name)
+# define MOVE0(ant, name) ft_printf(BOLDBLUE "L%ld-%s " RESET, ant, name)
+# define MOVE1(ant, name) ft_printf(BOLDWHITE "L%ld-%s " RESET, ant, name)
+# define MOVE2(ant, name) ft_printf(BOLDCYAN "L%ld-%s " RESET, ant, name)
+# define MOVE3(ant, name) ft_printf(BOLDMAGENTA "L%ld-%s " RESET, ant, name)
+# define MOVE4(ant, name) ft_printf(BOLDYELLOW "L%ld-%s " RESET, ant, name)
 # define MESSAGE1	"usage: ./lem-in < [source file]"
 # define MESSAGE2	"room name starts with L"
 # define MESSAGE3	"room format: (room x y)"
@@ -117,10 +124,7 @@ int						add_link(t_link **root, char *from, char *to);
 int						add_ants(t_ants **root, long name);
 int						add_to_map(t_map **root, char *rule);
 void					print_path(t_lem_in *anthill);
-void					print_links(t_link *root);
-void					print_ants(t_ants *root);
 void					print_map(t_lem_in *root);
-void					print_hashes(t_lem_in *anthill);
 void    				print_error(t_lem_in *anthill, int errnbr);
 void					free_all(t_lem_in *anthill);
 void					free_tab(char **tab);
@@ -131,7 +135,6 @@ void                    create_connections(t_lem_in *anthill);
 void                    free_hashtable(t_lem_in *anthill);
 t_path					*add_path(t_path **root);
 int						add_connection(t_connect **root, t_room *to);
-void					print_rooms(t_room *root);
 void					free_paths(t_path *root);
 void					free_connections(t_connect *root);
 void					del_last(t_path **root);

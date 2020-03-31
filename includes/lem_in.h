@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:32:55 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/28 16:25:24 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/31 16:10:37 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void    check_start_end(t_lem_in *anthill, char *line);
 void    check_rooms(t_lem_in **anthill, char *line);
 void    check_links(t_lem_in **anthill, char *line);
 int     is_valid_room(t_room *root, char *name);
-int     solver(t_lem_in *anthill);
+int     shortest_path(t_lem_in *anthill);
 void    reset_checked_rooms(t_lem_in *anthill);
 void    check_short(t_lem_in *anthill);
 int     find_path(t_lem_in *anthill, t_room **array, t_path *path);
