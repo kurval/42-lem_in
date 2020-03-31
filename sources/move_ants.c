@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/28 10:50:09 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/31 12:49:59 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/31 13:21:01 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ void	move_ants(t_lem_in *anthill)
 	t_room	*tmp;
 	t_path	*shortest_path;
 	int		nb_paths;
-	int		moves;
 
     tmp = NULL;
 	nb_paths = count_paths(anthill);
@@ -85,15 +84,13 @@ void	move_ants(t_lem_in *anthill)
     while (anthill->finish != anthill->ants)
 	{
 		shortest_path = anthill->paths;
-		moves = 0;
 		while (shortest_path && anthill->finish != anthill->ants)
 		{
 			anthill->end->prev = shortest_path->second_last;
 			send_ants(anthill, tmp);
-			moves++;
 			if (anthill->start->ant_here && shortest_path != anthill->paths)
 			{
-				if (path_len(shortest_path) <= ((anthill->ants - anthill->start->ant_here->name) * path_len(anthill->paths)))
+				if (shortest_path->len <= (((anthill->ants + 1) - anthill->start->ant_here->name) * anthill->paths->len))
 					other_path(anthill, tmp, shortest_path);
 			}
 			shortest_path = shortest_path->next;
