@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/28 10:50:09 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/30 21:35:25 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/31 12:03:57 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,12 @@ static void send_ants(t_lem_in *anthill, t_room *tmp)
 		}
 		else if (tmp->ant_here) //move next ant at the current room
 		{
-			//ft_printf("loop room %s ant L%ld", tmp->name, tmp->ant_here->name);
 			if (!tmp->prev && tmp != anthill->start)
 				tmp->ant_here = NULL;
 			else if (tmp->prev)
 				tmp->ant_here = tmp->prev->ant_here;
-			else 
+			else
 				tmp->ant_here = tmp->ant_here->next;
-			//ft_printf("loop tmp ant L%ld\n", tmp->ant_here->name);
 			if (tmp != anthill->start && tmp->ant_here) //if current is not start AND there is ants left
 				move(anthill, tmp);
 		}
@@ -79,25 +77,22 @@ void	move_ants(t_lem_in *anthill)
 	t_room	*tmp;
 	t_path	*shortest_path;
 	int		nb_paths;
-	int		i;
+	int		moves;
 
     tmp = NULL;
-	i = 0;
 	nb_paths = count_paths(anthill);
     anthill->start->ant_here = anthill->ant_lst;
     while (anthill->finish != anthill->ants)
 	{
 		shortest_path = anthill->paths;
+		moves = 0;
 		while (shortest_path && anthill->finish != anthill->ants)
 		{
 			anthill->end->prev = shortest_path->second_last;
 			send_ants(anthill, tmp);
-			i++;
-			if (anthill->start->ant_here && nb_paths == i)
-			{
+			moves++;
+			if (nb_paths == moves)
 				other_path(anthill, tmp, shortest_path);
-				break ;
-			}
 			shortest_path = shortest_path->next;
 		}
 		ft_printf("\n");

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 12:38:06 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/30 17:02:29 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/31 11:51:11 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,12 @@ void	print_path(t_lem_in *anthill)
 {
     t_path     	*path;
 	t_connect   *current;
-	int			i;
 
     path = anthill->paths;
-	i = 0;
     while (path)
     {
         current = path->route;
-		ft_printf(BOLDCYAN "PATH %d:\n" RESET, ++i);
+		ft_printf(BOLDCYAN "PATH %d:\n" RESET, path->nb);
         while (current)
         {
             ft_printf(BOLDWHITE "%s" RESET, current->room->name);
@@ -43,6 +41,7 @@ static t_path	*new_path(void)
 
 	if (!(path = (t_path*)malloc(sizeof(t_path))))
 		return (NULL);
+	path->nb = 0;
 	path->second_last = NULL;
 	path->route = NULL;
 	path->next = NULL;
@@ -95,7 +94,7 @@ void	del_last(t_path **root)
 	second_last->next = NULL;
 }
 
-void	del_first(t_path **root)
+void	del_start(t_path **root)
 {
 	t_connect  *tmp;
 
