@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/28 10:50:09 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/31 13:23:38 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/31 13:40:42 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,29 +57,12 @@ static void	other_path(t_lem_in *anthill, t_room *tmp, t_path *path)
 	move(anthill, other_room);
 }
 
-static	int count_paths(t_lem_in *anthill)
-{
-	t_path	*current;
-	int		nb;
-
-	current = anthill->paths;
-	nb = 0;
-	while (current)
-	{
-		nb++;
-		current = current->next;
-	}
-	return (nb);
-}
-
 void	move_ants(t_lem_in *anthill)
 {
 	t_room	*tmp;
 	t_path	*current_path;
-	int		nb_paths;
 
     tmp = NULL;
-	nb_paths = count_paths(anthill);
     anthill->start->ant_here = anthill->ant_lst;
     while (anthill->finish != anthill->ants)
 	{
