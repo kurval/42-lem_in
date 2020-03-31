@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 12:29:54 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/31 11:50:39 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/31 12:30:29 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,7 @@ int			solver(t_lem_in *anthill)
         return (0);
 	}
 	reset_checked_rooms(anthill);
+	new_path->len = path_len(new_path);
 	if (new_path->nb != 1)
 		    del_start(&new_path);
 	free(array);

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/31 11:50:54 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/31 12:28:01 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ typedef struct	s_path
 	struct s_path		*next;
 	struct s_room       *second_last;
 	int					nb;
+	int					len;
 }				t_path;
 
 int						add_room(t_room **root, char *name);
@@ -135,4 +136,5 @@ void					free_paths(t_path *root);
 void					free_connections(t_connect *root);
 void					del_last(t_path **root);
 void					del_start(t_path **root);
+int						path_len(t_path *root);
 #endif
