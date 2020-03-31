@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/28 10:50:09 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/31 16:36:28 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/31 17:47:14 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ static void move(t_lem_in *anthill, t_room *tmp, t_path *path)
 	int	nbr;
 
 	nbr = path->nb;
-	if (path->nb >= 5)
+	if (!anthill->flag)
+		nbr = 1;
+	else if (path->nb >= 5)
 		nbr = path->nb % 5;
 	nbr == 0 ? MOVE0(tmp->ant_here->name, tmp->name) : 0;
 	nbr == 1 ? MOVE1(tmp->ant_here->name, tmp->name) : 0;

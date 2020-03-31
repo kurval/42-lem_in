@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 11:09:19 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/28 15:09:56 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/31 17:08:33 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 static void check_ants(t_lem_in **anthill, char *line)
 {
+    if (ft_atoi(line) == 0)
+    {
+        (*anthill)->errnbr = 8;
+        return ;
+    }
     if (ft_atoi_err(line))
     {
         (*anthill)->ants = ft_atoi(line);

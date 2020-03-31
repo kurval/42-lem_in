@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/31 16:51:40 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/03/31 17:48:50 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define MOVE2(ant, name) ft_printf(BOLDCYAN "L%ld-%s " RESET, ant, name)
 # define MOVE3(ant, name) ft_printf(BOLDMAGENTA "L%ld-%s " RESET, ant, name)
 # define MOVE4(ant, name) ft_printf(BOLDYELLOW "L%ld-%s " RESET, ant, name)
-# define MESSAGE1	"usage: ./lem-in < [source file]"
+# define MESSAGE1	"usage: ./lem-in [-p] < [source file]"
 # define MESSAGE2	"room name starts with L"
 # define MESSAGE3	"room format: (room x y)"
 # define MESSAGE4	"rooms coordinate is invalid"
@@ -55,6 +55,7 @@ typedef struct	s_lem_in
 	int					nodes;
 	int					nb_paths;
 	unsigned int		room_count;
+	int					flag;
 	struct s_ants		*ant_lst;
 	struct s_room		*room;
 	struct s_link		*link;
