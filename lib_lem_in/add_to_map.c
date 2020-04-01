@@ -6,18 +6,18 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 16:15:31 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/27 16:27:18 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/01 11:48:44 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lib.h"
 
-void	print_map(t_lem_in *root)
+void			print_map(t_lem_in *root)
 {
 	t_map *current;
 
 	current = root->map;
-	while(current)
+	while (current)
 	{
 		ft_printf("%s\n", current->line);
 		current = current->next;
@@ -37,19 +37,19 @@ static t_map	*new_node(char *data)
 	return (map);
 }
 
-int		add_to_map(t_map **root, char *rule)
+int				add_to_map(t_map **root, char *rule)
 {
 	t_map	*node;
-    t_map   *temp;
+	t_map	*temp;
 
 	if (!(node = new_node(rule)))
 		return (0);
-    if (!*root)
-    {
-	    *root = node;
-        return (1);
-    }
-    temp = *root;
+	if (!*root)
+	{
+		*root = node;
+		return (1);
+	}
+	temp = *root;
 	while (temp->next != NULL)
 		temp = temp->next;
 	temp->next = node;

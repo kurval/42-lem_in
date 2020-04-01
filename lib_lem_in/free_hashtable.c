@@ -12,9 +12,9 @@
 
 #include "../includes/lib.h"
 
-void free_connections(t_connect *root)
+void		free_connections(t_connect *root)
 {
-    t_connect *temp;
+	t_connect *temp;
 
 	temp = NULL;
 	if (!root)
@@ -27,9 +27,9 @@ void free_connections(t_connect *root)
 	}
 }
 
-static void free_hashes(t_hashtable *root)
+static void	free_hashes(t_hashtable *root)
 {
-    t_hashtable *temp;
+	t_hashtable *temp;
 
 	temp = NULL;
 	if (!root)
@@ -42,17 +42,17 @@ static void free_hashes(t_hashtable *root)
 	}
 }
 
-void    free_hashtable(t_lem_in *anthill)
+void		free_hashtable(t_lem_in *anthill)
 {
-    int key;
+	int key;
 
-    key = 0;
-    if (!anthill->hashtable)
+	key = 0;
+	if (!anthill->hashtable)
 		return ;
-    while (anthill->room)
-    {
-        key = anthill->room->key;
-        free_hashes(anthill->hashtable[key]);
-        anthill->room = anthill->room->next;
-    }
+	while (anthill->room)
+	{
+		key = anthill->room->key;
+		free_hashes(anthill->hashtable[key]);
+		anthill->room = anthill->room->next;
+	}
 }

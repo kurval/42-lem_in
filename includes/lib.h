@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/31 17:48:50 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/01 11:39:32 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@
 # define MESSAGE15	"link is connected to itself"
 # include "../libft/libft.h"
 
-typedef struct	s_lem_in
+typedef struct			s_lem_in
 {
 	long				ants;
 	long				finish;
@@ -59,66 +59,66 @@ typedef struct	s_lem_in
 	struct s_ants		*ant_lst;
 	struct s_room		*room;
 	struct s_link		*link;
-    struct s_room		*start;
+	struct s_room		*start;
 	struct s_room		*end;
 	struct s_map		*map;
 	struct s_hashtable	**hashtable;
 	struct s_path		*paths;
 	struct s_room		*reverse_path;
-}				t_lem_in;
+}						t_lem_in;
 
-typedef struct	s_room
+typedef struct			s_room
 {
 	char				*name;
 	int					checked;
-    int                 key;
+	int					key;
 	struct s_room		*next;
 	struct s_room		*prev;
 	struct s_ants		*ant_here;
-    struct s_connect	*connections;
-}				t_room;
+	struct s_connect	*connections;
+}						t_room;
 
-typedef struct	s_link
+typedef struct			s_link
 {
 	char				*from;
 	char				*to;
 	struct s_link		*next;
-}				t_link;
+}						t_link;
 
-typedef struct	s_ants
+typedef struct			s_ants
 {
 	long				name;
 	struct s_ants		*next;
-}				t_ants;
+}						t_ants;
 
-typedef struct	s_hashtable
+typedef struct			s_hashtable
 {
 	unsigned int		key;
-    struct s_room		*current;
+	struct s_room		*current;
 	struct s_connect	*connect;
 	struct s_hashtable	*next;
-}               t_hashtable;
+}						t_hashtable;
 
-typedef struct	s_map
+typedef struct			s_map
 {
 	char				*line;
 	struct s_map		*next;
-}				t_map;
+}						t_map;
 
-typedef struct	s_connect
+typedef struct			s_connect
 {
-    struct s_room       *room;
+	struct s_room		*room;
 	struct s_connect	*next;
-}				t_connect;
+}						t_connect;
 
-typedef struct	s_path
+typedef struct			s_path
 {
-    struct s_connect	*route;
+	struct s_connect	*route;
 	struct s_path		*next;
-	struct s_room       *second_last;
+	struct s_room		*second_last;
 	int					nb;
 	int					len;
-}				t_path;
+}						t_path;
 
 int						add_room(t_room **root, char *name);
 int						add_link(t_link **root, char *from, char *to);
@@ -126,14 +126,14 @@ int						add_ants(t_ants **root, long name);
 int						add_to_map(t_map **root, char *rule);
 void					print_path(t_lem_in *anthill);
 void					print_map(t_lem_in *root);
-void    				print_error(t_lem_in *anthill, int errnbr);
+void					print_error(t_lem_in *anthill, int errnbr);
 void					free_all(t_lem_in *anthill);
 void					free_tab(char **tab);
 void					count_rooms(t_lem_in *lem_in);
-void                    create_hashtable(t_lem_in *anthill);
+void					create_hashtable(t_lem_in *anthill);
 unsigned long			hash(char *str, int count);
-void                    create_connections(t_lem_in *anthill);
-void                    free_hashtable(t_lem_in *anthill);
+void					create_connections(t_lem_in *anthill);
+void					free_hashtable(t_lem_in *anthill);
 t_path					*add_path(t_path **root);
 int						add_connection(t_connect **root, t_room *to);
 void					free_paths(t_path *root);

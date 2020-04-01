@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:32:55 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/31 17:50:32 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/01 11:58:26 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,18 @@
 # include "lib.h"
 
 int     main(int arg, char **argc);
-void    init_anthill(t_lem_in *anthill);
+void	init_anthill(t_lem_in *anthill);
 int     parse_map(t_lem_in *anthill);
-void    validate_map(t_lem_in *anthill);
-void    check_start_end(t_lem_in *anthill, char *line);
-void    check_rooms(t_lem_in **anthill, char *line);
-void    check_links(t_lem_in **anthill, char *line);
+void	validate_map(t_lem_in *anthill);
+void	check_start_end(t_lem_in *anthill, char *line);
+void	check_rooms(t_lem_in **anthill, char *line);
+void	check_links(t_lem_in **anthill, char *line);
 int     is_valid_room(t_room *root, char *name);
 int     shortest_path(t_lem_in *anthill);
-void    reset_checked_rooms(t_lem_in *anthill);
-void    check_short(t_lem_in *anthill);
+void	reset_checked_rooms(t_lem_in *anthill);
+void	check_short(t_lem_in *anthill);
 int     find_path(t_lem_in *anthill, t_room **array, t_path *path);
-t_room  **connect_array(t_room **array, int rooms);
+t_room	**connect_array(t_room **array, int rooms);
 void	move_ants(t_lem_in *anthill);
-void    check_flag(char *arg, t_lem_in *anthill);
+void	check_flag(char *arg, t_lem_in *anthill);
 #endif

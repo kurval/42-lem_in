@@ -12,14 +12,14 @@
 
 #include "../includes/lem_in.h"
 
-void    validate_map(t_lem_in *anthill)
+void	validate_map(t_lem_in *anthill)
 {
-    !anthill->link && !anthill->errnbr ? anthill->errnbr = 12 : 0;
-    !anthill->start && !anthill->errnbr ? anthill->errnbr = 13 : 0;
-    !anthill->end && !anthill->errnbr ? anthill->errnbr = 14 : 0;
-    if (anthill->errnbr)
-        print_error(anthill, anthill->errnbr);
-    count_rooms(anthill);
-    create_hashtable(anthill);
-    create_connections(anthill);
+	!anthill->link && !anthill->errnbr ? anthill->errnbr = 12 : 0;
+	!anthill->start && !anthill->errnbr ? anthill->errnbr = 13 : 0;
+	!anthill->end && !anthill->errnbr ? anthill->errnbr = 14 : 0;
+	if (anthill->errnbr)
+		print_error(anthill, anthill->errnbr);
+	count_rooms(anthill);
+	create_hashtable(anthill);
+	create_connections(anthill);
 }

@@ -28,25 +28,25 @@ void static print_header(t_path *path)
 
 void	print_path(t_lem_in *anthill)
 {
-    t_path     	*path;
+	t_path     	*path;
 	t_connect   *current;
 
-    path = anthill->paths;
-    while (path)
-    {
-        current = path->route;
+	path = anthill->paths;
+	while (path)
+	{
+		current = path->route;
 		print_header(path);
 		path->nb != 1 ? ft_printf(BOLDWHITE "%s" RESET, anthill->start->name) : 0;
 		path->nb != 1 ? ft_printf(GREEN " => " RESET, anthill->start->name) : 0;
-        while (current)
-        {
-            ft_printf(BOLDWHITE "%s" RESET, current->room->name);
+		while (current)
+		{
+			ft_printf(BOLDWHITE "%s" RESET, current->room->name);
 			if (current->room != anthill->end)
 				ft_printf(GREEN " => " RESET);
-            current = current->next;
-        }
+			current = current->next;
+		}
 		ft_printf("\n");
-        path = path->next;
-    }
+		path = path->next;
+	}
 	ft_printf("\n");
 }

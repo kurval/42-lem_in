@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 12:38:06 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/31 16:56:15 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/01 11:47:42 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,26 +26,26 @@ static t_path	*new_path(void)
 	return (path);
 }
 
-t_path	*add_path(t_path **root)
+t_path			*add_path(t_path **root)
 {
 	t_path	*path;
-	t_path  *temp;
+	t_path	*temp;
 
 	if (!(path = new_path()))
 		return (NULL);
 	if (!*root)
-    {
-	    *root = path;
-        return (path);
-    }
-    temp = *root;
+	{
+		*root = path;
+		return (path);
+	}
+	temp = *root;
 	while (temp->next != NULL)
 		temp = temp->next;
 	temp->next = path;
 	return (path);
 }
 
-static void	del_node(t_path **node)
+static void		del_node(t_path **node)
 {
 	if (node != NULL && *node != NULL)
 	{
@@ -54,12 +54,12 @@ static void	del_node(t_path **node)
 	}
 }
 
-void	del_last(t_path **root)
+void			del_last(t_path **root)
 {
-	t_path  *second_last;
+	t_path	*second_last;
 
 	if (!*root)
-		return;
+		return ;
 	if (!(*root)->next)
 	{
 		del_node(root);
@@ -72,12 +72,12 @@ void	del_last(t_path **root)
 	second_last->next = NULL;
 }
 
-void	del_start(t_path **root)
+void			del_start(t_path **root)
 {
-	t_connect  *tmp;
+	t_connect	*tmp;
 
 	if (!(*root)->route)
-		return;
+		return ;
 	tmp = (*root)->route;
 	(*root)->route = (*root)->route->next;
 	(*root)->route->room->prev = NULL;

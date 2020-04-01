@@ -6,13 +6,13 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 18:27:03 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/31 16:52:08 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/01 11:48:55 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lib.h"
 
-static t_link   *new_link(char *from, char *to)
+static t_link	*new_link(char *from, char *to)
 {
 	t_link *link;
 
@@ -20,13 +20,13 @@ static t_link   *new_link(char *from, char *to)
 		return (NULL);
 	if (!(link->from = ft_strdup(from)))
 		return (NULL);
-    if (!(link->to = ft_strdup(to)))
+	if (!(link->to = ft_strdup(to)))
 		return (NULL);
 	link->next = NULL;
 	return (link);
 }
 
-int		add_link(t_link **root, char *from, char *to)
+int				add_link(t_link **root, char *from, char *to)
 {
 	t_link	*node;
 

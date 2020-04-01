@@ -6,13 +6,13 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/13 20:16:51 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/31 16:51:52 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/01 11:53:33 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lib.h"
 
-static t_ants   *new_node(long data)
+static t_ants	*new_node(long data)
 {
 	t_ants *ants;
 
@@ -24,16 +24,17 @@ static t_ants   *new_node(long data)
 	return (ants);
 }
 
-int		add_ants(t_ants **root, long name)
+int				add_ants(t_ants **root, long name)
 {
 	t_ants	*node;
-    while(name > 0)
-    {
-        if (!(node = new_node(name)))
-            return (0);
-        node->next = *root;
-        *root = node;
-        name--;
-    }
+
+	while (name > 0)
+	{
+		if (!(node = new_node(name)))
+			return (0);
+		node->next = *root;
+		*root = node;
+		name--;
+	}
 	return (1);
 }

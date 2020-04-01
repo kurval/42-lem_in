@@ -1,60 +1,62 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_hashtable.c                                   :+:      :+:    :+:   */
+/*   add_hash_table.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/18 13:32:33 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/18 15:41:48 by vkurkela         ###   ########.fr       */
+/*   Created: 2020/04/01 11:46:15 by vkurkela          #+#    #+#             */
+/*   Updated: 2020/04/01 11:46:44 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lib.h"
 
-/* 
+/*
 ** djb2 hash function
 ** ((hash << 5) + hash) + c means:
 ** hash * 33 + c
 */
 
-unsigned long       hash(char *str, int count)
+unsigned long		hash(char *str, int count)
 {
-    unsigned long hash = 5381;
-    int c;
+	unsigned long	hash;
+	int				c;
 
-    while ((c = *str++))
-        hash = ((hash << 5) + hash) + c;
-    return (hash % (count * 100));
+	hash = 5381;
+	while ((c = *str++))
+		hash = ((hash << 5) + hash) + c;
+	return (hash % (count * 100));
 }
 
-static t_hashtable  *create_bucket(t_room *room, unsigned long key)
+static t_hashtable	*create_bucket(t_room *room, unsigned long key)
 {
-	t_hashtable *bucket;
+	t_hashtable	*bucket;
 
 	if (!(bucket = (t_hashtable*)malloc(sizeof(t_hashtable))))
 		return (NULL);
 	room->key = key;
-    bucket->current = room;
-    bucket->key = key;
-    bucket->connect = NULL;
+	bucket->current = room;
+	bucket->key = key;
+	bucket->connect = NULL;
 	bucket->next = NULL;
 	return (bucket);
 }
 
-static void     chain_collission(t_lem_in **anthill, t_room *room, unsigned long key)
+static void			chain_collission(t_lem_in **anthill, t_room *room,\
+unsigned long key)
 {
 	t_hashtable *new;
 
-    if (!(new = create_bucket(room, key)))
+	if (!(new = create_bucket(room, key)))
 		print_error(*anthill, 7);
-    new->next = (*anthill)->hashtable[key];
+	new->next = (*anthill)->hashtable[key];
 	(*anthill)->hashtable[key] = new;
 }
 
-void        insert_data(t_lem_in *anthill)
+void				insert_data(t_lem_in *anthill)
 {
-    t_room			*tmp;
+	t_room			*tmp;
 	unsigned long	key;
 
 	tmp = anthill->room;
@@ -70,15 +72,15 @@ void        insert_data(t_lem_in *anthill)
 	}
 }
 
-void            create_hashtable(t_lem_in *anthill)
+void				create_hashtable(t_lem_in *anthill)
 {
 	unsigned int	i;
 
 	i = 0;
 	if (!(anthill->hashtable = (t_hashtable**)malloc(sizeof(t_hashtable)\
-	* anthill->room_count * SIZE)))
-    	print_error(anthill, 7);
+					* anthill->room_count * SIZE)))
+		print_error(anthill, 7);
 	while (i < anthill->room_count * SIZE)
 		anthill->hashtable[i++] = NULL;
-    insert_data(anthill);
+	insert_data(anthill);
 }
