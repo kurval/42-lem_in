@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 10:46:37 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/01 11:42:46 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/01 12:32:16 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ void	check_short(t_lem_in *anthill)
 		if (current->room == anthill->end)
 		{
 			new_path = add_path(&anthill->paths);
-			if (!new_path || !(add_connection(&new_path->route, anthill->end)) ||\
-					!(add_connection(&new_path->route, anthill->start)))
+			if (!new_path || !(add_connect(&new_path->route, anthill->end)) ||\
+					!(add_connect(&new_path->route, anthill->start)))
 				print_error(anthill, 7);
 			anthill->quick = 1;
 			new_path->second_last = anthill->start;

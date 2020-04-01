@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 12:29:54 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/01 12:00:14 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/01 12:31:50 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@
 
 static int		link_to_end(t_lem_in *anthill, t_room **tmp, t_path *path)
 {
-	if (!(add_connection(&path->route, anthill->end)))
+	if (!(add_connect(&path->route, anthill->end)))
 		print_error(anthill, 7);
 	anthill->reverse_path = *tmp;
 	anthill->end->prev = *tmp;
 	path->second_last = *tmp;
 	(*tmp)->checked = PATH;
-	if (!(add_connection(&path->route, *tmp)))
+	if (!(add_connect(&path->route, *tmp)))
 		print_error(anthill, 7);
 	return (1);
 }
@@ -48,7 +48,7 @@ static void		link_path(t_lem_in *anthill, t_room **array, t_path *path)
 			{
 				anthill->reverse_path->prev = *tmp;
 				anthill->reverse_path = *tmp;
-				if (!(add_connection(&path->route, *tmp)))
+				if (!(add_connect(&path->route, *tmp)))
 					print_error(anthill, 7);
 				(*tmp)->checked = PATH;
 			}
@@ -108,13 +108,6 @@ int				find_path(t_lem_in *anthill, t_room **array, t_path *path)
 	link_path(anthill, array, path);
 	return (1);
 }
-
-/*
- ** Creates an array of rooms which is used to check
- ** each level of rooms untill it finds end or
- ** no paths are found. Check_short check if the star
- ** and end is linked with only single link.
-*/
 
 int				shortest_path(t_lem_in *anthill)
 {

@@ -12,7 +12,7 @@
 
 #include "../includes/lem_in.h"
 
-static void check_ants(t_lem_in **anthill, char *line)
+static void	check_ants(t_lem_in **anthill, char *line)
 {
 	if (ft_atoi(line) == 0)
 	{
@@ -33,9 +33,9 @@ static void check_ants(t_lem_in **anthill, char *line)
 		(*anthill)->errnbr = 8;
 }
 
-int         parse_map(t_lem_in *anthill)
+int			parse_map(t_lem_in *anthill)
 {
-	int     ret;
+	int		ret;
 	char	*line;
 
 	while ((ret = get_next_line(0, &line)) > 0 && anthill->errnbr == 0)

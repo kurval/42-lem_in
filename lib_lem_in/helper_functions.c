@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 15:57:24 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/01 11:48:20 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/01 13:33:14 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,21 +55,22 @@ void	free_paths(t_path *root)
 
 void	print_error(t_lem_in *anthill, int errnbr)
 {
-	errnbr == 1 ? ERROR(anthill->line, MESSAGE1) : 0;
-	errnbr == 2 ? ERROR(anthill->line, MESSAGE2) : 0;
-	errnbr == 3 ? ERROR(anthill->line, MESSAGE3) : 0;
-	errnbr == 4 ? ERROR(anthill->line, MESSAGE4) : 0;
-	errnbr == 5 ? ERROR(anthill->line, MESSAGE5) : 0;
-	errnbr == 6 ? ERROR(anthill->line, MESSAGE6) : 0;
-	errnbr == 7 ? ERROR(anthill->line, MESSAGE7) : 0;
-	errnbr == 8 ? ERROR(anthill->line, MESSAGE8) : 0;
-	errnbr == 9 ? ERROR(anthill->line, MESSAGE9) : 0;
-	errnbr == 10 ? ERROR(anthill->line, MESSAGE10) : 0;
-	errnbr == 11 ? ERROR(anthill->line, MESSAGE11) : 0;
-	errnbr == 12 ? ERROR(anthill->line, MESSAGE12) : 0;
-	errnbr == 13 ? ERROR(anthill->line, MESSAGE13) : 0;
-	errnbr == 14 ? ERROR(anthill->line, MESSAGE14) : 0;
-	errnbr == 15 ? ERROR(anthill->line, MESSAGE15) : 0;
+	ft_printf(BOLDRED "error " RESET);
+	errnbr == 1 ? ft_printf(ERR, anthill->line, MSG1) : 0;
+	errnbr == 2 ? ft_printf(ERR, anthill->line, MSG2) : 0;
+	errnbr == 3 ? ft_printf(ERR, anthill->line, MSG3) : 0;
+	errnbr == 4 ? ft_printf(ERR, anthill->line, MSG4) : 0;
+	errnbr == 5 ? ft_printf(ERR, anthill->line, MSG5) : 0;
+	errnbr == 6 ? ft_printf(ERR, anthill->line, MSG6) : 0;
+	errnbr == 7 ? ft_printf(ERR, anthill->line, MSG7) : 0;
+	errnbr == 8 ? ft_printf(ERR, anthill->line, MSG8) : 0;
+	errnbr == 9 ? ft_printf(ERR, anthill->line, MSG9) : 0;
+	errnbr == 10 ? ft_printf(ERR, anthill->line, MSG10) : 0;
+	errnbr == 11 ? ft_printf(ERR, anthill->line, MSG11) : 0;
+	errnbr == 12 ? ft_printf(ERR, anthill->line, MSG12) : 0;
+	errnbr == 13 ? ft_printf(ERR, anthill->line, MSG13) : 0;
+	errnbr == 14 ? ft_printf(ERR, anthill->line, MSG14) : 0;
+	errnbr == 15 ? ft_printf(ERR, anthill->line, MSG15) : 0;
 	free_all(anthill);
 	exit(0);
 }

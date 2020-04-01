@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/01 11:39:32 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/01 13:32:36 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,27 +21,22 @@
 # define BOLDMAGENTA	"\033[1m\033[35m"
 # define GREEN			"\033[32m"
 # define RESET			"\033[0m"
-# define ERROR(line, message) ft_printf(BOLDRED "ERROR Line %d: %s\n" RESET, line, message)
-# define MOVE0(ant, name) ft_printf(BOLDBLUE "L%ld-%s " RESET, ant, name)
-# define MOVE1(ant, name) ft_printf(BOLDWHITE "L%ld-%s " RESET, ant, name)
-# define MOVE2(ant, name) ft_printf(BOLDCYAN "L%ld-%s " RESET, ant, name)
-# define MOVE3(ant, name) ft_printf(BOLDMAGENTA "L%ld-%s " RESET, ant, name)
-# define MOVE4(ant, name) ft_printf(BOLDYELLOW "L%ld-%s " RESET, ant, name)
-# define MESSAGE1	"usage: ./lem-in [-p] < [source file]"
-# define MESSAGE2	"room name starts with L"
-# define MESSAGE3	"room format: (room x y)"
-# define MESSAGE4	"rooms coordinate is invalid"
-# define MESSAGE5	"link format: (room-room)"
-# define MESSAGE6	"room name doesn't exist"
-# define MESSAGE7	"malloc error"
-# define MESSAGE8	"ants must be a positive number"
-# define MESSAGE9	"no paths"
-# define MESSAGE10	"room allready exist"
-# define MESSAGE11	"link allready exist"
-# define MESSAGE12	"no links or empty map"
-# define MESSAGE13	"start doesn't exist"
-# define MESSAGE14	"end doesn't exist"
-# define MESSAGE15	"link is connected to itself"
+# define ERR	"(line %d): %s\n"
+# define MSG1	"usage: ./lem-in [-p] < [source file]"
+# define MSG2	"room name starts with L"
+# define MSG3	"room format: (room x y)"
+# define MSG4	"rooms coordinate is invalid"
+# define MSG5	"link format: (room-room)"
+# define MSG6	"room name doesn't exist"
+# define MSG7	"malloc error"
+# define MSG8	"ants must be a positive number"
+# define MSG9	"no paths"
+# define MSG10	"room allready exist"
+# define MSG11	"link allready exist"
+# define MSG12	"no links or empty map"
+# define MSG13	"start doesn't exist"
+# define MSG14	"end doesn't exist"
+# define MSG15	"link is connected to itself"
 # include "../libft/libft.h"
 
 typedef struct			s_lem_in
@@ -135,10 +130,11 @@ unsigned long			hash(char *str, int count);
 void					create_connections(t_lem_in *anthill);
 void					free_hashtable(t_lem_in *anthill);
 t_path					*add_path(t_path **root);
-int						add_connection(t_connect **root, t_room *to);
+int						add_connect(t_connect **root, t_room *to);
 void					free_paths(t_path *root);
 void					free_connections(t_connect *root);
 void					del_last(t_path **root);
 void					del_start(t_path **root);
 int						path_len(t_path *root);
+void					print_header(t_path *path);
 #endif

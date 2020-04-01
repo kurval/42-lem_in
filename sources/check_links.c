@@ -59,7 +59,7 @@ static int	error_check(t_lem_in **anthill, char **tab, int *i)
 void		check_links(t_lem_in **anthill, char *line)
 {
 	char	**tab;
-	int     i;
+	int		i;
 
 	i = 0;
 	if (!(tab = ft_strsplit(line, '-')))

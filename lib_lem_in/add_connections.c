@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/19 15:41:13 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/01 11:53:19 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/01 12:31:12 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static t_connect	*new_connect(t_room *to)
 	return (connect);
 }
 
-int					add_connection(t_connect **root, t_room *to)
+int					add_connect(t_connect **root, t_room *to)
 {
 	t_connect	*node;
 
@@ -70,8 +70,8 @@ void				create_connections(t_lem_in *anthill)
 		key_to = hash(tmp->to, anthill->room_count);
 		from = check_room(anthill->hashtable[key_from], tmp->from);
 		to = check_room(anthill->hashtable[key_to], tmp->to);
-		if (!(add_connection(&from->connect, to->current)) ||\
-				!(add_connection(&to->connect, from->current)))
+		if (!(add_connect(&from->connect, to->current)) ||\
+				!(add_connect(&to->connect, from->current)))
 			print_error(anthill, 7);
 		from->current->connections = from->connect;
 		to->current->connections = to->connect;

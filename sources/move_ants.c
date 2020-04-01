@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/28 10:50:09 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/01 11:45:18 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/01 13:06:11 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,16 @@ static void	move(t_lem_in *anthill, t_room *tmp, t_path *path)
 		nbr = 1;
 	else if (path->nb >= 5)
 		nbr = path->nb % 5;
-	nbr == 0 ? MOVE0(tmp->ant_here->name, tmp->name) : 0;
-	nbr == 1 ? MOVE1(tmp->ant_here->name, tmp->name) : 0;
-	nbr == 2 ? MOVE2(tmp->ant_here->name, tmp->name) : 0;
-	nbr == 3 ? MOVE3(tmp->ant_here->name, tmp->name) : 0;
-	nbr == 4 ? MOVE4(tmp->ant_here->name, tmp->name) : 0;
+	nbr == 0 ? ft_printf(BOLDBLUE "L%ld-%s " RESET,\
+	tmp->ant_here->name, tmp->name) : 0;
+	nbr == 1 ? ft_printf(BOLDWHITE "L%ld-%s " RESET,\
+	tmp->ant_here->name, tmp->name) : 0;
+	nbr == 2 ? ft_printf(BOLDCYAN "L%ld-%s " RESET,\
+	tmp->ant_here->name, tmp->name) : 0;
+	nbr == 3 ? ft_printf(BOLDMAGENTA "L%ld-%s " RESET,\
+	tmp->ant_here->name, tmp->name) : 0;
+	nbr == 4 ? ft_printf(BOLDYELLOW "L%ld-%s " RESET,\
+	tmp->ant_here->name, tmp->name) : 0;
 	if (tmp == anthill->end)
 		anthill->finish++;
 }
