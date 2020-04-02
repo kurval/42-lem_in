@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 12:29:54 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/01 12:31:50 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/02 13:49:21 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static int		is_link_valid(t_lem_in *anthill, t_room **array, t_path *path)
 
 	ret = 0;
 	new = NULL;
-	if (!(new = connect_array(array, anthill->nodes)))
+	if (!(new = connect_array(array, anthill->nodes, anthill)))
 	{
 		free(new);
 		print_error(anthill, 7);
@@ -121,7 +121,6 @@ int				shortest_path(t_lem_in *anthill)
 	new_path->nb = anthill->nb_paths++;
 	array[0] = anthill->start;
 	array[1] = NULL;
-	check_short(anthill);
 	if (!(find_path(anthill, array, new_path)))
 	{
 		free(array);

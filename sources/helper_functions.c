@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 10:46:37 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/01 12:32:16 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/02 13:53:00 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	check_short(t_lem_in *anthill)
 				print_error(anthill, 7);
 			anthill->quick = 1;
 			new_path->second_last = anthill->start;
+			new_path->nb = anthill->nb_paths++;
 			return ;
 		}
 		current = current->next;
@@ -65,7 +66,7 @@ void	check_short(t_lem_in *anthill)
  ** Creates an array of next level connections.
 */
 
-t_room	**connect_array(t_room **array, int rooms)
+t_room	**connect_array(t_room **array, int rooms, t_lem_in *anthill)
 {
 	t_room		**tmp;
 	t_room		**new;
@@ -81,7 +82,8 @@ t_room	**connect_array(t_room **array, int rooms)
 		route = (*tmp)->connections;
 		while (route)
 		{
-			if (!route->room->checked)
+			if (!route->room->checked &&\
+			!(*tmp == anthill->start && route->room == anthill->end))
 				new[i++] = route->room;
 			route = route->next;
 		}

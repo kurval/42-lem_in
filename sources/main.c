@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:34:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/01 12:22:19 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/02 13:52:43 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ int	main(int arg, char **argc)
 		print_error(&anthill, 1);
 	parse_map(&anthill);
 	validate_map(&anthill);
-	print_map(&anthill);
 	check_short(&anthill);
 	if (!shortest_path(&anthill) && anthill.quick != 1)
 		print_error(&anthill, 9);
 	while (ret)
 		ret = shortest_path(&anthill);
+    print_map(&anthill);
 	anthill.flag ? print_path(&anthill) : 0;
 	move_ants(&anthill);
 	free_all(&anthill);

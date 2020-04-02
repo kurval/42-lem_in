@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:32:55 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/01 12:07:45 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/02 13:52:03 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		shortest_path(t_lem_in *anthill);
 void	reset_checked_rooms(t_lem_in *anthill);
 void	check_short(t_lem_in *anthill);
 int		find_path(t_lem_in *anthill, t_room **array, t_path *path);
-t_room	**connect_array(t_room **array, int rooms);
+t_room	**connect_array(t_room **array, int rooms, t_lem_in *anthill);
 void	move_ants(t_lem_in *anthill);
 void	check_flag(char *arg, t_lem_in *anthill);
 #endif

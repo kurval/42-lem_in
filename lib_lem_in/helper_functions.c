@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 15:57:24 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/02 12:57:17 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/02 13:03:57 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,15 @@ void	free_paths(t_path *root)
 void	print_error(t_lem_in *anthill, int errnbr)
 {
 	ft_printf(BOLDRED "error " RESET);
-	errnbr == 1 ? ft_printf(ERR, anthill->line, MSG1) : 0;
+	errnbr == 1 ? ft_printf("%s\n", MSG1) : 0;
 	errnbr == 2 ? ft_printf(ERR, anthill->line, MSG2) : 0;
 	errnbr == 3 ? ft_printf(ERR, anthill->line, MSG3) : 0;
 	errnbr == 4 ? ft_printf(ERR, anthill->line, MSG4) : 0;
 	errnbr == 5 ? ft_printf(ERR, anthill->line, MSG5) : 0;
 	errnbr == 6 ? ft_printf(ERR, anthill->line, MSG6) : 0;
-	errnbr == 7 ? ft_printf(ERR, anthill->line, MSG7) : 0;
+	errnbr == 7 ? ft_printf("%s\n", MSG7) : 0;
 	errnbr == 8 ? ft_printf(ERR, anthill->line, MSG8) : 0;
-	errnbr == 9 ? ft_printf(ERR, anthill->line, MSG9) : 0;
+	errnbr == 9 ? ft_printf("%s\n", MSG9) : 0;
 	errnbr == 10 ? ft_printf(ERR, anthill->line, MSG10) : 0;
 	errnbr == 11 ? ft_printf(ERR, anthill->line, MSG11) : 0;
 	errnbr == 12 ? ft_printf("%s\n", MSG12) : 0;
