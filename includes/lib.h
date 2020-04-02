@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/02 12:54:46 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/02 18:33:29 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define MSG1	"usage: ./lem-in [-p] < [source file]"
 # define MSG2	"room name starts with L"
 # define MSG3	"room format: (room x y)"
-# define MSG4	"rooms coordinate is invalid"
+# define MSG4	"invalid coordinate (must be a positive integer)"
 # define MSG5	"link format: (room-room)"
 # define MSG6	"room name doesn't exist"
 # define MSG7	"malloc error"
@@ -37,6 +37,8 @@
 # define MSG13	"start doesn't exist"
 # define MSG14	"end doesn't exist"
 # define MSG15	"link is connected to itself"
+# define MSG16	"error while reading input"
+# define MSG17	"room allready exist at the same location"
 # include "../libft/libft.h"
 
 typedef struct			s_lem_in
@@ -67,6 +69,8 @@ typedef struct			s_room
 	char				*name;
 	int					checked;
 	int					key;
+	int					x;
+	int					y;
 	struct s_room		*next;
 	struct s_room		*prev;
 	struct s_ants		*ant_here;
@@ -115,7 +119,7 @@ typedef struct			s_path
 	int					len;
 }						t_path;
 
-int						add_room(t_room **root, char *name);
+int						add_room(t_room **root, char *name, int x_c, int y_c);
 int						add_link(t_link **root, char *from, char *to);
 int						add_ants(t_ants **root, long name);
 int						add_to_map(t_map **root, char *rule);

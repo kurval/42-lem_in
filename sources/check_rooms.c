@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 16:15:31 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/01 11:42:20 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/02 18:19:53 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,18 @@ int			is_valid_room(t_room *root, char *name)
 	return (0);
 }
 
-void		check_start_end(t_lem_in *anthill, char *line)
+static int	duplicate_x_y(t_lem_in *anthill, int x, int y)
 {
-	if (!ft_strncmp_end(line, "##start", 7) && !anthill->start)
-		anthill->section = START;
-	else if (!ft_strncmp_end(line, "##end", 5) && !anthill->end)
-		anthill->section = END;
+	t_room *rooms;
+
+	rooms = anthill->room;
+	while (rooms)
+	{
+		if (rooms->x == x && rooms->y == y)
+			return (1);
+		rooms = rooms->next;
+	}
+	return (0);
 }
 
 static int	error_check(t_lem_in **anthill, char **tab, char *line, int *i)
@@ -44,6 +50,8 @@ static int	error_check(t_lem_in **anthill, char **tab, char *line, int *i)
 		(is_valid_room((*anthill)->room, tab[0])) ? (*anthill)->errnbr = 10 : 0;
 		if (!ft_atoi_err(tab[1]) || !ft_atoi_err(tab[2]))
 			(*anthill)->errnbr = 4;
+		else if (duplicate_x_y(*anthill, ft_atoi(tab[1]), ft_atoi(tab[2])))
+			(*anthill)->errnbr = 17;
 	}
 	if ((*anthill)->errnbr)
 		return (0);
@@ -53,7 +61,8 @@ static int	error_check(t_lem_in **anthill, char **tab, char *line, int *i)
 
 static void	push_room(t_lem_in **anthill, char **tab)
 {
-	if (!(add_room(&(*anthill)->room, tab[0])))
+	if (!(add_room(&(*anthill)->room, tab[0],\
+	ft_atoi(tab[1]), ft_atoi(tab[2]))))
 	{
 		(*anthill)->errnbr = 7;
 		return ;

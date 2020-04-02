@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 10:46:37 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/02 13:53:00 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/02 18:24:31 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,10 @@ void	reset_checked_rooms(t_lem_in *anthill)
 	}
 }
 
-void	check_flag(char *arg, t_lem_in *anthill)
+void	check_start_end(t_lem_in *anthill, char *line)
 {
-	if (ft_strequ(arg, "-p"))
-		anthill->flag = 1;
+	if (!ft_strncmp_end(line, "##start", 7) && !anthill->start)
+		anthill->section = START;
+	else if (!ft_strncmp_end(line, "##end", 5) && !anthill->end)
+		anthill->section = END;
 }
