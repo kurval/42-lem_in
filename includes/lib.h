@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/02 18:33:29 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/02 20:50:09 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # define MSG5	"link format: (room-room)"
 # define MSG6	"room name doesn't exist"
 # define MSG7	"malloc error"
-# define MSG8	"ants must be a positive number"
+# define MSG8	"invalid ants"
 # define MSG9	"no paths"
 # define MSG10	"room allready exist"
 # define MSG11	"link allready exist"

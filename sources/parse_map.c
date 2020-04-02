@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 11:09:19 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/02 18:03:00 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/02 20:43:42 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 static void	check_ants(t_lem_in **anthill, char *line)
 {
-	if (ft_atoi(line) == 0)
+	if (!ft_atoi_err(line) || ft_atoi(line) == 0)
 	{
 		(*anthill)->errnbr = 8;
 		return ;
 	}
-	if (ft_atoi_err(line))
+	else
 	{
 		(*anthill)->ants = ft_atoi(line);
 		if (!add_ants(&(*anthill)->ant_lst, (*anthill)->ants))
@@ -29,8 +29,6 @@ static void	check_ants(t_lem_in **anthill, char *line)
 		}
 		(*anthill)->section = ROOMS;
 	}
-	else
-		(*anthill)->errnbr = 8;
 }
 
 int			parse_map(t_lem_in *anthill)
