@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 16:15:31 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/02 18:19:53 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/03 11:45:50 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,9 @@ void		check_rooms(t_lem_in **anthill, char *line)
 		(*anthill)->errnbr = 7;
 		return ;
 	}
-	if (!error_check(anthill, tab, line, &i))
+	else if (!error_check(anthill, tab, line, &i))
 		return ;
-	if (i == 3)
+	else if (i == 3)
 		push_room(anthill, tab);
 	else if (i == 1)
 	{

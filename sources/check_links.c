@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 18:20:36 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/01 12:01:11 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/03 11:46:01 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,9 @@ void		check_links(t_lem_in **anthill, char *line)
 		(*anthill)->errnbr = 7;
 		return ;
 	}
-	if (!error_check(anthill, tab, &i))
+	else if (!error_check(anthill, tab, &i))
 		return ;
-	if (!(add_link(&(*anthill)->link, tab[0], tab[1])))
+	else if (!(add_link(&(*anthill)->link, tab[0], tab[1])))
 		(*anthill)->errnbr = 7;
 	free_tab(tab);
 }

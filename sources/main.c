@@ -6,19 +6,19 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:34:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/02 18:35:40 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/03 11:38:01 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-void	check_flag(char *arg, t_lem_in *anthill)
+static void	check_flag(char *arg, t_lem_in *anthill)
 {
 	if (ft_strequ(arg, "-p"))
 		anthill->flag = 1;
 }
 
-int		main(int arg, char **argc)
+int			main(int arg, char **argc)
 {
 	t_lem_in	anthill;
 	int			ret;
