@@ -6,7 +6,7 @@
 #    By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/05 11:23:46 by vkurkela          #+#    #+#              #
-#    Updated: 2020/03/31 16:10:22 by vkurkela         ###   ########.fr        #
+#    Updated: 2020/04/03 12:20:12 by vkurkela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,15 +18,13 @@ SRC = ./sources/main.c ./sources/parse_map.c  \
 	./sources/helper_functions.c ./sources/move_ants.c
 	
 OBJ = $(SRC:.c=.o)
-
 HEADERS = lem_in.h
-
 LIBFT = libft/libft.a
 LIB = lib_lem_in/lib.a
-
 CC = gcc
-
 FLAGS = -Wall -Wextra -Werror
+GREEN = \033[1;32m
+EOC = \033[1;0m
 
 all: $(NAME)
 
@@ -39,14 +37,12 @@ $(LIBFT):
 $(LIB):
 	@${MAKE} -C lib_lem_in
 
-$(NAME): $(LIBFT) $(LIB) $(OBJ)
+$(NAME): $(OBJ) $(LIBFT) $(LIB)
 	$(CC) $(FLAGS) -o $(NAME) $(OBJ) $(LIBFT) $(LIB)
-	mkdir -p obj
-	mv $(OBJ) ./obj
+	@echo "$(GREEN)Lem-in build completed$(EOC)"
 
 clean:
 	/bin/rm -f $(OBJ)
-	/bin/rm -Rf obj
 	@${MAKE} -C libft clean
 	@${MAKE} -C lib_lem_in clean
 
