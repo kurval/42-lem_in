@@ -6,11 +6,26 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 10:46:37 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/02 18:24:31 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/03 17:38:45 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
+
+int		count_connect(t_room *room)
+{
+	t_connect	*current;
+	int			count;
+
+	current = room->connections;
+	count = 0;
+	while(current)
+	{
+		count++;
+		current = current->next;
+	}
+	return (count);
+}
 
 void	init_anthill(t_lem_in *anthill)
 {

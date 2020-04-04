@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/02 20:50:09 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/04 12:05:42 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ typedef struct			s_room
 {
 	char				*name;
 	int					checked;
-	int					key;
+	unsigned long		key;
 	int					x;
 	int					y;
 	struct s_room		*next;
@@ -92,7 +92,7 @@ typedef struct			s_ants
 
 typedef struct			s_hashtable
 {
-	unsigned int		key;
+	unsigned long		key;
 	struct s_room		*current;
 	struct s_connect	*connect;
 	struct s_hashtable	*next;

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/19 20:06:25 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/27 14:52:24 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/04 13:53:57 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void		free_hashtable(t_lem_in *anthill)
 	{
 		key = anthill->room->key;
 		free_hashes(anthill->hashtable[key]);
+		anthill->hashtable[key] = NULL;
 		anthill->room = anthill->room->next;
 	}
 }
