@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/04 12:05:42 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/04 15:55:46 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct			s_lem_in
 	int					nb_paths;
 	unsigned int		room_count;
 	int					flag;
+	int					moves;
 	struct s_ants		*ant_lst;
 	struct s_room		*room;
 	struct s_link		*link;

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/28 10:50:09 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/01 13:06:11 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/04 15:56:35 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ void		move_ants(t_lem_in *anthill)
 			}
 			current_path = current_path->next;
 		}
+		anthill->moves++;
 		ft_printf("\n");
 	}
 }

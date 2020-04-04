@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:34:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/04 14:10:57 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/04 16:09:54 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int			main(int arg, char **argc)
 	print_map(&anthill);
 	anthill.flag ? print_path(&anthill) : 0;
 	move_ants(&anthill);
+	anthill.flag ?\
+	ft_printf("\nMoves: %d\n", anthill.moves) : 0;
 	free_all(&anthill);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:32:55 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/03 16:36:14 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/04 16:13:48 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,4 @@ void	check_short(t_lem_in *anthill);
 int		find_path(t_lem_in *anthill, t_room **array, t_path *path);
 t_room	**connect_array(t_room **array, int rooms, t_lem_in *anthill);
 void	move_ants(t_lem_in *anthill);
-int     count_connect(t_room *room);
 #endif
