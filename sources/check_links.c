@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 18:20:36 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/03 11:46:01 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/06 12:03:10 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,6 @@ static void	is_valid_link(t_lem_in *anthill, char *room1, char *room2)
 {
 	t_link *current;
 
-	if (ft_strequ(room1, room2))
-	{
-		anthill->errnbr = 15;
-		return ;
-	}
 	current = anthill->link;
 	while (current)
 	{

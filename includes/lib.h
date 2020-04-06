@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/04 15:55:46 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/06 12:05:37 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@
 # define MSG12	"no links or empty map"
 # define MSG13	"start doesn't exist"
 # define MSG14	"end doesn't exist"
-# define MSG15	"link is connected to itself"
 # define MSG16	"error while reading input"
 # define MSG17	"room allready exist at the same location"
 # include "../libft/libft.h"
