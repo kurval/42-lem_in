@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 12:29:54 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/03 17:01:42 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/07 13:14:59 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ int				shortest_path(t_lem_in *anthill)
 	array[1] = NULL;
 	if (!(find_path(anthill, array, new_path)))
 	{
+		reset_checked_rooms(anthill);
 		free(array);
 		del_last(&anthill->paths);
 		return (0);

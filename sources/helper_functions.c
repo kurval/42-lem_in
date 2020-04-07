@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 10:46:37 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/04 16:13:32 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/07 13:13:16 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	init_anthill(t_lem_in *anthill)
 	anthill->nb_paths = 1;
 	anthill->flag = 0;
 	anthill->moves = 0;
+	anthill->extra = 0;
 }
 
 void	check_short(t_lem_in *anthill)
@@ -63,6 +64,22 @@ void	check_short(t_lem_in *anthill)
 	anthill->quick = -1;
 }
 
+static void	add_next_level(t_lem_in *anthill, t_room *tmp, t_room **new, int *i)
+{
+	t_connect	*route;
+
+	route = tmp->connections;
+	while (route)
+	{
+		if (!route->room->checked &&\
+		!(tmp == anthill->start && route->room == anthill->end))
+		{
+			new[*i] = route->room;
+			*i += 1;
+		}
+		route = route->next;
+	}
+}
 /*
  ** Creates an array of next level connections.
 */
@@ -71,23 +88,15 @@ t_room	**connect_array(t_room **array, int rooms, t_lem_in *anthill)
 {
 	t_room		**tmp;
 	t_room		**new;
-	t_connect	*route;
 	int			i;
-
+	
 	i = 0;
 	if (!(new = (t_room **)malloc(sizeof(t_room*) * (rooms + 1))))
 		return (NULL);
 	tmp = array;
 	while (*tmp)
 	{
-		route = (*tmp)->connections;
-		while (route)
-		{
-			if (!route->room->checked &&\
-			!(*tmp == anthill->start && route->room == anthill->end))
-				new[i++] = route->room;
-			route = route->next;
-		}
+		add_next_level(anthill, *tmp, new, &i);
 		tmp++;
 	}
 	new[i] = NULL;
@@ -101,7 +110,7 @@ void	reset_checked_rooms(t_lem_in *anthill)
 	current = anthill->room;
 	while (current)
 	{
-		if (current->checked != 2)
+		if (current->checked != 2 && current->checked != 3)
 			current->checked = 0;
 		current = current->next;
 	}
