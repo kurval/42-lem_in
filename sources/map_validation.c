@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/13 13:43:51 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/03/28 12:13:55 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/07 15:10:47 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,5 @@ void	validate_map(t_lem_in *anthill)
 	count_rooms(anthill);
 	create_hashtable(anthill);
 	create_connections(anthill);
+	create_flow_chart(anthill);
 }

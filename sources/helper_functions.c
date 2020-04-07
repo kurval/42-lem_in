@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 10:46:37 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/07 13:13:16 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/07 15:02:42 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void	init_anthill(t_lem_in *anthill)
 	anthill->nb_paths = 1;
 	anthill->flag = 0;
 	anthill->moves = 0;
-	anthill->extra = 0;
+	anthill->flow = NULL;
+	anthill->id = 0;
 }
 
 void	check_short(t_lem_in *anthill)

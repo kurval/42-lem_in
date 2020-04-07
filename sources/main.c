@@ -6,11 +6,23 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:34:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/07 13:15:52 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/07 14:59:19 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
+
+static void	print_rooms(t_lem_in *anthill)
+{
+	t_room *current;
+
+	current = anthill->room;
+	while (current)
+	{
+		ft_printf("room %s id %d\n", current->name, current->id);
+		current = current->next;
+	}
+}
 
 static void	check_flag(char *arg, t_lem_in *anthill)
 {
@@ -41,6 +53,7 @@ int			main(int arg, char **argc)
 	move_ants(&anthill);
 	anthill.flag ?\
 	ft_printf("\nMoves: %d\n", anthill.moves) : 0;
+	print_rooms(&anthill);
 	free_all(&anthill);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/07 13:10:43 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/07 15:03:16 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ typedef struct			s_lem_in
 	unsigned int		room_count;
 	int					flag;
 	int					moves;
-	int					extra;
+	int					**flow;
+	int					id;
 	struct s_ants		*ant_lst;
 	struct s_room		*room;
 	struct s_link		*link;
@@ -72,6 +73,7 @@ typedef struct			s_room
 	unsigned long		key;
 	int					x;
 	int					y;
+	int					id;
 	struct s_room		*next;
 	struct s_room		*prev;
 	struct s_ants		*ant_here;
@@ -120,7 +122,7 @@ typedef struct			s_path
 	int					len;
 }						t_path;
 
-int						add_room(t_room **root, char *name, int x_c, int y_c);
+int						add_room(t_room **root, char *name, int x_c, int y_c, int id);
 int						add_link(t_link **root, char *from, char *to);
 int						add_ants(t_ants **root, long name);
 int						add_to_map(t_map **root, char *rule);
