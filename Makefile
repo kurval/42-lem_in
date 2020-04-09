@@ -6,7 +6,7 @@
 #    By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/05 11:23:46 by vkurkela          #+#    #+#              #
-#    Updated: 2020/04/07 18:47:38 by vkurkela         ###   ########.fr        #
+#    Updated: 2020/04/09 20:56:09 by vkurkela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRC = ./sources/main.c ./sources/parse_map.c  \
 	./sources/check_rooms.c ./sources/check_links.c \
 	./sources/map_validation.c ./sources/shortest_path.c \
 	./sources/helper_functions.c ./sources/move_ants.c \
-	./sources/flows.c
+	./sources/flows.c ./sources/check_short.c
 	
 OBJ = $(SRC:.c=.o)
 HEADERS = lem_in.h

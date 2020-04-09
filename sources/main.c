@@ -6,13 +6,13 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:34:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/09 18:23:25 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/09 21:29:15 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-void	print_rooms(t_lem_in *anthill)
+void		print_rooms(t_lem_in *anthill)
 {
 	t_room *current;
 
@@ -24,7 +24,7 @@ void	print_rooms(t_lem_in *anthill)
 	}
 }
 
-void	print_flow(t_lem_in *anthill)
+void		print_flow(t_lem_in *anthill)
 {
 	unsigned int i;
 	unsigned int j;
@@ -54,7 +54,20 @@ static void	check_flag(char *arg, t_lem_in *anthill)
 	if (ft_strequ(arg, "-p"))
 		anthill->flag = 1;
 }
+/*
+static void	print_rev_names(t_path *path)
+{
+	t_connect *current;
 
+	current = path->route;
+	while (current)
+	{
+		if (current->room->prev)
+			ft_printf("rooms %s prev: %s\n", current->room->name, current->room->prev->name);
+		current = current->next;
+	}
+}
+*/
 int			main(int arg, char **argc)
 {
 	t_lem_in	anthill;

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/09 15:37:21 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/09 20:51:58 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,8 @@ typedef struct			s_path
 	int					len;
 }						t_path;
 
-int						add_room(t_room **root, char *name, int x_c, int y_c, int id);
+int						add_room(t_lem_in **anthill, char *name,\
+int x_c, int y_c);
 int						add_link(t_link **root, char *from, char *to);
 int						add_ants(t_ants **root, long name);
 int						add_to_map(t_map **root, char *rule);

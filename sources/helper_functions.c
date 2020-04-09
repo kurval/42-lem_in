@@ -6,13 +6,13 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 10:46:37 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/09 15:40:41 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/09 20:55:30 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-void	init_anthill(t_lem_in *anthill)
+void		init_anthill(t_lem_in *anthill)
 {
 	anthill->ants = 0;
 	anthill->room_count = 0;
@@ -38,33 +38,6 @@ void	init_anthill(t_lem_in *anthill)
 	anthill->id = 0;
 }
 
-void	check_short(t_lem_in *anthill)
-{
-	t_connect	*current;
-	t_path		*new_path;
-
-	new_path = NULL;
-	if (anthill->quick)
-		return ;
-	current = anthill->start->connections;
-	while (current)
-	{
-		if (current->room == anthill->end)
-		{
-			new_path = add_path(&anthill->paths);
-			if (!new_path || !(add_connect(&new_path->route, anthill->end)) ||\
-					!(add_connect(&new_path->route, anthill->start)))
-				print_error(anthill, 7);
-			anthill->quick = 1;
-			new_path->second_last = anthill->start;
-			new_path->nb = anthill->nb_paths++;
-			return ;
-		}
-		current = current->next;
-	}
-	anthill->quick = -1;
-}
-
 static void	add_next_level(t_lem_in *anthill, t_room *tmp, t_room **new, int *i)
 {
 	t_connect	*route;
@@ -81,16 +54,17 @@ static void	add_next_level(t_lem_in *anthill, t_room *tmp, t_room **new, int *i)
 		route = route->next;
 	}
 }
+
 /*
  ** Creates an array of next level connections.
 */
 
-t_room	**connect_array(t_room **array, int rooms, t_lem_in *anthill)
+t_room		**connect_array(t_room **array, int rooms, t_lem_in *anthill)
 {
 	t_room		**tmp;
 	t_room		**new;
 	int			i;
-	
+
 	i = 0;
 	if (!(new = (t_room **)malloc(sizeof(t_room*) * (rooms + 1))))
 		return (NULL);
@@ -104,7 +78,7 @@ t_room	**connect_array(t_room **array, int rooms, t_lem_in *anthill)
 	return (new);
 }
 
-void	reset_checked_rooms(t_lem_in *anthill)
+void		reset_checked_rooms(t_lem_in *anthill)
 {
 	t_room	*current;
 
@@ -117,7 +91,7 @@ void	reset_checked_rooms(t_lem_in *anthill)
 	}
 }
 
-void	check_start_end(t_lem_in *anthill, char *line)
+void		check_start_end(t_lem_in *anthill, char *line)
 {
 	if (!ft_strncmp_end(line, "##start", 7) && !anthill->start)
 		anthill->section = START;

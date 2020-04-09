@@ -37,11 +37,11 @@ void	check_short(t_lem_in *anthill);
 int		find_path(t_lem_in *anthill, t_room **array, t_path *path);
 t_room	**connect_array(t_room **array, int rooms, t_lem_in *anthill);
 void	move_ants(t_lem_in *anthill);
-void    create_flow_chart(t_lem_in *anthill);
-void    update_flow(t_lem_in *anthill, int id1, int id2);
-int     check_neg_flow(t_lem_in *anthill, t_room *room);
-int     check_start_flow(t_lem_in *anthill);
+void	create_flow_chart(t_lem_in *anthill);
+void	update_flow(t_lem_in *anthill, int id1, int id2);
+int		check_neg_flow(t_lem_in *anthill, t_room *room);
+int		check_start_flow(t_lem_in *anthill);
 void	print_flow(t_lem_in *anthill);
 void	print_rooms(t_lem_in *anthill);
-int     is_edge_valid(t_lem_in *anthill, int id1, int id2);
+int		is_edge_valid(t_lem_in *anthill, int id1, int id2);
 #endif

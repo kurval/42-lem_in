@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 12:29:54 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/09 18:20:40 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/09 20:21:57 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 static int		link_to_end(t_lem_in *anthill, t_room **tmp, t_path *path)
 {
+	anthill->end->checked = PATH;
 	if (!(add_connect(&path->route, anthill->end)))
 		print_error(anthill, 7);
 	anthill->reverse_path = *tmp;
@@ -58,6 +59,7 @@ static void		link_path(t_lem_in *anthill, t_connect *queue, t_path *path)
 			}
 			route = route->next;
 		}
+		print_path(anthill);
 		tmp = (tmp->next) ? tmp->next : queue;
 	}
 }
