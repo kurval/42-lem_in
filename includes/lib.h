@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/07 15:03:16 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/09 15:37:21 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ typedef struct			s_lem_in
 	struct s_hashtable	**hashtable;
 	struct s_path		*paths;
 	struct s_room		*reverse_path;
+	struct s_connect	*que;
 }						t_lem_in;
 
 typedef struct			s_room

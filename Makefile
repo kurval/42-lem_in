@@ -6,7 +6,7 @@
 #    By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/05 11:23:46 by vkurkela          #+#    #+#              #
-#    Updated: 2020/04/07 17:53:37 by vkurkela         ###   ########.fr        #
+#    Updated: 2020/04/07 18:47:38 by vkurkela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,6 @@ all: $(NAME)
 	@echo "$(YEL)* |_|\___|_| |_| |_|          |_|_| |_| *$(EOC)"
 	@echo "$(YEL)*                                       *$(EOC)"
 	@echo "$(YEL)* * * * * * * * * * * * * * * * * * * * *$(EOC)"
-	@echo "$(WHT)usage: ./lem-in [-p] < [source file]$(EOC)"
 
 %.o:%.c
 	$(CC) $(FLAGS) -I$(HEADERS) -o $@ -c $<
