@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:34:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/09 21:29:15 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/10 13:15:01 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,19 +71,14 @@ static void	print_rev_names(t_path *path)
 int			main(int arg, char **argc)
 {
 	t_lem_in	anthill;
-	int			ret;
-
-	ret = 1;
+	
 	init_anthill(&anthill);
 	(arg == 2) ? check_flag(argc[1], &anthill) : 0;
 	(arg != 1 && !anthill.flag) ? print_error(&anthill, 1) : 0;
 	parse_map(&anthill);
 	validate_map(&anthill);
 	check_short(&anthill);
-	if (!shortest_path(&anthill) && anthill.quick != 1)
-		print_error(&anthill, 9);
-	while (ret)
-		ret = shortest_path(&anthill);
+	solver(&anthill);
 	print_map(&anthill);
 	anthill.flag ? print_path(&anthill) : 0;
 	print_rooms(&anthill);

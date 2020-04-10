@@ -6,11 +6,28 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/19 20:06:25 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/04 14:09:07 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/10 13:12:30 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lib.h"
+
+void		free_flow_chart(t_lem_in *anthill)
+{
+	int				**tab;
+	unsigned int	i;
+
+	tab = anthill->flow;
+	i = 0;
+	if (!tab)
+		return ;
+	while (i < anthill->room_count)
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
+}
 
 void		free_connections(t_connect *root)
 {
