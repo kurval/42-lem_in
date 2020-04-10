@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 10:46:37 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/09 20:55:30 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/10 19:13:18 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void		reset_checked_rooms(t_lem_in *anthill)
 	current = anthill->room;
 	while (current)
 	{
-		if (current->checked != 2 && current->checked != 3)
+		if (current->checked != 2)
 			current->checked = 0;
 		current = current->next;
 	}

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 12:29:54 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/10 12:35:45 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/10 19:23:32 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static void		exit_search(t_lem_in *anthill, t_room **array)
 {
 	reset_checked_rooms(anthill);
 	free(array);
-	free_connections(anthill->que);
 }
 
 int				shortest_path(t_lem_in *anthill)

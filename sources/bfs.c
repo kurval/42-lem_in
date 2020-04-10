@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 11:27:44 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/10 12:52:44 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/10 19:09:58 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int find_path(t_lem_in *anthill, t_room **array, t_path *path)
 	anthill->nodes = 0;
 	while (*tmp)
 	{
-		(*tmp)->checked = VISITED;
+		(*tmp)->checked != NEG ? (*tmp)->checked = VISITED : 0;
 		route = (*tmp)->connections;
 		while (route)
 		{

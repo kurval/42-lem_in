@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 15:57:24 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/10 13:13:37 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/10 19:21:50 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ void	print_error(t_lem_in *anthill, int errnbr)
 	errnbr == 16 ? ft_printf(ERR, anthill->line, MSG16) : 0;
 	errnbr == 17 ? ft_printf(ERR, anthill->line, MSG17) : 0;
 	free_all(anthill);
-	while (1);
 	exit(0);
 }
 
