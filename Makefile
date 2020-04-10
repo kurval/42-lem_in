@@ -6,7 +6,7 @@
 #    By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/05 11:23:46 by vkurkela          #+#    #+#              #
-#    Updated: 2020/04/10 11:32:03 by vkurkela         ###   ########.fr        #
+#    Updated: 2020/04/10 19:57:26 by vkurkela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,27 +43,36 @@ all: $(NAME)
 	@echo "$(YEL)* * * * * * * * * * * * * * * * * * * * *$(EOC)"
 
 %.o:%.c
-	$(CC) $(FLAGS) -I$(HEADERS) -o $@ -c $<
+	@${CC} $(FLAGS) -I$(HEADERS) -o $@ -c $<
 
 $(LIBFT):
+	@echo "$(WHT)Compiling libft...$(EOC)"
 	@${MAKE} -C libft
+	@echo "$(GREEN)Libft done.$(EOC)"
 
 $(LIB):
+	@echo "$(WHT)Compiling lem-lib...$(EOC)"
 	@${MAKE} -C lib_lem_in
+	@echo "$(GREEN)Lem-lib done.$(EOC)"
 
 $(NAME): $(OBJ) $(LIBFT) $(LIB)
-	$(CC) $(FLAGS) -o $(NAME) $(OBJ) $(LIBFT) $(LIB)
-	@echo "$(GREEN)Lem-in build completed$(EOC)"
+	@echo "$(WHT)Compiling Lem-in...$(EOC)"
+	@${CC} $(FLAGS) -o $(NAME) $(OBJ) $(LIBFT) $(LIB)
+	@echo "$(GREEN)Lem-in build completed.$(EOC)"
 
 clean:
-	/bin/rm -f $(OBJ)
+	@echo "$(WHT)Removing o-files...$(EOC)"
+	@/bin/rm -f $(OBJ)
 	@${MAKE} -C libft clean
 	@${MAKE} -C lib_lem_in clean
+	@echo "$(GREEN)Clean done.$(EOC)"
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	@echo "$(WHT)Removing object- and binary -files...$(EOC)"
+	@/bin/rm -f $(NAME)
 	@${MAKE} -C libft fclean
 	@${MAKE} -C lib_lem_in fclean
+	@echo "$(GREEN)Fclean done.$(EOC)"
 
 re: fclean all
 

@@ -6,7 +6,7 @@
 #    By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/18 20:35:59 by vkurkela          #+#    #+#              #
-#    Updated: 2020/04/10 13:17:40 by vkurkela         ###   ########.fr        #
+#    Updated: 2020/04/10 19:44:29 by vkurkela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,14 +28,14 @@ CC = gcc
 all: $(NAME)
 
 $(NAME):
-	$(CC) $(FLAGS) -c $(SRC)
-	ar rc $(NAME) $(OBJECTS)
+	@$(CC) $(FLAGS) -c $(SRC)
+	@ar rc $(NAME) $(OBJECTS)
 
 clean:
-	/bin/rm -f $(OBJECTS)
+	@/bin/rm -f $(OBJECTS)
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	@/bin/rm -f $(NAME)
 
 re: fclean all
 
