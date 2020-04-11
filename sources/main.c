@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:34:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/10 19:27:23 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/11 12:17:08 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ int			main(int arg, char **argc)
 	anthill.flag ? print_path(&anthill) : 0;
 	print_rooms(&anthill);
 	print_flow(&anthill);
-	exit(0);
 	move_ants(&anthill);
 	anthill.flag ?\
 	ft_printf("\nMoves: %d\n", anthill.moves) : 0;

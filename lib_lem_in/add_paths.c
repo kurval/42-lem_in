@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 12:38:06 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/01 11:47:42 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/11 11:35:49 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static t_path	*new_path(void)
 
 	if (!(path = (t_path*)malloc(sizeof(t_path))))
 		return (NULL);
+	path->neg = 0;
 	path->nb = 0;
 	path->len = 0;
 	path->second_last = NULL;

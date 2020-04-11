@@ -6,7 +6,7 @@
 #    By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/05 11:23:46 by vkurkela          #+#    #+#              #
-#    Updated: 2020/04/10 22:51:27 by vkurkela         ###   ########.fr        #
+#    Updated: 2020/04/10 22:57:54 by vkurkela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,7 @@ $(LIB):
 
 $(NAME): $(OBJ) $(LIBFT) $(LIB)
 	@echo "$(WHT)Compiling Lem-in...$(EOC)"
-	@${CC} $(FLAGS) -o $(NAME) $(OBJ) $(LIBFT) $(LIB)
+	@$(CC) $(FLAGS) -o $(NAME) $(OBJ) $(LIBFT) $(LIB)
 	@echo "$(GREEN)Lem-in build completed.$(EOC)"
 
 clean:

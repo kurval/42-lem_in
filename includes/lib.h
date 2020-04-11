@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/10 19:10:27 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/11 11:35:23 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,7 @@ typedef struct			s_path
 	struct s_room		*second_last;
 	int					nb;
 	int					len;
+	int					neg;
 }						t_path;
 
 int						add_room(t_lem_in **anthill, char *name,\
