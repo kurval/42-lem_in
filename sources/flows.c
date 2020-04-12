@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/06 13:01:46 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/12 17:33:09 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/12 17:36:48 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ int		check_start_flow(t_lem_in *anthill)
 	room = anthill->start;
 	while (connects)
 	{
-		if (anthill->flow[room->id][connects->room->id] == -1 ||\
-				!anthill->flow[room->id][connects->room->id])
+		if (is_edge_valid(anthill, room->id, connects->room->id))
 			return (1);
 		connects = connects->next;
 	}
