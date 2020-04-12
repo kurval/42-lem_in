@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/11 16:43:10 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/12 20:44:17 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct			s_lem_in
 	int					moves;
 	int					**flow;
 	int					id;
+	int					extra;
 	struct s_ants		*ant_lst;
 	struct s_room		*room;
 	struct s_link		*link;
@@ -122,7 +123,7 @@ typedef struct			s_path
 	struct s_room		*second_last;
 	int					nb;
 	int					len;
-	int					neg;
+	int					type;
 }						t_path;
 
 int						add_room(t_lem_in **anthill, char *name,\
@@ -150,4 +151,6 @@ int						path_len(t_path *root);
 void					print_header(t_path *path);
 void					free_flow_chart(t_lem_in *anthill);
 void					print_rev_names(t_path *path);
+void					del_node(t_path **node);
+void					update_paths(t_path **root, int path_type);
 #endif

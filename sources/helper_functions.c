@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 10:46:37 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/12 17:28:54 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/12 19:17:10 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void		init_anthill(t_lem_in *anthill)
 	anthill->moves = 0;
 	anthill->flow = NULL;
 	anthill->id = 0;
+	anthill->extra = 0;
 }
 
 static void	add_next_level(t_lem_in *anthill, t_room *tmp, t_room **new, int *i)

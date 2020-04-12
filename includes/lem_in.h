@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:32:55 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/12 17:33:26 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/12 19:28:40 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 # define COMMAND 5
 # define VISITED 1
 # define PATH 2
-# define NEG 3
+# define NEG -1
+# define EXTRA 3
 # include "../libft/libft.h"
 # include "lib.h"
 

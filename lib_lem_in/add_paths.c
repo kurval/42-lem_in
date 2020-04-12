@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 12:38:06 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/11 16:29:58 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/12 19:36:27 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static t_path	*new_path(void)
 
 	if (!(path = (t_path*)malloc(sizeof(t_path))))
 		return (NULL);
-	path->neg = 0;
+	path->type = 0;
 	path->nb = 0;
 	path->len = 0;
 	path->second_last = NULL;
@@ -46,7 +46,7 @@ t_path			*add_path(t_path **root)
 	return (path);
 }
 
-static void		del_node(t_path **node)
+void		del_node(t_path **node)
 {
 	if (node != NULL && *node != NULL)
 	{

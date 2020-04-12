@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/06 13:01:46 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/12 17:36:48 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/12 19:18:31 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,17 @@
 
 int		is_edge_valid(t_lem_in *anthill, int id1, int id2)
 {
-	if (!anthill->flow[id1][id2] ||\
-			anthill->flow[id1][id2] == -1)
-		return (1);
+    if (anthill->extra)
+    {
+        if (anthill->flow[id1][id2] == 1)
+            return (1);
+    }
+    else
+    {
+        if (!anthill->flow[id1][id2] ||\
+                anthill->flow[id1][id2] == -1)
+            return (1);
+    }
 	return (0);
 }
 
@@ -43,7 +51,7 @@ void	update_flow(t_lem_in *anthill, int id1, int id2)
 		anthill->flow[id1][id2] = 1;
 		anthill->flow[id2][id1] = -1;
 	}
-	else if (anthill->flow[id1][id2] == -1)
+	else if (anthill->flow[id1][id2] == -1 || anthill->extra)
 	{
 		anthill->flow[id1][id2] = 0;
 		anthill->flow[id2][id1] = 0;
