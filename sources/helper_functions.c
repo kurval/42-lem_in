@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 10:46:37 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/12 16:16:36 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/12 16:41:38 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	add_next_level(t_lem_in *anthill, t_room *tmp, t_room **new, int *i)
 	{
 		neg = check_neg_flow(anthill, route->room, tmp);
 		if ((!route->room->checked || neg) &&\
-		!(tmp == anthill->start && route->room == anthill->end) && route->room != anthill->end &&\
+		route->room != anthill->end &&\
 		is_edge_valid(anthill, tmp->id, route->room->id))
 		{
 			if (neg && route->room->checked == PATH)
