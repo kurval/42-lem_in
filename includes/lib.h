@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/11 11:35:23 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/11 16:43:10 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ typedef struct			s_room
 	int					x;
 	int					y;
 	int					id;
+	int					second;
 	struct s_room		*next;
 	struct s_room		*prev;
 	struct s_ants		*ant_here;
@@ -148,4 +149,5 @@ void					del_start(t_path **root);
 int						path_len(t_path *root);
 void					print_header(t_path *path);
 void					free_flow_chart(t_lem_in *anthill);
+void					print_rev_names(t_path *path);
 #endif

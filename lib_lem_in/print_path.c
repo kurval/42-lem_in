@@ -6,11 +6,24 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/31 16:55:50 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/11 12:16:54 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/11 23:17:11 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lib.h"
+
+void	print_rev_names(t_path *path)
+{
+	t_connect *current;
+
+	current = path->route;
+	while (current)
+	{
+		if (current->room->prev)
+			ft_printf("rooms %s prev: %s\n", current->room->name, current->room->prev->name);
+		current = current->next;
+	}
+}
 
 void		print_header(t_path *path)
 {

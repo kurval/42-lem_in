@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:34:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/11 12:17:08 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/11 23:16:18 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,20 +54,7 @@ static void	check_flag(char *arg, t_lem_in *anthill)
 	if (ft_strequ(arg, "-p"))
 		anthill->flag = 1;
 }
-/*
-static void	print_rev_names(t_path *path)
-{
-	t_connect *current;
 
-	current = path->route;
-	while (current)
-	{
-		if (current->room->prev)
-			ft_printf("rooms %s prev: %s\n", current->room->name, current->room->prev->name);
-		current = current->next;
-	}
-}
-*/
 int			main(int arg, char **argc)
 {
 	t_lem_in	anthill;

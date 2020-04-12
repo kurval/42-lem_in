@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 11:29:57 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/11 11:56:05 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/12 11:46:27 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void create_link(t_lem_in *anthill, t_connect *tmp, t_connect *route, t_path *path)
 {
     update_flow(anthill, tmp->room->id, route->room->id);
-    if (!anthill->reverse_path->prev)
+    if (!anthill->reverse_path->prev && !anthill->reverse_path->second)
         anthill->reverse_path->prev = tmp->room;
     tmp->room->checked == NEG ? path->neg = 1 : 0;
     anthill->reverse_path = tmp->room;

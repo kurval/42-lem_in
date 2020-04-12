@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 10:46:37 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/10 19:13:18 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/12 12:05:54 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ static void	add_next_level(t_lem_in *anthill, t_room *tmp, t_room **new, int *i)
 	route = tmp->connections;
 	while (route)
 	{
-		if ((!route->room->checked || check_neg_flow(anthill, route->room)) &&\
-		!(tmp == anthill->start && route->room == anthill->end))
+		if ((!route->room->checked || check_neg_flow(anthill, route->room, tmp)) &&\
+		!(tmp == anthill->start && route->room == anthill->end) && tmp != anthill->end)
 		{
 			new[*i] = route->room;
 			*i += 1;
