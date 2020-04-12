@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/06 13:01:46 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/12 12:44:52 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/12 16:16:53 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,14 @@ int		check_neg_flow(t_lem_in *anthill, t_room *room, t_room *parent)
 
 	connects = room->connections;
     if (room->checked == NEG)
-        return (0); 
+        return (0);
 	while (connects)
 	{
         if (connects->room != parent && connects->room->checked != VISITED)
         {
             if ((anthill->flow[room->id][connects->room->id] == -1 &&\
             connects->room != anthill->start) || !anthill->flow[room->id][connects->room->id])
-            {
-                if (room->checked == PATH)
-                    room->checked = NEG;
                 return (1);
-            }
         }
 		connects = connects->next;
 	}

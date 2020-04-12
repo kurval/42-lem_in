@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 10:46:37 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/12 12:05:54 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/12 16:16:36 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,19 @@ void		init_anthill(t_lem_in *anthill)
 static void	add_next_level(t_lem_in *anthill, t_room *tmp, t_room **new, int *i)
 {
 	t_connect	*route;
+	int			neg;
 
 	route = tmp->connections;
+	neg = 0;
 	while (route)
 	{
-		if ((!route->room->checked || check_neg_flow(anthill, route->room, tmp)) &&\
-		!(tmp == anthill->start && route->room == anthill->end) && tmp != anthill->end)
+		neg = check_neg_flow(anthill, route->room, tmp);
+		if ((!route->room->checked || neg) &&\
+		!(tmp == anthill->start && route->room == anthill->end) && route->room != anthill->end &&\
+		is_edge_valid(anthill, tmp->id, route->room->id))
 		{
+			if (neg && route->room->checked == PATH)
+				route->room->checked = NEG;
 			new[*i] = route->room;
 			*i += 1;
 		}
