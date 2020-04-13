@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/31 16:55:50 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/13 11:34:04 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/13 20:29:36 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ void		print_header(int nbr)
 	nbr == 4 ? ft_printf(BOLDYELLOW "PATH %d:\n" EOC, nbr) : 0;
 }
 
-void		print_path(t_lem_in *anthill)
+void		print_path(t_lem_in *anthill, t_path *root)
 {
 	t_path		*path;
 	t_connect	*current;
 	int			nbr;
 
-	path = anthill->paths;
+	path = root;
 	nbr = path ? 1 : 0;
 	while (path)
 	{
@@ -60,6 +60,7 @@ void		print_path(t_lem_in *anthill)
 		}
 		nbr++;
 		ft_printf("\n");
+		print_rev_names(path);
 		path = path->next;
 	}
 	ft_printf("\n");

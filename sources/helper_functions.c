@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 10:46:37 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/12 19:17:10 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/13 18:49:56 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void		init_anthill(t_lem_in *anthill)
 	anthill->map = NULL;
 	anthill->hashtable = NULL;
 	anthill->paths = NULL;
+	anthill->paths2 = NULL;
 	anthill->errnbr = 0;
 	anthill->section = 0;
 	anthill->line = 0;
@@ -31,12 +32,13 @@ void		init_anthill(t_lem_in *anthill)
 	anthill->reverse_path = NULL;
 	anthill->nodes = 0;
 	anthill->finish = 0;
-	anthill->nb_paths = 1;
+	anthill->nb_paths = 0;
 	anthill->flag = 0;
 	anthill->moves = 0;
 	anthill->flow = NULL;
 	anthill->id = 0;
 	anthill->extra = 0;
+	anthill->print = 1;
 }
 
 static void	add_next_level(t_lem_in *anthill, t_room *tmp, t_room **new, int *i)

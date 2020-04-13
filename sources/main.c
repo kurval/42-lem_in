@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:34:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/13 11:33:10 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/13 21:02:45 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,11 @@ int			main(int arg, char **argc)
 	check_short(&anthill);
 	solver(&anthill);
 	print_map(&anthill);
-	anthill.flag ? print_path(&anthill) : 0;
+	anthill.flag ? print_path(&anthill, anthill.paths) : 0;
+	anthill.flag ? print_path(&anthill, anthill.paths2) : 0;
+	move_ants(&anthill, anthill.paths);
 	//print_rooms(&anthill);
 	//print_flow(&anthill);
-	//exit(0);
-	move_ants(&anthill);
 	anthill.flag ?\
 	ft_printf("\nMoves: %d\n", anthill.moves) : 0;
 	free_all(&anthill);

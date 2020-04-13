@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/13 11:33:10 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/13 21:00:26 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct			s_lem_in
 	int					**flow;
 	int					id;
 	int					extra;
+	int					print;
 	struct s_ants		*ant_lst;
 	struct s_room		*room;
 	struct s_link		*link;
@@ -64,6 +65,7 @@ typedef struct			s_lem_in
 	struct s_map		*map;
 	struct s_hashtable	**hashtable;
 	struct s_path		*paths;
+	struct s_path		*paths2;
 	struct s_room		*reverse_path;
 	struct s_connect	*que;
 }						t_lem_in;
@@ -131,7 +133,7 @@ int x_c, int y_c);
 int						add_link(t_link **root, char *from, char *to);
 int						add_ants(t_ants **root, long name);
 int						add_to_map(t_map **root, char *rule);
-void					print_path(t_lem_in *anthill);
+void					print_path(t_lem_in *anthill, t_path *root);
 void					print_map(t_lem_in *root);
 void					print_error(t_lem_in *anthill, int errnbr);
 void					free_all(t_lem_in *anthill);

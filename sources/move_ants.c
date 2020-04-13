@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/28 10:50:09 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/13 11:33:10 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/13 21:00:12 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,39 +65,41 @@ static void	other_path(t_lem_in *anthill, t_room *tmp, t_path *path)
 	t_room *other_room;
 
 	tmp = anthill->start;
-	if (!tmp->ant_here)
-		return ;
-	other_room = path->route->room;
-	other_room->ant_here = tmp->ant_here;
-	tmp->ant_here = tmp->ant_here->next;
-	move(anthill, other_room, path);
+	if (path->len <= (((anthill->ants + 1) -\
+	anthill->start->ant_here->name) * anthill->paths->len))
+	{
+		if (!tmp->ant_here)
+			return ;
+		other_room = path->route->room;
+		other_room->ant_here = tmp->ant_here;
+		tmp->ant_here = tmp->ant_here->next;
+		move(anthill, other_room, path);
+	}
 }
 
-void		move_ants(t_lem_in *anthill)
+int		move_ants(t_lem_in *anthill, t_path *path)
 {
 	t_room	*tmp;
 	t_path	*current_path;
 
 	tmp = NULL;
+	anthill->moves = 0;
 	anthill->start->ant_here = anthill->ant_lst;
 	while (anthill->finish != anthill->ants)
 	{
-		current_path = anthill->paths;
+		current_path = path;
 		while (current_path && anthill->finish != anthill->ants)
 		{
 			anthill->end->prev = current_path->second_last;
 			if (current_path->type != NEG)
 				send_ants(anthill, tmp, current_path);
-			if (anthill->start->ant_here && current_path != anthill->paths &&\
+			if (anthill->start->ant_here && current_path != path &&\
 			current_path->type != NEG)
-			{
-				if (current_path->len <= (((anthill->ants + 1) -\
-					anthill->start->ant_here->name) * anthill->paths->len))
-					other_path(anthill, tmp, current_path);
-			}
+				other_path(anthill, tmp, current_path);
 			current_path = current_path->next;
 		}
 		anthill->moves++;
 		ft_printf("\n");
 	}
+	return (anthill->moves);
 }
