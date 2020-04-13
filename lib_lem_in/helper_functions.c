@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 15:57:24 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/10 19:21:50 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/13 11:33:10 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	free_paths(t_path *root)
 
 void	print_error(t_lem_in *anthill, int errnbr)
 {
-	ft_printf(BOLDRED "error " RESET);
+	ft_printf(BOLDRED "error " EOC);
 	errnbr == 1 ? ft_printf("%s\n", MSG1) : 0;
 	errnbr == 2 ? ft_printf(ERR, anthill->line, MSG2) : 0;
 	errnbr == 3 ? ft_printf(ERR, anthill->line, MSG3) : 0;

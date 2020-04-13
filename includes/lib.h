@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/12 20:44:17 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/13 11:33:10 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define BOLDBLUE		"\033[1m\033[34m"
 # define BOLDMAGENTA	"\033[1m\033[35m"
 # define GREEN			"\033[32m"
-# define RESET			"\033[0m"
+# define EOC			"\033[0m"
 # define ERR	"(line %d): %s\n"
 # define MSG1	"usage: ./lem-in [-p] < [source file]"
 # define MSG2	"room name starts with L"
@@ -148,9 +148,9 @@ void					free_connections(t_connect *root);
 void					del_last(t_path **root);
 void					del_start(t_path **root);
 int						path_len(t_path *root);
-void					print_header(t_path *path);
+void					print_header(int nbr);
 void					free_flow_chart(t_lem_in *anthill);
 void					print_rev_names(t_path *path);
 void					del_node(t_path **node);
-void					update_paths(t_path **root, int path_type);
+void					update_paths(t_lem_in *anthill, int type);
 #endif

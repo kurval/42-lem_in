@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:34:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/12 19:22:57 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/13 11:33:10 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ void		print_flow(t_lem_in *anthill)
 		while (i < anthill->room_count)
 		{
 			if (anthill->flow[j][i] == 1)
-				ft_printf(GREEN "%3d" RESET, anthill->flow[j][i]);
+				ft_printf(GREEN "%3d" EOC, anthill->flow[j][i]);
 			else if (anthill->flow[j][i] == -1)
-				ft_printf(BOLDRED "%3d" RESET, anthill->flow[j][i]);
+				ft_printf(BOLDRED "%3d" EOC, anthill->flow[j][i]);
 			else
 				ft_printf("%3d", anthill->flow[j][i]);
 			i++;
@@ -68,9 +68,9 @@ int			main(int arg, char **argc)
 	solver(&anthill);
 	print_map(&anthill);
 	anthill.flag ? print_path(&anthill) : 0;
-	print_rooms(&anthill);
-	print_flow(&anthill);
-	exit(0);
+	//print_rooms(&anthill);
+	//print_flow(&anthill);
+	//exit(0);
 	move_ants(&anthill);
 	anthill.flag ?\
 	ft_printf("\nMoves: %d\n", anthill.moves) : 0;

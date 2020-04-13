@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/28 10:50:09 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/12 19:26:01 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/13 11:33:10 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,15 @@ static void	move(t_lem_in *anthill, t_room *tmp, t_path *path)
 		nbr = 1;
 	else if (path->nb >= 5)
 		nbr = path->nb % 5;
-	nbr == 0 ? ft_printf(BOLDBLUE "L%ld-%s " RESET,\
+	nbr == 0 ? ft_printf(BOLDBLUE "L%ld-%s " EOC,\
 	tmp->ant_here->name, tmp->name) : 0;
-	nbr == 1 ? ft_printf(BOLDWHITE "L%ld-%s " RESET,\
+	nbr == 1 ? ft_printf(BOLDWHITE "L%ld-%s " EOC,\
 	tmp->ant_here->name, tmp->name) : 0;
-	nbr == 2 ? ft_printf(BOLDCYAN "L%ld-%s " RESET,\
+	nbr == 2 ? ft_printf(BOLDCYAN "L%ld-%s " EOC,\
 	tmp->ant_here->name, tmp->name) : 0;
-	nbr == 3 ? ft_printf(BOLDMAGENTA "L%ld-%s " RESET,\
+	nbr == 3 ? ft_printf(BOLDMAGENTA "L%ld-%s " EOC,\
 	tmp->ant_here->name, tmp->name) : 0;
-	nbr == 4 ? ft_printf(BOLDYELLOW "L%ld-%s " RESET,\
+	nbr == 4 ? ft_printf(BOLDYELLOW "L%ld-%s " EOC,\
 	tmp->ant_here->name, tmp->name) : 0;
 	if (tmp == anthill->end)
 		anthill->finish++;
@@ -86,9 +86,10 @@ void		move_ants(t_lem_in *anthill)
 		while (current_path && anthill->finish != anthill->ants)
 		{
 			anthill->end->prev = current_path->second_last;
-			if (!current_path->type)
+			if (current_path->type != NEG)
 				send_ants(anthill, tmp, current_path);
-			if (anthill->start->ant_here && current_path != anthill->paths && !current_path->type)
+			if (anthill->start->ant_here && current_path != anthill->paths &&\
+			current_path->type != NEG)
 			{
 				if (current_path->len <= (((anthill->ants + 1) -\
 					anthill->start->ant_here->name) * anthill->paths->len))

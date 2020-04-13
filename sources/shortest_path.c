@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 12:29:54 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/12 20:48:24 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/13 10:42:36 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,5 @@ void	solver(t_lem_in *anthill)
 	ret = 1;
 	while (ret)
 		ret = shortest_path(anthill);
-	update_paths(&anthill->paths, EXTRA);
+	update_paths(anthill, 3);
 }
