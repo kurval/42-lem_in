@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 12:29:54 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/14 15:44:26 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/14 17:03:47 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,12 @@ static int	compare_results(t_lem_in *anthill)
 	int			moves2;
 	int			ret;
 
-	anthill->extra = 1;
-	anthill->print = 0;
-	anthill->nb_paths = 0;
-	moves1 = move_ants(anthill, anthill->paths);
 	ret = 1;
+	anthill->print = 0;
+	moves1 = move_ants(anthill, anthill->paths);
+	anthill->extra = 1;
+	anthill->nb_paths = 0;
+	check_short(anthill);
 	while (ret)
 		ret = shortest_path(anthill);
 	update_rev_paths(anthill->paths2);
@@ -64,6 +65,7 @@ static int	compare_results(t_lem_in *anthill)
 	anthill->print = 1;
 	if (moves1 <= moves2)
 	{
+		anthill->extra = 0;
 		update_rev_paths(anthill->paths);
 		return (1);
 	}
@@ -75,11 +77,14 @@ int		solver(t_lem_in *anthill)
 	int	ret;
 
 	ret = 1;
+	
+	check_short(anthill);
 	while (ret)
 		ret = shortest_path(anthill);
 	(!anthill->paths) ? print_error(anthill, 9) : 0;
 	if (check_max_paths(anthill))
 		return (1);
 	ret = compare_results(anthill);
+	ft_printf("täällä extra %d\n", anthill->extra);
 	return (ret);
 }

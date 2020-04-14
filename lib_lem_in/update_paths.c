@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/12 19:34:38 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/14 11:15:03 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/14 16:58:08 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ void update_rev_paths(t_path *path)
             prev = current->route;
             while(temp)
             {
-                temp->room->prev = prev->room;
+                if (!temp->room->second)
+                    temp->room->prev = prev->room;
                 prev = prev->next;
                 temp = temp->next;
             }
