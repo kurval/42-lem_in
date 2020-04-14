@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/31 16:55:50 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/13 20:29:36 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/14 10:58:38 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ void		print_path(t_lem_in *anthill, t_path *root)
 		}
 		nbr++;
 		ft_printf("\n");
-		print_rev_names(path);
 		path = path->next;
 	}
 	ft_printf("\n");

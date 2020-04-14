@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 12:29:54 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/13 21:02:08 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/14 11:18:10 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ int				shortest_path(t_lem_in *anthill)
 	t_path			*new_path;
 
 	anthill->que = NULL;
-	new_path =  add_path(&anthill->paths);
+	new_path =  !anthill->extra ? add_path(&anthill->paths) :\
+	add_path(&anthill->paths2);
 	array = (t_room **)malloc(sizeof(t_room*) * 2);
 	(!new_path || !array) ? print_error(anthill, 7) : 0;
 	array[0] = anthill->start;
@@ -32,7 +33,8 @@ int				shortest_path(t_lem_in *anthill)
 	if (!check_start_flow(anthill) || !find_path(anthill, array, new_path))
 	{
 		exit_search(anthill, array);
-		del_last(&anthill->paths);
+		!anthill->extra ? del_last(&anthill->paths) :\
+		del_last(&anthill->paths2);
 		return (0);
 	}
 	link_path(anthill, anthill->que, new_path);
@@ -55,18 +57,28 @@ void	solver(t_lem_in *anthill)
 	while (ret)
 		ret = shortest_path(anthill);
 	(!anthill->paths) ? print_error(anthill, 9) : 0;
-	anthill->extra = 1;
 	if (check_max_paths(anthill))
+	{
+		move_ants(anthill, anthill->paths);
 		return ;
+	}
+	anthill->extra = 1;
+	anthill->print = 0;
+	anthill->nb_paths = 0;
+	moves1 = move_ants(anthill, anthill->paths);
 	ret = 1;
 	while (ret)
 		ret = shortest_path(anthill);
-	update_paths(anthill, 3);
-	//move_ants(anthill, anthill->paths);
-	/*
-	if (moves1 < moves2)
+	update_rev_paths(anthill->paths2);
+	moves2 = move_ants(anthill, anthill->paths2);
+	anthill->print = 1;
+	ft_printf("moves1 %d ja moves2 %d\n", moves1, moves2);
+	if (moves1 <= moves2)
+	{
+		update_rev_paths(anthill->paths);
 		move_ants(anthill, anthill->paths);
+	}
 	else
 		move_ants(anthill, anthill->paths2);
-	*/
+	exit(0);
 }

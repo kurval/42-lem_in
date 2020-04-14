@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/13 21:00:26 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/14 10:25:18 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,5 +154,5 @@ void					print_header(int nbr);
 void					free_flow_chart(t_lem_in *anthill);
 void					print_rev_names(t_path *path);
 void					del_node(t_path **node);
-void					update_paths(t_lem_in *anthill, int type);
+void 					update_rev_paths(t_path *path);
 #endif

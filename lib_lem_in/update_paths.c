@@ -6,12 +6,12 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/12 19:34:38 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/13 20:51:35 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/14 11:15:03 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lib.h"
-
+/*
 static void delete_paths(t_path **root, int path_type)
 {
     t_path *temp = *root;
@@ -45,28 +45,31 @@ static int  add_start(t_path *root, t_lem_in *anthill)
     root->route->next->room->prev = anthill->start;
     return (1);
 }
-
-static void update_rev_path(t_lem_in *anthill)
+*/
+void update_rev_paths(t_path *path)
 {
     t_path *current;
     t_connect *temp;
     t_connect *prev;
 
-    current = anthill->paths;
+    current = path;
     while (current)
     {
-        temp = current->route->next;
-        prev = current->route;
-        while(temp)
+        if (current->type != -1)
         {
-            temp->room->prev = prev->room;
-            prev = prev->next;
-            temp = temp->next;
+            temp = current->route->next;
+            prev = current->route;
+            while(temp)
+            {
+                temp->room->prev = prev->room;
+                prev = prev->next;
+                temp = temp->next;
+            }
         }
         current = current->next;
     }
 }
-
+/*
 void    update_paths(t_lem_in *anthill, int type)
 {
     delete_paths(&anthill->paths, type);
@@ -77,3 +80,4 @@ void    update_paths(t_lem_in *anthill, int type)
     }
     update_rev_path(anthill);
 }
+*/

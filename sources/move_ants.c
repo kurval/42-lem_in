@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/28 10:50:09 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/13 21:00:12 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/14 10:55:50 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,19 @@ static void	move(t_lem_in *anthill, t_room *tmp, t_path *path)
 		nbr = 1;
 	else if (path->nb >= 5)
 		nbr = path->nb % 5;
-	nbr == 0 ? ft_printf(BOLDBLUE "L%ld-%s " EOC,\
-	tmp->ant_here->name, tmp->name) : 0;
-	nbr == 1 ? ft_printf(BOLDWHITE "L%ld-%s " EOC,\
-	tmp->ant_here->name, tmp->name) : 0;
-	nbr == 2 ? ft_printf(BOLDCYAN "L%ld-%s " EOC,\
-	tmp->ant_here->name, tmp->name) : 0;
-	nbr == 3 ? ft_printf(BOLDMAGENTA "L%ld-%s " EOC,\
-	tmp->ant_here->name, tmp->name) : 0;
-	nbr == 4 ? ft_printf(BOLDYELLOW "L%ld-%s " EOC,\
-	tmp->ant_here->name, tmp->name) : 0;
+	if (anthill->print)
+	{
+		nbr == 0 ? ft_printf(BOLDBLUE "L%ld-%s " EOC,\
+		tmp->ant_here->name, tmp->name) : 0;
+		nbr == 1 ? ft_printf(BOLDWHITE "L%ld-%s " EOC,\
+		tmp->ant_here->name, tmp->name) : 0;
+		nbr == 2 ? ft_printf(BOLDCYAN "L%ld-%s " EOC,\
+		tmp->ant_here->name, tmp->name) : 0;
+		nbr == 3 ? ft_printf(BOLDMAGENTA "L%ld-%s " EOC,\
+		tmp->ant_here->name, tmp->name) : 0;
+		nbr == 4 ? ft_printf(BOLDYELLOW "L%ld-%s " EOC,\
+		tmp->ant_here->name, tmp->name) : 0;
+	}
 	if (tmp == anthill->end)
 		anthill->finish++;
 }
@@ -63,10 +66,13 @@ static void	send_ants(t_lem_in *anthill, t_room *tmp, t_path *path)
 static void	other_path(t_lem_in *anthill, t_room *tmp, t_path *path)
 {
 	t_room *other_room;
+	t_path *shortest;
 
+	shortest = !anthill->extra ? anthill->paths :\
+	anthill->paths2;
 	tmp = anthill->start;
 	if (path->len <= (((anthill->ants + 1) -\
-	anthill->start->ant_here->name) * anthill->paths->len))
+	anthill->start->ant_here->name) * shortest->len))
 	{
 		if (!tmp->ant_here)
 			return ;
@@ -84,6 +90,7 @@ int		move_ants(t_lem_in *anthill, t_path *path)
 
 	tmp = NULL;
 	anthill->moves = 0;
+	anthill->finish = 0;
 	anthill->start->ant_here = anthill->ant_lst;
 	while (anthill->finish != anthill->ants)
 	{
