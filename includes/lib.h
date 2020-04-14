@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/14 10:25:18 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/14 15:31:03 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # define SIZE 1000
 # define BOLDRED		"\033[1m\033[31m"
 # define BOLDCYAN		"\033[1m\033[36m"
-# define BOLDWHITE		"\033[1m\033[37m"
+# define WHT		"\033[1m\033[37m"
 # define BOLDYELLOW		"\033[1m\033[33m"
 # define BOLDBLUE		"\033[1m\033[34m"
 # define BOLDMAGENTA	"\033[1m\033[35m"
@@ -155,4 +155,5 @@ void					free_flow_chart(t_lem_in *anthill);
 void					print_rev_names(t_path *path);
 void					del_node(t_path **node);
 void 					update_rev_paths(t_path *path);
+void					print_info(t_lem_in *anthill, int ret);
 #endif

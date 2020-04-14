@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:34:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/14 10:13:14 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/14 15:40:25 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,21 +58,19 @@ static void	check_flag(char *arg, t_lem_in *anthill)
 int			main(int arg, char **argc)
 {
 	t_lem_in	anthill;
+	int			ret;
 	
+	ret = 0;
 	init_anthill(&anthill);
 	(arg == 2) ? check_flag(argc[1], &anthill) : 0;
 	(arg != 1 && !anthill.flag) ? print_error(&anthill, 1) : 0;
 	parse_map(&anthill);
 	validate_map(&anthill);
 	check_short(&anthill);
-	solver(&anthill);
-	print_map(&anthill);
-	anthill.flag ? print_path(&anthill, anthill.paths) : 0;
-	anthill.flag ? print_path(&anthill, anthill.paths2) : 0;
-	//print_rooms(&anthill);
-	//print_flow(&anthill);
-	anthill.flag ?\
-	ft_printf("\nMoves: %d\n", anthill.moves) : 0;
+	ret = solver(&anthill);
+	print_info(&anthill, ret);
+	ret ? move_ants(&anthill, anthill.paths) : 0;
+	!ret ? move_ants(&anthill, anthill.paths2) : 0;
 	free_all(&anthill);
 	return (0);
 }

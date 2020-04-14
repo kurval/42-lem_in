@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/13 15:45:02 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/13 16:46:44 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/14 15:23:27 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ int check_max_paths(t_lem_in *anthill)
     start_con = count_connections(anthill->start);
     end_con = count_connections(anthill->end);
     max = (start_con < end_con) ? start_con : end_con;
-    ft_printf("DEBUG max %d path_nb %d neg paths %d\n", max, anthill->nb_paths, check_neg_paths(anthill));
     if (anthill->nb_paths < max && check_neg_paths(anthill))
         return (0);
     return (1);

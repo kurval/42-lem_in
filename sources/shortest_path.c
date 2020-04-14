@@ -6,14 +6,18 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 12:29:54 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/14 11:18:10 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/14 15:44:26 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-static void		exit_search(t_lem_in *anthill, t_room **array)
+static void		save_path(t_lem_in *anthill, t_path *new_path, t_room **array)
 {
+	link_path(anthill, anthill->que, new_path);
+	new_path->len = path_len(new_path);
+	new_path->type != NEG ? new_path->nb = ++anthill->nb_paths : 0;
+	(new_path->nb != 1) ? del_start(&new_path) : 0;
 	reset_checked_rooms(anthill);
 	free(array);
 }
@@ -32,36 +36,22 @@ int				shortest_path(t_lem_in *anthill)
 	array[1] = NULL;
 	if (!check_start_flow(anthill) || !find_path(anthill, array, new_path))
 	{
-		exit_search(anthill, array);
+		reset_checked_rooms(anthill);
+		free(array);
 		!anthill->extra ? del_last(&anthill->paths) :\
 		del_last(&anthill->paths2);
 		return (0);
 	}
-	link_path(anthill, anthill->que, new_path);
-	new_path->len = path_len(new_path);
-	new_path->type != NEG ? new_path->nb = ++anthill->nb_paths : 0;
-	(new_path->nb != 1) ? del_start(&new_path) : 0;
-	exit_search(anthill, array);
+	save_path(anthill, new_path, array);
 	return (1);
 }
 
-void	solver(t_lem_in *anthill)
+static int	compare_results(t_lem_in *anthill)
 {
-	int			ret;
 	int			moves1;
 	int			moves2;
+	int			ret;
 
-	ret = 1;
-	moves1 = 0;
-	moves2 = 0;
-	while (ret)
-		ret = shortest_path(anthill);
-	(!anthill->paths) ? print_error(anthill, 9) : 0;
-	if (check_max_paths(anthill))
-	{
-		move_ants(anthill, anthill->paths);
-		return ;
-	}
 	anthill->extra = 1;
 	anthill->print = 0;
 	anthill->nb_paths = 0;
@@ -72,13 +62,24 @@ void	solver(t_lem_in *anthill)
 	update_rev_paths(anthill->paths2);
 	moves2 = move_ants(anthill, anthill->paths2);
 	anthill->print = 1;
-	ft_printf("moves1 %d ja moves2 %d\n", moves1, moves2);
 	if (moves1 <= moves2)
 	{
 		update_rev_paths(anthill->paths);
-		move_ants(anthill, anthill->paths);
+		return (1);
 	}
-	else
-		move_ants(anthill, anthill->paths2);
-	exit(0);
+	return (0);
+}
+
+int		solver(t_lem_in *anthill)
+{
+	int	ret;
+
+	ret = 1;
+	while (ret)
+		ret = shortest_path(anthill);
+	(!anthill->paths) ? print_error(anthill, 9) : 0;
+	if (check_max_paths(anthill))
+		return (1);
+	ret = compare_results(anthill);
+	return (ret);
 }

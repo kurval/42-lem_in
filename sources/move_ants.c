@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/28 10:50:09 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/14 10:55:50 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/14 15:39:18 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	move(t_lem_in *anthill, t_room *tmp, t_path *path)
 	{
 		nbr == 0 ? ft_printf(BOLDBLUE "L%ld-%s " EOC,\
 		tmp->ant_here->name, tmp->name) : 0;
-		nbr == 1 ? ft_printf(BOLDWHITE "L%ld-%s " EOC,\
+		nbr == 1 ? ft_printf(WHT "L%ld-%s " EOC,\
 		tmp->ant_here->name, tmp->name) : 0;
 		nbr == 2 ? ft_printf(BOLDCYAN "L%ld-%s " EOC,\
 		tmp->ant_here->name, tmp->name) : 0;
@@ -106,7 +106,9 @@ int		move_ants(t_lem_in *anthill, t_path *path)
 			current_path = current_path->next;
 		}
 		anthill->moves++;
-		ft_printf("\n");
+		anthill->print ? ft_printf("\n") : 0;
 	}
+	anthill->flag &&  anthill->print ?\
+	ft_printf(WHT "\nMoves: %d\n" EOC, anthill->moves) : 0;
 	return (anthill->moves);
 }

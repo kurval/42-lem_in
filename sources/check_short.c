@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/09 20:55:10 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/11 15:30:42 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/14 15:45:57 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void		check_short(t_lem_in *anthill)
 			anthill->quick = 1;
             update_flow(anthill, anthill->start->id, anthill->end->id);
 			new_path->second_last = anthill->start;
-			new_path->nb = anthill->nb_paths++;
+			new_path->nb = ++anthill->nb_paths;
 			return ;
 		}
 		current = current->next;

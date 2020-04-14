@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:32:55 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/13 21:00:39 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/14 15:09:38 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,6 @@ void	print_rooms(t_lem_in *anthill);
 int		is_edge_valid(t_lem_in *anthill, int id1, int id2);
 int     is_link_valid(t_lem_in *anthill, t_room **array, t_path *path);
 void	link_path(t_lem_in *anthill, t_connect *queue, t_path *path);
-void	solver(t_lem_in *anthill);
+int     solver(t_lem_in *anthill);
 int     check_max_paths(t_lem_in *anthill);
 #endif
