@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/12 19:34:38 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/14 17:09:10 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/14 20:54:30 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void update_rev_paths(t_path *path)
 {
-    t_path *current;
-    t_connect *temp;
-    t_connect *prev;
+    t_path      *current;
+    t_connect   *temp;
+    t_connect   *prev;
 
     current = path;
     while (current)
