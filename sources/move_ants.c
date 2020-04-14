@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/28 10:50:09 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/14 16:58:54 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/14 17:34:49 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,13 @@ static void	send_ants(t_lem_in *anthill, t_room *tmp, t_path *path)
 static void	other_path(t_lem_in *anthill, t_room *tmp, t_path *path)
 {
 	t_room *other_room;
-	t_path *shortest;
+	t_path *s_b;
 
-	shortest = !anthill->extra ? anthill->paths :\
+	s_b = !anthill->extra ? anthill->paths :\
 	anthill->paths2;
 	tmp = anthill->start;
 	if (path->len <= (((anthill->ants + 1) -\
-	anthill->start->ant_here->name) * shortest->len))
+	anthill->start->ant_here->name) * s_b->len))
 	{
 		if (!tmp->ant_here)
 			return ;
@@ -80,6 +80,20 @@ static void	other_path(t_lem_in *anthill, t_room *tmp, t_path *path)
 		other_room->ant_here = tmp->ant_here;
 		tmp->ant_here = tmp->ant_here->next;
 		move(anthill, other_room, path);
+	}
+}
+
+static void	make_move(t_lem_in *anthill, t_path *current_path, t_room *tmp, t_path *s_b)
+{
+	while (current_path && anthill->finish != anthill->ants)
+	{
+		anthill->end->prev = current_path->second_last;
+		if (current_path->type != NEG)
+			send_ants(anthill, tmp, current_path);
+		if (anthill->start->ant_here && current_path != s_b &&\
+		current_path->type != NEG)
+			other_path(anthill, tmp, current_path);
+		current_path = current_path->next;
 	}
 }
 
@@ -95,20 +109,11 @@ int		move_ants(t_lem_in *anthill, t_path *path)
 	while (anthill->finish != anthill->ants)
 	{
 		current_path = path;
-		while (current_path && anthill->finish != anthill->ants)
-		{
-			anthill->end->prev = current_path->second_last;
-			if (current_path->type != NEG)
-				send_ants(anthill, tmp, current_path);
-			if (anthill->start->ant_here && current_path != path &&\
-			current_path->type != NEG)
-				other_path(anthill, tmp, current_path);
-			current_path = current_path->next;
-		}
+		make_move(anthill, current_path, tmp, path);
 		anthill->moves++;
 		anthill->print ? ft_printf("\n") : 0;
 	}
-	anthill->flag &&  anthill->print ?\
+	anthill->flag && anthill->print ?\
 	ft_printf(WHT "\nMoves: %d\n" EOC, anthill->moves) : 0;
 	return (anthill->moves);
 }
