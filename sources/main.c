@@ -6,48 +6,11 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:34:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/14 16:04:32 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/14 17:10:24 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
-
-void		print_rooms(t_lem_in *anthill)
-{
-	t_room *current;
-
-	current = anthill->room;
-	while (current)
-	{
-		ft_printf("room %s id %d\n", current->name, current->id);
-		current = current->next;
-	}
-}
-
-void		print_flow(t_lem_in *anthill)
-{
-	unsigned int i;
-	unsigned int j;
-
-	j = 0;
-	ft_printf("FLOW CHART\n");
-	while (j < anthill->room_count)
-	{
-		i = 0;
-		while (i < anthill->room_count)
-		{
-			if (anthill->flow[j][i] == 1)
-				ft_printf(GREEN "%3d" EOC, anthill->flow[j][i]);
-			else if (anthill->flow[j][i] == -1)
-				ft_printf(BOLDRED "%3d" EOC, anthill->flow[j][i]);
-			else
-				ft_printf("%3d", anthill->flow[j][i]);
-			i++;
-		}
-		ft_printf("\n");
-		j++;
-	}
-}
 
 static void	check_flag(char *arg, t_lem_in *anthill)
 {

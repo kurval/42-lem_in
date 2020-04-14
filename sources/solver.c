@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shortest_path.c                                    :+:      :+:    :+:   */
+/*   solver.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 12:29:54 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/14 17:03:47 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/14 17:21:28 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int				shortest_path(t_lem_in *anthill)
 	(!new_path || !array) ? print_error(anthill, 7) : 0;
 	array[0] = anthill->start;
 	array[1] = NULL;
-	if (!check_start_flow(anthill) || !find_path(anthill, array, new_path))
+	if (!check_start_flow(anthill) || !bfs(anthill, array, new_path))
 	{
 		reset_checked_rooms(anthill);
 		free(array);
@@ -85,6 +85,5 @@ int		solver(t_lem_in *anthill)
 	if (check_max_paths(anthill))
 		return (1);
 	ret = compare_results(anthill);
-	ft_printf("täällä extra %d\n", anthill->extra);
 	return (ret);
 }
