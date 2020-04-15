@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 12:29:54 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/15 11:18:54 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/15 13:23:20 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void		save_path(t_lem_in *anthill, t_path *new_path, t_room **array)
 	(new_path->nb != 1) ? del_start(&new_path) : 0;
 	reset_checked_rooms(anthill);
 	free(array);
+	free_connections(anthill->que);
 }
 
 int				shortest_path(t_lem_in *anthill)
@@ -40,6 +41,7 @@ int				shortest_path(t_lem_in *anthill)
 		free(array);
 		!anthill->extra ? del_last(&anthill->paths) :\
 		del_last(&anthill->paths2);
+		free_connections(anthill->que);
 		return (0);
 	}
 	save_path(anthill, new_path, array);

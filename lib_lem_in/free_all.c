@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/17 23:08:38 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/14 18:00:42 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/15 13:24:10 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ void		free_all(t_lem_in *anthill)
 	free_hashtable(anthill);
 	free_paths(anthill->paths);
 	free_paths(anthill->paths2);
-	free_connections(anthill->que);
 	free_flow_chart(anthill);
 	free_links(anthill->link);
 	free_rooms(anthill->room);
