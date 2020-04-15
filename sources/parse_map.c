@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 11:09:19 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/02 20:43:42 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/15 16:07:45 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int			parse_map(t_lem_in *anthill)
 	{
 		if (line[0] == '#' && line[1] != '#')
 			;
-		else if (!anthill->section)
+		else if (!anthill->section && line[0] != '#')
 			check_ants(&anthill, line);
 		else if (line[0] == '#' && line[1] == '#')
 			check_start_end(anthill, line);

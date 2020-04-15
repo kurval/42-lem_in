@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 12:29:54 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/15 13:23:20 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/15 20:37:41 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,15 @@ static int	compare_results(t_lem_in *anthill)
 	check_short(anthill);
 	while (ret)
 		ret = shortest_path(anthill);
-	update_rev_paths(anthill->paths2);
+	update_rev_paths(anthill, anthill->paths2);
+	print_path(anthill, anthill->paths2);
 	moves2 = move_ants(anthill, anthill->paths2);
+	ft_printf("moves %d\n", moves2);
 	anthill->print = 1;
 	if (moves1 <= moves2)
 	{
 		anthill->extra = 0;
-		update_rev_paths(anthill->paths);
+		update_rev_paths(anthill, anthill->paths);
 		return (1);
 	}
 	return (0);
@@ -79,14 +81,13 @@ int		solver(t_lem_in *anthill)
 	int	ret;
 
 	ret = 1;
-	
 	check_short(anthill);
 	while (ret)
 		ret = shortest_path(anthill);
 	(!anthill->paths) ? print_error(anthill, 9) : 0;
 	if (check_max_paths(anthill))
 	{
-		update_rev_paths(anthill->paths);
+		update_rev_paths(anthill, anthill->paths);
 		return (1);
 	}
 	ret = compare_results(anthill);

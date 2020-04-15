@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/14 20:37:49 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/15 15:27:40 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,7 @@ void					print_header(int nbr);
 void					free_flow_chart(t_lem_in *anthill);
 void					print_rev_names(t_path *path);
 void					del_node(t_path **node);
-void 					update_rev_paths(t_path *path);
+void 					update_rev_paths(t_lem_in *anthill, t_path *path);
 void					print_info(t_lem_in *anthill, int ret);
+void					reset_checked_rooms(t_lem_in *anthill);
 #endif

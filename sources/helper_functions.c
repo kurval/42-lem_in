@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 10:46:37 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/13 18:49:56 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/15 20:31:57 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,19 +83,6 @@ t_room		**connect_array(t_room **array, int rooms, t_lem_in *anthill)
 	}
 	new[i] = NULL;
 	return (new);
-}
-
-void		reset_checked_rooms(t_lem_in *anthill)
-{
-	t_room	*current;
-
-	current = anthill->room;
-	while (current)
-	{
-		if (current->checked != 2)
-			current->checked = 0;
-		current = current->next;
-	}
 }
 
 void		check_start_end(t_lem_in *anthill, char *line)

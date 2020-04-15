@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:32:55 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/14 17:22:14 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/15 15:27:28 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	check_rooms(t_lem_in **anthill, char *line);
 void	check_links(t_lem_in **anthill, char *line);
 int		is_valid_room(t_room *root, char *name);
 int		shortest_path(t_lem_in *anthill);
-void	reset_checked_rooms(t_lem_in *anthill);
 void	check_short(t_lem_in *anthill);
 int		bfs(t_lem_in *anthill, t_room **array, t_path *path);
 t_room	**connect_array(t_room **array, int rooms, t_lem_in *anthill);
