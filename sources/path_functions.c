@@ -12,46 +12,46 @@
 
 #include "../includes/lem_in.h"
 
-static int  count_connections(t_room *room)
+static int	count_connections(t_room *room)
 {
-    t_connect   *current;
-    int         count;
+	t_connect	*current;
+	int			count;
 
-    count = 0;
-    current = room->connections;
-    while (current)
-    {
-        count++;
-        current = current->next;
-    }
-    return (count);
+	count = 0;
+	current = room->connections;
+	while (current)
+	{
+		count++;
+		current = current->next;
+	}
+	return (count);
 }
 
-static int  check_neg_paths(t_lem_in *anthill)
+static int	check_neg_paths(t_lem_in *anthill)
 {
-    t_path   *current;
+	t_path	*current;
 
-    current = anthill->paths;
-    while (current)
-    {
-        if (current->type == NEG)
-            return (1);
-        current = current->next;
-    }
-    return (0);
+	current = anthill->paths;
+	while (current)
+	{
+		if (current->type == NEG)
+			return (1);
+		current = current->next;
+	}
+	return (0);
 }
 
-int check_max_paths(t_lem_in *anthill)
+int			check_max_paths(t_lem_in *anthill)
 {
-    int     start_con;
-    int     end_con;
-    int     max;
+	int	start_con;
+	int	end_con;
+	int	max;
 
-    max = 0;
-    start_con = count_connections(anthill->start);
-    end_con = count_connections(anthill->end);
-    max = (start_con < end_con) ? start_con : end_con;
-    if (anthill->nb_paths < max && check_neg_paths(anthill))
-        return (0);
-    return (1);
+	max = 0;
+	start_con = count_connections(anthill->start);
+	end_con = count_connections(anthill->end);
+	max = (start_con < end_con) ? start_con : end_con;
+	if (anthill->nb_paths < max && check_neg_paths(anthill))
+		return (0);
+	return (1);
 }

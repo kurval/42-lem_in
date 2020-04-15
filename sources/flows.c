@@ -14,17 +14,17 @@
 
 int		is_edge_valid(t_lem_in *anthill, int id1, int id2)
 {
-    if (anthill->extra)
-    {
-        if (anthill->flow[id1][id2] == 1)
-            return (1);
-    }
-    else
-    {
-        if (!anthill->flow[id1][id2] ||\
-                anthill->flow[id1][id2] == -1)
-            return (1);
-    }
+	if (anthill->extra)
+	{
+		if (anthill->flow[id1][id2] == 1)
+			return (1);
+	}
+	else
+	{
+		if (!anthill->flow[id1][id2] ||\
+				anthill->flow[id1][id2] == -1)
+			return (1);
+	}
 	return (0);
 }
 
@@ -68,7 +68,7 @@ void	create_flow_chart(t_lem_in *anthill)
 	while (i < anthill->room_count)
 	{
 		if (!(anthill->flow[i] = (int*)malloc(sizeof(int) *\
-		anthill->room_count)))
+						anthill->room_count)))
 			print_error(anthill, 7);
 		ft_bzero(anthill->flow[i], anthill->room_count);
 		i++;

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 12:29:54 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/15 20:37:41 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/15 22:51:14 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int				shortest_path(t_lem_in *anthill)
 	t_path			*new_path;
 
 	anthill->que = NULL;
-	new_path =  !anthill->extra ? add_path(&anthill->paths) :\
+	new_path = !anthill->extra ? add_path(&anthill->paths) :\
 	add_path(&anthill->paths2);
 	array = (t_room **)malloc(sizeof(t_room*) * 2);
 	(!new_path || !array) ? print_error(anthill, 7) : 0;
@@ -48,7 +48,7 @@ int				shortest_path(t_lem_in *anthill)
 	return (1);
 }
 
-static int	compare_results(t_lem_in *anthill)
+static int		compare_results(t_lem_in *anthill)
 {
 	int			moves1;
 	int			moves2;
@@ -76,7 +76,7 @@ static int	compare_results(t_lem_in *anthill)
 	return (0);
 }
 
-int		solver(t_lem_in *anthill)
+int				solver(t_lem_in *anthill)
 {
 	int	ret;
 

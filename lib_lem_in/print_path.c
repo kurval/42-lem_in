@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/31 16:55:50 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/15 20:55:26 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/15 22:39:32 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,13 @@ void	print_rev_names(t_path *path)
 	while (current)
 	{
 		if (current->room->prev)
-			ft_printf("rooms %s prev: %s\n", current->room->name, current->room->prev->name);
+			ft_printf("rooms %s prev: %s\n", current->room->name,\
+			current->room->prev->name);
 		current = current->next;
 	}
 }
 
-void		print_header(int nbr)
+void	print_header(int nbr)
 {
 	if (nbr >= 5)
 		nbr = nbr % 5;
@@ -36,7 +37,7 @@ void		print_header(int nbr)
 	nbr == 4 ? ft_printf(BOLDYELLOW "PATH %d:\n" EOC, nbr) : 0;
 }
 
-void		print_path(t_lem_in *anthill, t_path *root)
+void	print_path(t_lem_in *anthill, t_path *root)
 {
 	t_path		*path;
 	t_connect	*current;

@@ -83,7 +83,8 @@ static void	other_path(t_lem_in *anthill, t_room *tmp, t_path *path)
 	}
 }
 
-static void	make_move(t_lem_in *anthill, t_path *current_path, t_room *tmp, t_path *s_b)
+static void	make_move(t_lem_in *anthill, t_path *current_path,\
+t_room *tmp, t_path *s_b)
 {
 	while (current_path && anthill->finish != anthill->ants)
 	{
@@ -97,7 +98,7 @@ static void	make_move(t_lem_in *anthill, t_path *current_path, t_room *tmp, t_pa
 	}
 }
 
-int		move_ants(t_lem_in *anthill, t_path *path)
+int			move_ants(t_lem_in *anthill, t_path *path)
 {
 	t_room	*tmp;
 	t_path	*current_path;

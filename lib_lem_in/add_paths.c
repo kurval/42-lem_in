@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 12:38:06 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/14 20:38:27 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/15 22:38:46 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ t_path			*add_path(t_path **root)
 	return (path);
 }
 
-void		del_node(t_path **node)
+void			del_node(t_path **node)
 {
 	if (node != NULL && *node != NULL)
 	{

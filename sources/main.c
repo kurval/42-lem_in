@@ -22,7 +22,7 @@ int			main(int arg, char **argc)
 {
 	t_lem_in	anthill;
 	int			ret;
-	
+
 	ret = 0;
 	init_anthill(&anthill);
 	(arg == 2) ? check_flag(argc[1], &anthill) : 0;

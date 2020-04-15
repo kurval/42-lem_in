@@ -154,7 +154,7 @@ void					print_header(int nbr);
 void					free_flow_chart(t_lem_in *anthill);
 void					print_rev_names(t_path *path);
 void					del_node(t_path **node);
-void 					update_rev_paths(t_lem_in *anthill, t_path *path);
+void					update_rev_paths(t_lem_in *anthill, t_path *path);
 void					print_info(t_lem_in *anthill, int ret);
 void					reset_checked_rooms(t_lem_in *anthill);
 #endif

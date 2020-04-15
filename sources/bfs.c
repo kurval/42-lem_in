@@ -12,17 +12,17 @@
 
 #include "../includes/lem_in.h"
 
-static int  check_node(t_lem_in *anthill, t_connect	*route, t_room **tmp)
+static int	check_node(t_lem_in *anthill, t_connect *route, t_room **tmp)
 {
-    anthill->nodes += 1;
-    if (route->room == anthill->end && *tmp != anthill->start &&\
-    is_edge_valid(anthill, (*tmp)->id, anthill->end->id))
-        return (1);
-    else
-        return (0);
+	anthill->nodes += 1;
+	if (route->room == anthill->end && *tmp != anthill->start &&\
+			is_edge_valid(anthill, (*tmp)->id, anthill->end->id))
+		return (1);
+	else
+		return (0);
 }
 
-int is_link_valid(t_lem_in *anthill, t_room **array, t_path *path)
+int			is_link_valid(t_lem_in *anthill, t_room **array, t_path *path)
 {
 	int		ret;
 	t_room	**new;
@@ -47,7 +47,7 @@ int is_link_valid(t_lem_in *anthill, t_room **array, t_path *path)
  ** end is reached or function fails to find path.
 */
 
-int bfs(t_lem_in *anthill, t_room **array, t_path *path)
+int			bfs(t_lem_in *anthill, t_room **array, t_path *path)
 {
 	t_room		**tmp;
 	t_connect	*route;
@@ -65,7 +65,7 @@ int bfs(t_lem_in *anthill, t_room **array, t_path *path)
 			route = route->next;
 		}
 		(!(add_connect(&anthill->que, (*tmp)))) ?\
-		print_error(anthill, 7) : 0;
+			print_error(anthill, 7) : 0;
 		tmp++;
 	}
 	if (!(is_link_valid(anthill, array, path)))
