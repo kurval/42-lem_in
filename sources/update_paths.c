@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/12 19:34:38 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/16 16:18:54 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/16 21:40:20 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,10 @@ static void	update_prev(t_lem_in *anthill, t_path *current,\
 		i++;
 	}
 }
+
+/*
+ ** Updating rooms to point previous node.
+*/
 
 void		update_rev_paths(t_lem_in *anthill, t_path *path)
 {

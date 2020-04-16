@@ -6,11 +6,16 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 12:29:54 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/16 15:28:53 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/16 21:39:57 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
+
+/*
+ ** Saving path and reset checked rooms
+ ** for the next iteration.
+*/
 
 static void		save_path(t_lem_in *anthill, t_path *new_path, t_room **array)
 {
@@ -22,6 +27,11 @@ static void		save_path(t_lem_in *anthill, t_path *new_path, t_room **array)
 	free(array);
 	free_connections(anthill->que);
 }
+
+/*
+ ** Sending first array to bfs with all
+ ** the connections that start node has.
+*/
 
 int				shortest_path(t_lem_in *anthill)
 {
@@ -47,6 +57,11 @@ int				shortest_path(t_lem_in *anthill)
 	save_path(anthill, new_path, array);
 	return (1);
 }
+
+/*
+ ** Going through next iteration with shortest_path.
+ ** In this second iteration we can use all edges with value 1.
+*/
 
 static int		compare_results(t_lem_in *anthill)
 {
@@ -74,6 +89,11 @@ static int		compare_results(t_lem_in *anthill)
 	}
 	return (0);
 }
+
+/*
+ ** First iteration with shortest_path search all
+ ** the shortest paths and negative paths.
+*/
 
 int				solver(t_lem_in *anthill)
 {

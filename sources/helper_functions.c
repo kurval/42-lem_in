@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 10:46:37 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/16 14:00:12 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/16 20:29:01 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,12 @@ void		init_anthill(t_lem_in *anthill)
 	anthill->print = 1;
 }
 
-static void	add_next_level(t_lem_in *anthill, t_room *tmp, t_room **new, int *i)
+/*
+ ** Adding next level nodes to array if
+ ** edge is valid and node is not visited.
+*/
+
+static void	fill_array(t_lem_in *anthill, t_room *tmp, t_room **new, int *i)
 {
 	t_connect	*route;
 
@@ -96,7 +101,7 @@ t_room		**connect_array(t_room **array, int rooms, t_lem_in *anthill)
 	tmp = array;
 	while (*tmp)
 	{
-		add_next_level(anthill, *tmp, new, &i);
+		fill_array(anthill, *tmp, new, &i);
 		tmp++;
 	}
 	new[i] = NULL;

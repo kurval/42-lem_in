@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/06 13:01:46 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/15 20:50:02 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/16 20:16:12 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,11 @@ void	update_flow(t_lem_in *anthill, int id1, int id2)
 		anthill->flow[id2][id1] = 0;
 	}
 }
+
+/*
+** Creating flow chart to represent edges
+** between nodes. Initializing them to 0.
+*/
 
 void	create_flow_chart(t_lem_in *anthill)
 {

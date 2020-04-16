@@ -6,11 +6,15 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 11:27:44 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/15 20:20:46 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/16 21:41:32 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
+
+/*
+ ** Checks that edge is valid before end-node.
+*/
 
 static int	check_node(t_lem_in *anthill, t_connect *route, t_room **tmp)
 {
@@ -22,7 +26,12 @@ static int	check_node(t_lem_in *anthill, t_connect *route, t_room **tmp)
 		return (0);
 }
 
-int			is_link_valid(t_lem_in *anthill, t_room **array, t_path *path)
+/*
+ ** Connect array adds next level of nodes to bfs
+ ** if end is not reached.
+*/
+
+int			add_next_level(t_lem_in *anthill, t_room **array, t_path *path)
 {
 	int		ret;
 	t_room	**new;
@@ -68,7 +77,7 @@ int			bfs(t_lem_in *anthill, t_room **array, t_path *path)
 			print_error(anthill, 7) : 0;
 		tmp++;
 	}
-	if (!(is_link_valid(anthill, array, path)))
+	if (!(add_next_level(anthill, array, path)))
 		return (0);
 	return (1);
 }

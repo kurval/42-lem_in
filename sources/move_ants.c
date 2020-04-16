@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/28 10:50:09 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/16 11:26:42 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/16 21:38:47 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ static void	move(t_lem_in *anthill, t_room *tmp, t_path *path)
 	if (tmp == anthill->end)
 		anthill->finish++;
 }
+
+/*
+ ** Moving each ant of current path one room forward.
+*/
 
 static void	send_ants(t_lem_in *anthill, t_room *tmp, t_path *path)
 {
@@ -97,6 +101,11 @@ t_room *tmp, t_path *s_b)
 		current_path = current_path->next;
 	}
 }
+
+/*
+ ** Moving ants one path at a time
+ ** while each ant have reached end node.
+*/
 
 int			move_ants(t_lem_in *anthill, t_path *path)
 {
