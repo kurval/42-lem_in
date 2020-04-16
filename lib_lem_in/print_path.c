@@ -12,7 +12,7 @@
 
 #include "../includes/lib.h"
 
-void	print_rev_names(t_path *path)
+void		print_rev_names(t_path *path)
 {
 	t_connect *current;
 
@@ -43,7 +43,7 @@ static void	print_header(t_path *path)
 static void	print_rooms(t_lem_in *anthill, t_path *path)
 {
 	t_connect	*current;
-	
+
 	current = path->route;
 	print_header(path);
 	path->nb != 1 ?\
@@ -59,7 +59,7 @@ static void	print_rooms(t_lem_in *anthill, t_path *path)
 	ft_printf("\n");
 }
 
-void	print_path(t_lem_in *anthill, t_path *root)
+void		print_path(t_lem_in *anthill, t_path *root)
 {
 	t_path		*path;
 
@@ -73,7 +73,7 @@ void	print_path(t_lem_in *anthill, t_path *root)
 	ft_printf("\n");
 }
 
-void	print_info(t_lem_in *anthill, int ret)
+void		print_info(t_lem_in *anthill, int ret)
 {
 	print_map(anthill);
 	anthill->flag && ret ? print_path(anthill, anthill->paths) : 0;
