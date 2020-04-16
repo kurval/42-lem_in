@@ -6,11 +6,30 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 10:46:37 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/15 20:31:57 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/16 11:51:52 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
+
+void		print_standard(t_room *tmp)
+{
+	char	*part1;
+	char	*part2;
+	char	*str;
+	char	*ant;
+
+	ant = ft_itoa(tmp->ant_here->name);
+	part1 = ft_strjoin("L", ant);
+	part2 = ft_strjoin("-", tmp->name);
+	str = ft_strjoin(part1, part2);
+	write (1, str, ft_strlen(str));
+	write (1, " ", 1);
+	free(part1);
+	free(part2);
+	free(str);
+	free(ant);
+}
 
 void		init_anthill(t_lem_in *anthill)
 {

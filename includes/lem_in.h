@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:32:55 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/15 15:27:28 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/16 11:26:17 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,5 @@ void	link_path(t_lem_in *anthill, t_connect *queue, t_path *path);
 int		solver(t_lem_in *anthill);
 int		check_max_paths(t_lem_in *anthill);
 int		link_to_end(t_lem_in *anthill, t_room **tmp, t_path *path);
+void	print_standard(t_room *temp);
 #endif

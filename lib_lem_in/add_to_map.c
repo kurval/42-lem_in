@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 16:15:31 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/01 11:48:44 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/16 11:30:35 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@ void			print_map(t_lem_in *root)
 	current = root->map;
 	while (current)
 	{
-		ft_printf("%s\n", current->line);
+		write(1, current->line, ft_strlen(current->line));
+		write(1, "\n", 1);
 		current = current->next;
 	}
-	ft_printf("\n");
+	write(1, "\n", 1);
 }
 
 static t_map	*new_node(char *data)

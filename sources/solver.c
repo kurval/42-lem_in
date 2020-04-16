@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 12:29:54 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/15 22:51:14 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/16 11:37:35 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ static int		compare_results(t_lem_in *anthill)
 	update_rev_paths(anthill, anthill->paths2);
 	print_path(anthill, anthill->paths2);
 	moves2 = move_ants(anthill, anthill->paths2);
-	ft_printf("moves %d\n", moves2);
 	anthill->print = 1;
 	if (moves1 <= moves2)
 	{
