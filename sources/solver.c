@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 12:29:54 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/16 11:37:35 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/16 15:28:53 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void		save_path(t_lem_in *anthill, t_path *new_path, t_room **array)
 {
 	link_path(anthill, anthill->que, new_path);
 	new_path->len = path_len(new_path);
-	new_path->type != NEG ? new_path->nb = ++anthill->nb_paths : 0;
+	new_path->nb = ++anthill->nb_paths;
 	(new_path->nb != 1) ? del_start(&new_path) : 0;
 	reset_checked_rooms(anthill);
 	free(array);
@@ -56,6 +56,7 @@ static int		compare_results(t_lem_in *anthill)
 
 	ret = 1;
 	anthill->print = 0;
+	print_path(anthill, anthill->paths);
 	moves1 = move_ants(anthill, anthill->paths);
 	anthill->extra = 1;
 	anthill->nb_paths = 0;
@@ -63,7 +64,6 @@ static int		compare_results(t_lem_in *anthill)
 	while (ret)
 		ret = shortest_path(anthill);
 	update_rev_paths(anthill, anthill->paths2);
-	print_path(anthill, anthill->paths2);
 	moves2 = move_ants(anthill, anthill->paths2);
 	anthill->print = 1;
 	if (moves1 <= moves2)
@@ -84,11 +84,9 @@ int				solver(t_lem_in *anthill)
 	while (ret)
 		ret = shortest_path(anthill);
 	(!anthill->paths) ? print_error(anthill, 9) : 0;
+	update_rev_paths(anthill, anthill->paths);
 	if (check_max_paths(anthill))
-	{
-		update_rev_paths(anthill, anthill->paths);
 		return (1);
-	}
 	ret = compare_results(anthill);
 	return (ret);
 }

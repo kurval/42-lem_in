@@ -22,7 +22,7 @@ static void	move(t_lem_in *anthill, t_room *tmp, t_path *path)
 	if (!anthill->flag && anthill->print)
 		print_standard(tmp);
 	else if (anthill->print)
-	{	
+	{
 		nbr == 0 ? ft_printf(BOLDBLUE "L%ld-%s " EOC,\
 		tmp->ant_here->name, tmp->name) : 0;
 		nbr == 1 ? ft_printf(WHT "L%ld-%s " EOC,\

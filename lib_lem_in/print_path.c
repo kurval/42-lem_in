@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/31 16:55:50 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/15 22:39:32 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/16 16:15:01 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,41 +26,48 @@ void	print_rev_names(t_path *path)
 	}
 }
 
-void	print_header(int nbr)
+static void	print_header(t_path *path)
 {
+	int	nbr;
+
+	nbr = path->nb;
 	if (nbr >= 5)
 		nbr = nbr % 5;
-	nbr == 0 ? ft_printf(BOLDBLUE "PATH %d:\n" EOC, nbr) : 0;
-	nbr == 1 ? ft_printf(WHT "PATH %d:\n" EOC, nbr) : 0;
-	nbr == 2 ? ft_printf(BOLDCYAN "PATH %d:\n" EOC, nbr) : 0;
-	nbr == 3 ? ft_printf(BOLDMAGENTA "PATH %d:\n" EOC, nbr) : 0;
-	nbr == 4 ? ft_printf(BOLDYELLOW "PATH %d:\n" EOC, nbr) : 0;
+	nbr == 0 ? ft_printf(BOLDBLUE "PATH %d:\n" EOC, path->nb) : 0;
+	nbr == 1 ? ft_printf(WHT "PATH %d:\n" EOC, path->nb) : 0;
+	nbr == 2 ? ft_printf(BOLDCYAN "PATH %d:\n" EOC, path->nb) : 0;
+	nbr == 3 ? ft_printf(BOLDMAGENTA "PATH %d:\n" EOC, path->nb) : 0;
+	nbr == 4 ? ft_printf(BOLDYELLOW "PATH %d:\n" EOC, path->nb) : 0;
+}
+
+static void	print_rooms(t_lem_in *anthill, t_path *path)
+{
+	t_connect	*current;
+	
+	current = path->route;
+	print_header(path);
+	path->nb != 1 ?\
+	ft_printf(WHT "%s" EOC, anthill->start->name) : 0;
+	path->nb != 1 ?\
+	ft_printf(GREEN " => " EOC, anthill->start->name) : 0;
+	while (current)
+	{
+		ft_printf(WHT "%s" EOC, current->room->name);
+		(current->room != anthill->end) ? ft_printf(GREEN " => " EOC) : 0;
+		current = current->next;
+	}
+	ft_printf("\n");
 }
 
 void	print_path(t_lem_in *anthill, t_path *root)
 {
 	t_path		*path;
-	t_connect	*current;
-	int			nbr;
 
 	path = root;
-	nbr = path ? 1 : 0;
 	while (path)
 	{
-		current = path->route;
-		print_header(nbr);
-		nbr != 1 ?\
-		ft_printf(WHT "%s" EOC, anthill->start->name) : 0;
-		nbr != 1 ?\
-		ft_printf(GREEN " => " EOC, anthill->start->name) : 0;
-		while (current)
-		{
-			ft_printf(WHT "%s" EOC, current->room->name);
-			(current->room != anthill->end) ? ft_printf(GREEN " => " EOC) : 0;
-			current = current->next;
-		}
-		nbr++;
-		ft_printf("\n");
+		if (path->type != -1)
+			print_rooms(anthill, path);
 		path = path->next;
 	}
 	ft_printf("\n");

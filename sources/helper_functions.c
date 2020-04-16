@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 10:46:37 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/16 11:51:52 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/16 14:00:12 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void		print_standard(t_room *tmp)
 	part1 = ft_strjoin("L", ant);
 	part2 = ft_strjoin("-", tmp->name);
 	str = ft_strjoin(part1, part2);
-	write (1, str, ft_strlen(str));
-	write (1, " ", 1);
+	write(1, str, ft_strlen(str));
+	write(1, " ", 1);
 	free(part1);
 	free(part2);
 	free(str);
@@ -47,7 +47,6 @@ void		init_anthill(t_lem_in *anthill)
 	anthill->errnbr = 0;
 	anthill->section = 0;
 	anthill->line = 0;
-	anthill->quick = 0;
 	anthill->reverse_path = NULL;
 	anthill->nodes = 0;
 	anthill->finish = 0;

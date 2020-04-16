@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/09 20:55:10 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/15 19:50:18 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/16 14:00:03 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static void	save_path_info(t_lem_in *anthill, t_path *new_path)
 {
-	anthill->quick = 1;
 	update_flow(anthill, anthill->start->id, anthill->end->id);
 	new_path->second_last = anthill->start;
 	new_path->nb = ++anthill->nb_paths;
@@ -27,8 +26,6 @@ void		check_short(t_lem_in *anthill)
 	t_path		*new_path;
 
 	new_path = NULL;
-	if (anthill->quick)
-		return ;
 	current = anthill->start->connections;
 	while (current)
 	{
@@ -44,5 +41,4 @@ void		check_short(t_lem_in *anthill)
 		}
 		current = current->next;
 	}
-	anthill->quick = -1;
 }
