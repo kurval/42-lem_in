@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/16 21:14:42 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/16 21:59:36 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ typedef struct			s_room
 	int					x;
 	int					y;
 	int					id;
-	int					second;
 	struct s_room		*next;
 	struct s_room		*prev;
 	struct s_ants		*ant_here;

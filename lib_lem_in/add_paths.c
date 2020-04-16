@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 12:38:06 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/15 22:38:46 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/16 21:59:46 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,5 @@ void			del_start(t_path **root)
 	tmp = (*root)->route;
 	(*root)->route = (*root)->route->next;
 	(*root)->route->room->prev = NULL;
-	(*root)->route->room->second = 1;
 	free(tmp);
 }
