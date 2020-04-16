@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/16 21:59:36 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/16 22:12:03 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # define SIZE 1000
 # define BOLDRED		"\033[1m\033[31m"
 # define BOLDCYAN		"\033[1m\033[36m"
-# define WHT		"\033[1m\033[37m"
+# define WHT			"\033[1m\033[37m"
 # define BOLDYELLOW		"\033[1m\033[33m"
 # define BOLDBLUE		"\033[1m\033[34m"
 # define BOLDMAGENTA	"\033[1m\033[35m"
