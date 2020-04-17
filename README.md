@@ -19,6 +19,13 @@ as many ants as necessary.)
 • At each turn you will only display the ants that moved.  
 • At each turn you can move each ant only once and through a tube (the room at
 the receiving end must be empty).
+• You must to display your results on the standard output in the following format:
+```
+number_of_ants
+the_rooms
+the_links
+Lx-y Lz-w Lr-o ...
+```
 L(int) represents the ants’ numbers (going from 1 to number_of_ants) and second part after
 hyphen represents the rooms’ names.  
 !! These are maps with sometimes more than 10,000 lines, the way you
