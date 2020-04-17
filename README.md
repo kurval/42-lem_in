@@ -88,6 +88,6 @@ git clone https://github.com/kurval/42-lem_in.git lem_in && cd lem_in && make &&
 
 ## EXAMPLE
 
-![example]()
+![example](/img/print_screen.png)
 
 ## SOURCES
