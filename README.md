@@ -93,8 +93,8 @@ I stored rest of the input data in linked lists (rooms, links, map, paths etc).
 OR you can just past this on your terminal:
 git clone https://github.com/kurval/42-lem_in.git lem_in && cd lem_in && make && ./lem-in < testmap.map  
 
-## EXAMPLE
+## Example
 
 ![example](/img/print_screen.png)
 
-## SOURCES
+## Sources
