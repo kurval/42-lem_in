@@ -1,6 +1,6 @@
 # 42-lem_in
 
-![](https://j.gifs.com/K1yrol.gif)
+![](https://j.gifs.com/4Q3x77.gif)
 
 ## Goal
 
