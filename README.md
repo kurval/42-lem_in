@@ -26,7 +26,7 @@ the_rooms
 the_links
 Lx-y Lz-w Lr-o ...
 ```
-L(int) represents the ants’ numbers (going from 1 to number_of_ants) and second part after
+Lx, Lz, Lr represents the ants’ numbers (going from 1 to number_of_ants) and second part after
 hyphen represents the rooms’ names.  
 ***!!*** These are maps with sometimes more than 10,000 lines, the way you
 read and write data must also be fairly fast.
