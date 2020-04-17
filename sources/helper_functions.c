@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 10:46:37 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/16 20:29:01 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/17 13:05:16 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,17 @@ t_room		**connect_array(t_room **array, int rooms, t_lem_in *anthill)
 void		check_start_end(t_lem_in *anthill, char *line)
 {
 	if (!ft_strncmp_end(line, "##start", 7) && !anthill->start)
-		anthill->section = START;
+	{
+		if (anthill->section != ROOMS)
+			anthill->errnbr = 8;
+		else
+			anthill->section = START;
+	}
 	else if (!ft_strncmp_end(line, "##end", 5) && !anthill->end)
-		anthill->section = END;
+	{
+		if (anthill->section != ROOMS)
+			anthill->errnbr = 8;
+		else
+			anthill->section = END;
+	}
 }
