@@ -98,3 +98,8 @@ git clone https://github.com/kurval/42-lem_in.git lem_in && cd lem_in && make &&
 ![example](/img/print_screen.png)
 
 ## Sources
+https://medium.com/tebs-lab/types-of-graphs-7f3891303ea8
+https://www.tutorialspoint.com/data_structures_algorithms/hash_table_program_in_c.htm
+https://www.youtube.com/watch?v=RppuJYwlcI8
+https://www.geeksforgeeks.org/breadth-first-search-or-bfs-for-a-graph/
+
