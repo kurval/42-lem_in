@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 11:27:44 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/17 11:11:08 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/17 11:33:08 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,8 @@ int			bfs(t_lem_in *anthill, t_room **array, t_path *path)
 	tmp = array;
 	anthill->nodes = 0;
 	anthill->level++;
-	ft_printf("LEVEL\n");
 	while (*tmp)
 	{
-		ft_printf("TMP %s level %d\n", (*tmp)->name, anthill->level);
 		(*tmp)->checked != NEG ? (*tmp)->checked = VISITED : 0;
 		route = (*tmp)->connections;
 		while (route)

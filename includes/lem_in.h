@@ -49,5 +49,5 @@ int		link_to_end(t_lem_in *anthill, t_room **tmp, t_path *path);
 void	print_standard(t_room *temp);
 void	reset_checked_rooms(t_lem_in *anthill);
 void	update_rev_paths(t_lem_in *anthill, t_path *path);
-void    reset_queue(t_connect *queue);
+void	reset_queue(t_connect *queue);
 #endif
