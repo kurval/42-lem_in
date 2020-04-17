@@ -91,7 +91,7 @@ As always error management must be flawless. This means that the input is valid 
 
 I used breadth first search (BFS) to find shortest path. At some graphs and with certain amount of ants the shortest path isn't necessarily the best solution (see the example below). Shortest patht might also block BFS from finding other paths if we only observe vertexes (can't visit same vertex twise). So I lent an idea from Edmonds-Karp algorithm to take advantage of flows as well. Now I can check if edge is valid through parent vertex to child vertex. That allows my algorithm to find other paths as well on certain maps. If I run my program with the graph below after first iterations (4 ants), I will use 6 moves. After second iterations I need to use only 5 moves.
 
-![flow_graph](/img/flows.png)
+![flow_graph](https://github.com/kurval/42-lem_in/blob/master/img/flow_graph.png | width=100)
 
 ## Compiling and Usage
 
