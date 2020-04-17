@@ -6,11 +6,23 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 11:27:44 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/16 21:41:32 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/17 11:11:08 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
+
+void		reset_queue(t_connect *queue)
+{
+	t_connect *current;
+
+	current = queue;
+	while (current)
+	{
+		current->level = 0;
+		current = current->next;
+	}
+}
 
 /*
  ** Checks that edge is valid before end-node.
@@ -63,8 +75,11 @@ int			bfs(t_lem_in *anthill, t_room **array, t_path *path)
 
 	tmp = array;
 	anthill->nodes = 0;
+	anthill->level++;
+	ft_printf("LEVEL\n");
 	while (*tmp)
 	{
+		ft_printf("TMP %s level %d\n", (*tmp)->name, anthill->level);
 		(*tmp)->checked != NEG ? (*tmp)->checked = VISITED : 0;
 		route = (*tmp)->connections;
 		while (route)
@@ -75,6 +90,7 @@ int			bfs(t_lem_in *anthill, t_room **array, t_path *path)
 		}
 		(!(add_connect(&anthill->que, (*tmp)))) ?\
 			print_error(anthill, 7) : 0;
+		anthill->que->level = anthill->level;
 		tmp++;
 	}
 	if (!(add_next_level(anthill, array, path)))

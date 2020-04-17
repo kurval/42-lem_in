@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/16 22:12:03 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/17 11:11:54 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct			s_lem_in
 	int					id;
 	int					extra;
 	int					print;
+	int					level;
 	struct s_ants		*ant_lst;
 	struct s_room		*room;
 	struct s_link		*link;
@@ -114,6 +115,7 @@ typedef struct			s_connect
 {
 	struct s_room		*room;
 	struct s_connect	*next;
+	int					level;
 }						t_connect;
 
 typedef struct			s_path

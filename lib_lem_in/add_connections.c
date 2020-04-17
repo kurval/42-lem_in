@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/19 15:41:13 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/14 20:37:37 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/17 11:04:10 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static t_connect	*new_connect(t_room *to)
 
 	if (!(connect = (t_connect*)malloc(sizeof(t_connect))))
 		return (NULL);
+	connect->level = 0;
 	connect->room = to;
 	connect->next = NULL;
 	return (connect);

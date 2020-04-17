@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/31 16:55:50 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/16 21:14:21 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/17 10:04:45 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void		print_path(t_lem_in *anthill, t_path *root)
 
 void		print_anthill(t_lem_in *anthill, int ret)
 {
-	print_map(anthill);
+	//print_map(anthill);
 	anthill->flag && ret ? print_path(anthill, anthill->paths) : 0;
 	anthill->flag && !ret ? print_path(anthill, anthill->paths2) : 0;
 }

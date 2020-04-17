@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 11:29:57 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/16 21:36:24 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/17 11:21:58 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,21 @@ void		link_path(t_lem_in *anthill, t_connect *queue, t_path *path)
 {
 	t_connect	*tmp;
 	t_connect	*route;
+	int			lev;
 
 	tmp = queue;
+	lev = 0;
 	while (tmp)
 	{
 		route = tmp->room->connections;
 		while (route)
 		{
-			if (route->room == anthill->reverse_path)
+			if (route->room == anthill->reverse_path &&\
+			tmp->level != lev)
+			{
 				create_link(anthill, tmp, route, path);
+				lev = tmp->level;
+			}
 			route = route->next;
 		}
 		tmp = tmp->next;

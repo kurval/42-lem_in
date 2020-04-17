@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 12:29:54 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/16 21:39:57 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/17 11:09:25 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static void		save_path(t_lem_in *anthill, t_path *new_path, t_room **array)
 	new_path->nb = ++anthill->nb_paths;
 	(new_path->nb != 1) ? del_start(&new_path) : 0;
 	reset_checked_rooms(anthill);
+	reset_queue(anthill->que);
 	free(array);
 	free_connections(anthill->que);
 }
@@ -39,6 +40,7 @@ int				shortest_path(t_lem_in *anthill)
 	t_path			*new_path;
 
 	anthill->que = NULL;
+	anthill->level = 0;
 	new_path = !anthill->extra ? add_path(&anthill->paths) :\
 	add_path(&anthill->paths2);
 	array = (t_room **)malloc(sizeof(t_room*) * 2);
@@ -48,6 +50,7 @@ int				shortest_path(t_lem_in *anthill)
 	if (!check_start_flow(anthill) || !bfs(anthill, array, new_path))
 	{
 		reset_checked_rooms(anthill);
+		reset_queue(anthill->que);
 		free(array);
 		!anthill->extra ? del_last(&anthill->paths) :\
 		del_last(&anthill->paths2);
@@ -71,7 +74,6 @@ static int		compare_results(t_lem_in *anthill)
 
 	ret = 1;
 	anthill->print = 0;
-	print_path(anthill, anthill->paths);
 	moves1 = move_ants(anthill, anthill->paths);
 	anthill->extra = 1;
 	anthill->nb_paths = 0;
