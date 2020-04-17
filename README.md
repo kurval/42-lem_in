@@ -88,7 +88,7 @@ I stored rest of the input data in linked lists (rooms, links, map, paths etc).
 ## Compiling and Usage
 
 ``usage: ./lem-in [-p] < [source file]``  
--p flag for printhin paths with colours  
+-p flag for printhin paths with colours (mind that program is faster without -p flag because I use my own printft to print colors and otherwise just write)
 
 ***OR*** you can just paste this on your terminal:
 git clone https://github.com/kurval/42-lem_in.git lem_in && cd lem_in && make && ./lem-in < testmap.map  
