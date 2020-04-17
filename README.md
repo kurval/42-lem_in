@@ -83,7 +83,7 @@ I stored rest of the input data in linked lists (rooms, links, map, paths etc).
 
 ## Algorithm
 
--
+![flows](/img/flows.png)
 
 ## Compiling and Usage
 
