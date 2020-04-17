@@ -78,10 +78,18 @@ the_links
 
 ## Data structure
 
-I used hash table to create connections between rooms (so I can jump from room to room immediately instead of going through a list of rooms each time I need to create a new connection. This comes very important when you have bigger maps.)  
+I used hash table to create connections between rooms (I can jump from room to room immediately instead of going through a list of rooms each time I need to create a new connection.)   
 I stored rest of the input data in linked lists (rooms, links, map, paths etc).
 
+## Error handling
+
+As always error management must be flawless. This means that the input is valid and there must be enough data to process normally. So I have to check that input comes in right order ants->rooms->links and everything is in right format. If not my program show specific error message and also the line where error occurs.
+
+![error_messa](/img/error_message.png)
+
 ## Algorithm
+
+I used breadth first search (BFS) to find shortest path. At some graphs and with certain amount of ants the shortest path isn't necessarily the best solution (see the example below). Shortest patht might also block BFS from finding other paths if we only observe vertexes (can't visit same vertex twise). So I lent an idea from Edmonds-Karp algorithm to take advantage of flows as well. Now I can check if edge is valid through parent vertex to child vertex. That allows my algorithm to find other paths as well on certain maps. If I run my program with the graph below after first iterations (4 ants), I will use 6 moves. After second iterations I need to use only 5 moves.
 
 ![flows](/img/flows.png)
 
