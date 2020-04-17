@@ -83,7 +83,7 @@ I stored rest of the input data in linked lists (rooms, links, map, paths etc).
 ``usage: ./lem-in [-p] < [source file]``  
 -p flag for printhin paths with colours  
 
-You can past this on your terminal:
+OR can just past this on your terminal:
 git clone https://github.com/kurval/42-lem_in.git lem_in && cd lem_in && make && ./lem-in < testmap.map  
 
 ## EXAMPLE
