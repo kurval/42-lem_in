@@ -95,7 +95,7 @@ I used breadth first search (BFS) to find shortest path. At some graphs and with
 
 ## Compiling and Usage
 
-``usage: ./lem-in [-p] < [source file]``  
+usage: ``./lem-in [-p] < [source file]``  
 -p flag for printing paths with colors (mind that program is faster without -p flag because I use my own printft to print colors and otherwise just write)
 
 ***OR*** you can just paste this on your terminal:
