@@ -85,7 +85,7 @@ I stored rest of the input data in linked lists (rooms, links, map, paths etc).
 
 As always error management must be flawless. This means that the input is valid and there must be enough data to process normally. So I have to check that input comes in right order ants->rooms->links and everything is in right format. If not my program show specific error message and also the line where error occurs.
 
-![error_message](/img/error_message.png)
+![error_message](/img/error_msg.png)
 
 ## Algorithm
 
