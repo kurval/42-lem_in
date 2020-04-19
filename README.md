@@ -85,7 +85,6 @@ I stored rest of the input data in linked lists (rooms, links, map, paths etc).
 
 As always error management must be flawless. This means that the input is valid and there must be enough data to process normally. So I have to check that input comes in right order ants->rooms->links and everything is in right format. If not my program show specific error message and also the line where error occurs.
 
-![error_message](/img/error_message.png)
 
 ## Algorithm
 
@@ -95,7 +94,7 @@ I used breadth first search (BFS) to find shortest path. At some graphs and with
 
 ## Compiling and Usage
 
-``usage: ./lem-in [-p] < [source file]``  
+usage: ``./lem-in [-p] < [source file]``  
 -p flag for printing paths with colors (mind that program is faster without -p flag because I use my own printft to print colors and otherwise just write)
 
 ***OR*** you can just paste this on your terminal:
