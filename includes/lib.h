@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/19 15:04:58 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/19 15:18:12 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 # define MSG13	"start doesn't exist"
 # define MSG14	"end doesn't exist"
 # define MSG16	"error while reading input"
-# define MSG17	"room allready exist at the same location"
+# define MSG17	"room already exist at the same location"
 # include "../libft/libft.h"
 
 typedef struct			s_lem_in
