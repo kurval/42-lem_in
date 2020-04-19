@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/17 11:11:54 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/19 15:04:58 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@
 # define MSG7	"malloc error"
 # define MSG8	"invalid ants"
 # define MSG9	"no paths"
-# define MSG10	"room allready exist"
-# define MSG11	"link allready exist"
+# define MSG10	"room already exist"
+# define MSG11	"link already exist"
 # define MSG12	"no links or empty map"
 # define MSG13	"start doesn't exist"
 # define MSG14	"end doesn't exist"
