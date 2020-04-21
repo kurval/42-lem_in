@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 11:46:15 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/04 13:43:50 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/21 10:10:12 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,10 @@ static t_hashtable	*create_bucket(t_room *room, unsigned long key)
 	return (bucket);
 }
 
+/*
+ ** Adding bucket to head of the list.
+*/
+
 static void			chain_collission(t_lem_in **anthill, t_room *room,\
 unsigned long key)
 {
@@ -53,6 +57,11 @@ unsigned long key)
 	new->next = (*anthill)->hashtable[key];
 	(*anthill)->hashtable[key] = new;
 }
+
+/*
+ ** Creating bucket for each of the rooms. Handling
+ ** collisions if there is another room with same key.
+*/ 
 
 void				insert_data(t_lem_in *anthill)
 {

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/19 15:41:13 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/17 11:04:10 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/21 10:20:21 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ int					add_connect(t_connect **root, t_room *to)
 	return (1);
 }
 
+/*
+ ** Checking room name incase of collissions and
+ ** returning right hashtable.
+*/
+
 static t_hashtable	*check_room(t_hashtable *table, char *room)
 {
 	t_hashtable *ptr;
@@ -51,6 +56,10 @@ static t_hashtable	*check_room(t_hashtable *table, char *room)
 		}
 	return (table);
 }
+
+/*
+ ** Getting keys and adding connections for rooms.
+*/
 
 void				create_connections(t_lem_in *anthill)
 {
