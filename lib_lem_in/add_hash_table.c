@@ -61,7 +61,7 @@ unsigned long key)
 /*
  ** Creating bucket for each of the rooms. Handling
  ** collisions if there is another room with same key.
-*/ 
+*/
 
 void				insert_data(t_lem_in *anthill)
 {
@@ -76,8 +76,10 @@ void				insert_data(t_lem_in *anthill)
 		if (anthill->hashtable[key] != NULL)
 			chain_collission(&anthill, tmp, key);
 		else
+		{
 			if (!(anthill->hashtable[key] = create_bucket(tmp, key)))
 				print_error(anthill, 7);
+		}
 		tmp = tmp->next;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 11:27:44 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/22 19:26:14 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/22 20:17:55 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,7 @@ int			add_next_level(t_lem_in *anthill, t_room **array, t_path *path)
 	ret = 0;
 	new = NULL;
 	if (!(new = connect_array(array, anthill->nodes, anthill)))
-	{
-		free(new);
 		print_error(anthill, 7);
-	}
 	ret = (!anthill->nodes || !(bfs(anthill, new, path))) ? 0 : 1;
 	free(new);
 	return (ret);
