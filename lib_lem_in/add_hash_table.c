@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 11:46:15 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/21 10:10:12 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/22 20:02:49 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,8 @@ void				insert_data(t_lem_in *anthill)
 		if (anthill->hashtable[key] != NULL)
 			chain_collission(&anthill, tmp, key);
 		else
-		{
 			if (!(anthill->hashtable[key] = create_bucket(tmp, key)))
 				print_error(anthill, 7);
-		}
 		tmp = tmp->next;
 	}
 }
