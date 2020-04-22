@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 16:15:31 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/16 11:30:35 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/22 19:44:00 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,8 @@ static t_map	*new_node(char *data)
 {
 	t_map *map;
 
-	if (!(map = (t_map*)malloc(sizeof(t_map))))
-		return (NULL);
-	if (!(map->line = ft_strdup(data)))
+	if (!(map = (t_map*)malloc(sizeof(t_map))) ||\
+	!(map->line = ft_strdup(data)))
 		return (NULL);
 	map->next = NULL;
 	return (map);

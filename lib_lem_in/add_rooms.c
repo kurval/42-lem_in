@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 12:38:06 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/16 21:59:57 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/22 19:42:18 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,8 @@ static t_room	*new_node(char *data, int x_c, int y_c, int id)
 {
 	t_room *room;
 
-	if (!(room = (t_room*)malloc(sizeof(t_room))))
-		return (NULL);
-	if (!(room->name = ft_strdup(data)))
+	if (!(room = (t_room*)malloc(sizeof(t_room))) ||\
+	!(room->name = ft_strdup(data)))
 		return (NULL);
 	room->x = x_c;
 	room->y = y_c;

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 11:27:44 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/17 11:33:08 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/22 19:26:14 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,8 @@ void		reset_queue(t_connect *queue)
 static int	check_node(t_lem_in *anthill, t_connect *route, t_room **tmp)
 {
 	anthill->nodes += 1;
-	if (route->room == anthill->end && *tmp != anthill->start &&\
-			is_edge_valid(anthill, (*tmp)->id, anthill->end->id))
-		return (1);
-	else
-		return (0);
+	return (route->room == anthill->end && *tmp != anthill->start &&\
+			is_edge_valid(anthill, (*tmp)->id, anthill->end->id));
 }
 
 /*
@@ -55,10 +52,7 @@ int			add_next_level(t_lem_in *anthill, t_room **array, t_path *path)
 		free(new);
 		print_error(anthill, 7);
 	}
-	if (!anthill->nodes || !(bfs(anthill, new, path)))
-		ret = 0;
-	else
-		ret = 1;
+	ret = (!anthill->nodes || !(bfs(anthill, new, path))) ? 0 : 1;
 	free(new);
 	return (ret);
 }
@@ -91,7 +85,5 @@ int			bfs(t_lem_in *anthill, t_room **array, t_path *path)
 		anthill->que->level = anthill->level;
 		tmp++;
 	}
-	if (!(add_next_level(anthill, array, path)))
-		return (0);
-	return (1);
+	return (add_next_level(anthill, array, path));
 }

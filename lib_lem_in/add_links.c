@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 18:27:03 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/01 11:48:55 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/22 19:41:02 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,9 @@ static t_link	*new_link(char *from, char *to)
 {
 	t_link *link;
 
-	if (!(link = (t_link*)malloc(sizeof(t_link))))
-		return (NULL);
-	if (!(link->from = ft_strdup(from)))
-		return (NULL);
-	if (!(link->to = ft_strdup(to)))
+	if (!(link = (t_link*)malloc(sizeof(t_link))) ||\
+	!(link->from = ft_strdup(from)) ||\
+	!(link->to = ft_strdup(to)))
 		return (NULL);
 	link->next = NULL;
 	return (link);

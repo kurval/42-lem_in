@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 16:15:31 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/09 20:51:05 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/04/22 19:29:56 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,7 @@ static int	error_check(t_lem_in **anthill, char **tab, char *line, int *i)
 		else if (duplicate_x_y(*anthill, ft_atoi(tab[1]), ft_atoi(tab[2])))
 			(*anthill)->errnbr = 17;
 	}
-	if ((*anthill)->errnbr)
-		return (0);
-	else
-		return (1);
+	return (!(*anthill)->errnbr);
 }
 
 static void	push_room(t_lem_in **anthill, char **tab)
