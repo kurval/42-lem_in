@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 12:38:06 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/16 21:59:46 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/06/10 18:58:59 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static t_path	*new_path(void)
 	path->second_last = NULL;
 	path->route = NULL;
 	path->next = NULL;
+	path->ant_s = 0;
 	return (path);
 }
 

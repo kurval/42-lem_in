@@ -6,37 +6,11 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/28 10:50:09 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/16 21:38:47 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/06/10 18:58:02 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
-
-static void	move(t_lem_in *anthill, t_room *tmp, t_path *path)
-{
-	int	nbr;
-
-	nbr = path->nb;
-	if (path->nb >= 5)
-		nbr = path->nb % 5;
-	if (!anthill->flag && anthill->print)
-		print_standard(tmp);
-	else if (anthill->print)
-	{
-		nbr == 0 ? ft_printf(BOLDBLUE "L%ld-%s " EOC,\
-		tmp->ant_here->name, tmp->name) : 0;
-		nbr == 1 ? ft_printf(WHT "L%ld-%s " EOC,\
-		tmp->ant_here->name, tmp->name) : 0;
-		nbr == 2 ? ft_printf(BOLDCYAN "L%ld-%s " EOC,\
-		tmp->ant_here->name, tmp->name) : 0;
-		nbr == 3 ? ft_printf(BOLDMAGENTA "L%ld-%s " EOC,\
-		tmp->ant_here->name, tmp->name) : 0;
-		nbr == 4 ? ft_printf(BOLDYELLOW "L%ld-%s " EOC,\
-		tmp->ant_here->name, tmp->name) : 0;
-	}
-	if (tmp == anthill->end)
-		anthill->finish++;
-}
 
 /*
  ** Moving each ant of current path one room forward.
@@ -75,16 +49,13 @@ static void	other_path(t_lem_in *anthill, t_room *tmp, t_path *path)
 	s_b = !anthill->extra ? anthill->paths :\
 	anthill->paths2;
 	tmp = anthill->start;
-	if (path->len <= (((anthill->ants + 1) -\
-	anthill->start->ant_here->name) * s_b->len))
-	{
-		if (!tmp->ant_here)
-			return ;
-		other_room = path->route->room;
-		other_room->ant_here = tmp->ant_here;
-		tmp->ant_here = tmp->ant_here->next;
-		move(anthill, other_room, path);
-	}
+	if (!tmp->ant_here)
+		return ;
+	other_room = path->route->room;
+	other_room->ant_here = tmp->ant_here;
+	tmp->ant_here = tmp->ant_here->next;
+	path->ant_s--;
+	move(anthill, other_room, path);
 }
 
 static void	make_move(t_lem_in *anthill, t_path *current_path,\
@@ -96,9 +67,37 @@ t_room *tmp, t_path *s_b)
 		if (current_path->type != NEG)
 			send_ants(anthill, tmp, current_path);
 		if (anthill->start->ant_here && current_path != s_b &&\
-		current_path->type != NEG)
+		current_path->type != NEG && current_path->ant_s)
 			other_path(anthill, tmp, current_path);
 		current_path = current_path->next;
+	}
+}
+
+static void	div_ants(t_lem_in *anthill, t_path *s_p)
+{
+	int		i;
+	int		cost;
+	t_path	*current_path;
+	t_path	*best_path;
+
+	i = 1;
+	s_p->ant_s++;
+	while (i < anthill->ants)
+	{
+		cost = s_p->ant_s + s_p->len;
+		current_path = s_p->next;
+		while (current_path && i < anthill->ants)
+		{
+			if (current_path->type != NEG && cost >\
+			current_path->len + current_path->ant_s)
+				best_path = current_path;
+			else
+				best_path = s_p;
+			best_path->ant_s++;
+			cost = best_path->ant_s + best_path->len;
+			current_path = best_path->next;
+			i++;
+		}
 	}
 }
 
@@ -116,6 +115,7 @@ int			move_ants(t_lem_in *anthill, t_path *path)
 	anthill->moves = 0;
 	anthill->finish = 0;
 	anthill->start->ant_here = anthill->ant_lst;
+	div_ants(anthill, path);
 	while (anthill->finish != anthill->ants)
 	{
 		current_path = path;

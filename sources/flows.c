@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/06 13:01:46 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/22 19:16:30 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/06/10 18:56:39 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	update_flow(t_lem_in *anthill, int id1, int id2)
 void	create_flow_chart(t_lem_in *anthill)
 {
 	unsigned int	i;
+	unsigned int	j;
 
 	i = 0;
 	if (!(anthill->flow = (int**)malloc(sizeof(int*) * anthill->room_count)))
@@ -68,7 +69,9 @@ void	create_flow_chart(t_lem_in *anthill)
 		if (!(anthill->flow[i] = (int*)malloc(sizeof(int) *\
 						anthill->room_count)))
 			print_error(anthill, 7);
-		ft_bzero(anthill->flow[i], anthill->room_count);
+		j = 0;
+		while (anthill->room_count > j++)
+			anthill->flow[i][j] = 0;
 		i++;
 	}
 }

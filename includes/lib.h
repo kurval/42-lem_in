@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/19 15:18:12 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/06/10 18:55:28 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ typedef struct			s_path
 	struct s_connect	*route;
 	struct s_path		*next;
 	struct s_room		*second_last;
+	int					ant_s;
 	int					nb;
 	int					len;
 	int					type;
