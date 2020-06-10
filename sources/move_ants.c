@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/28 10:50:09 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/06/10 18:58:02 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/06/10 22:42:49 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ static void	send_ants(t_lem_in *anthill, t_room *tmp, t_path *path)
 static void	other_path(t_lem_in *anthill, t_room *tmp, t_path *path)
 {
 	t_room *other_room;
-	t_path *s_b;
+	t_path *s_p;
 
-	s_b = !anthill->extra ? anthill->paths :\
+	s_p = !anthill->extra ? anthill->paths :\
 	anthill->paths2;
 	tmp = anthill->start;
 	if (!tmp->ant_here)
@@ -59,14 +59,14 @@ static void	other_path(t_lem_in *anthill, t_room *tmp, t_path *path)
 }
 
 static void	make_move(t_lem_in *anthill, t_path *current_path,\
-t_room *tmp, t_path *s_b)
+t_room *tmp, t_path *s_p)
 {
 	while (current_path && anthill->finish != anthill->ants)
 	{
 		anthill->end->prev = current_path->second_last;
 		if (current_path->type != NEG)
 			send_ants(anthill, tmp, current_path);
-		if (anthill->start->ant_here && current_path != s_b &&\
+		if (anthill->start->ant_here && current_path != s_p &&\
 		current_path->type != NEG && current_path->ant_s)
 			other_path(anthill, tmp, current_path);
 		current_path = current_path->next;
