@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 12:29:54 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/17 11:09:25 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/06/23 18:23:28 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,6 @@ int				solver(t_lem_in *anthill)
 		ret = shortest_path(anthill);
 	(!anthill->paths) ? print_error(anthill, 9) : 0;
 	update_rev_paths(anthill, anthill->paths);
-	if (check_max_paths(anthill))
-		return (1);
 	ret = compare_results(anthill);
 	return (ret);
 }

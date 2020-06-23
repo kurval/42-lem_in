@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 12:38:06 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/22 19:42:18 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/06/21 10:26:44 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static t_room	*new_node(char *data, int x_c, int y_c, int id)
 	room->y = y_c;
 	room->id = id;
 	room->checked = 0;
+	room->weight = 0;
 	room->key = 0;
 	room->connections = NULL;
 	room->ant_here = NULL;

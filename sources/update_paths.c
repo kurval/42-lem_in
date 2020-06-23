@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/12 19:34:38 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/16 21:40:20 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/06/23 11:52:04 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,16 @@ void		reset_checked_rooms(t_lem_in *anthill)
 	while (current)
 	{
 		if (current->checked != PATH)
-			current->checked = 0;
+		{
+			if (current->checked == NEG ||\
+			current->checked == 9)
+				current->checked = PATH;
+			else
+			{
+				current->checked = 0;
+				current->weight = 0;
+			}
+		}
 		current = current->next;
 	}
 }

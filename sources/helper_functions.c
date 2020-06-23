@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 10:46:37 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/17 13:05:16 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/06/23 18:15:46 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,17 @@ static void	fill_array(t_lem_in *anthill, t_room *tmp, t_room **new, int *i)
 	route = tmp->connections;
 	while (route)
 	{
-		if (is_edge_valid(anthill, tmp->id, route->room->id) &&\
+		if (is_edge_valid(anthill, tmp, route->room) &&\
 		route->room != anthill->end && route->room->checked != NEG &&\
-		route->room->checked != VISITED)
+		route->room->checked != VISITED && route->room->checked != 9)
 		{
-			if (anthill->flow[tmp->id][route->room->id] == -1 &&\
-			route->room->checked == PATH)
+			if ((tmp->weight + 1) < route->room->weight && !anthill->extra)
+			{
+				route->room->weight = tmp->weight + 1;
+				route->room->checked = 9;
+			}
+			else if (anthill->flow[tmp->id][route->room->id] == -1 &&\
+			route->room->checked == PATH && !anthill->extra)
 				route->room->checked = NEG;
 			new[*i] = route->room;
 			*i += 1;

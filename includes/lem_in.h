@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:32:55 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/06/10 18:54:49 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/06/21 16:11:28 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ int		bfs(t_lem_in *anthill, t_room **array, t_path *path);
 t_room	**connect_array(t_room **array, int rooms, t_lem_in *anthill);
 int		move_ants(t_lem_in *anthill, t_path *path);
 void	create_flow_chart(t_lem_in *anthill);
-void	update_flow(t_lem_in *anthill, int id1, int id2);
+void	update_flow(t_lem_in *anthill, t_room *parent, t_room *connect);
 int		check_start_flow(t_lem_in *anthill);
-int		is_edge_valid(t_lem_in *anthill, int id1, int id2);
+int		is_edge_valid(t_lem_in *anthill, t_room *parent, t_room *connect);
 int		is_link_valid(t_lem_in *anthill, t_room **array, t_path *path);
 void	link_path(t_lem_in *anthill, t_connect *queue, t_path *path);
 int		solver(t_lem_in *anthill);

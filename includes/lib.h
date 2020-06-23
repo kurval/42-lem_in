@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/06/10 18:55:28 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/06/21 10:26:14 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ typedef struct			s_room
 {
 	char				*name;
 	int					checked;
+	int					weight;
 	unsigned long		key;
 	int					x;
 	int					y;

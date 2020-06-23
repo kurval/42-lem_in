@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 11:27:44 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/22 20:17:55 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/06/23 18:14:26 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	check_node(t_lem_in *anthill, t_connect *route, t_room **tmp)
 {
 	anthill->nodes += 1;
 	return (route->room == anthill->end && *tmp != anthill->start &&\
-			is_edge_valid(anthill, (*tmp)->id, anthill->end->id));
+			is_edge_valid(anthill, *tmp, anthill->end));
 }
 
 /*
@@ -69,7 +69,10 @@ int			bfs(t_lem_in *anthill, t_room **array, t_path *path)
 	anthill->level++;
 	while (*tmp)
 	{
-		(*tmp)->checked != NEG ? (*tmp)->checked = VISITED : 0;
+		(*tmp)->checked != NEG && (*tmp)->checked != 9 ?\
+		(*tmp)->checked = VISITED : 0;
+		(*tmp)->checked != NEG && (*tmp)->checked != 9 ?\
+		(*tmp)->weight = anthill->level : 0;
 		route = (*tmp)->connections;
 		while (route)
 		{

@@ -6,16 +6,24 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/06 13:01:46 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/06/10 18:56:39 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/06/23 13:19:53 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-int		is_edge_valid(t_lem_in *anthill, int id1, int id2)
+int		is_edge_valid(t_lem_in *anthill, t_room *parent, t_room *connect)
 {
+	int id1;
+	int id2;
+
+	id1 = parent->id;
+	id2 = connect->id;
 	if (anthill->extra)
 		return (anthill->flow[id1][id2] == 1);
+	else if ((parent->weight + 1) < connect->weight ||\
+	(parent->checked == 9 && connect == anthill->end))
+		return (1);
 	else
 		return (!anthill->flow[id1][id2] ||\
 				anthill->flow[id1][id2] == -1);
@@ -30,15 +38,20 @@ int		check_start_flow(t_lem_in *anthill)
 	room = anthill->start;
 	while (connects)
 	{
-		if (is_edge_valid(anthill, room->id, connects->room->id))
+		if (is_edge_valid(anthill, room, connects->room))
 			return (1);
 		connects = connects->next;
 	}
 	return (0);
 }
 
-void	update_flow(t_lem_in *anthill, int id1, int id2)
+void	update_flow(t_lem_in *anthill, t_room *parent, t_room *connect)
 {
+	int id1;
+	int id2;
+
+	id1 = parent->id;
+	id2 = connect->id;
 	if (!anthill->flow[id1][id2] && !anthill->flow[id2][id1])
 	{
 		anthill->flow[id1][id2] = 1;
@@ -46,6 +59,7 @@ void	update_flow(t_lem_in *anthill, int id1, int id2)
 	}
 	else if (anthill->flow[id1][id2] == -1 || anthill->extra)
 	{
+		parent->weight += 1;
 		anthill->flow[id1][id2] = 0;
 		anthill->flow[id2][id1] = 0;
 	}
@@ -70,8 +84,11 @@ void	create_flow_chart(t_lem_in *anthill)
 						anthill->room_count)))
 			print_error(anthill, 7);
 		j = 0;
-		while (anthill->room_count > j++)
+		while (anthill->room_count > j)
+		{
 			anthill->flow[i][j] = 0;
+			j++;
+		}
 		i++;
 	}
 }

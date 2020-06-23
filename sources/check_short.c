@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/09 20:55:10 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/16 21:42:15 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/06/21 14:29:07 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	save_path_info(t_lem_in *anthill, t_path *new_path)
 {
-	update_flow(anthill, anthill->start->id, anthill->end->id);
+	update_flow(anthill, anthill->start, anthill->end);
 	new_path->second_last = anthill->start;
 	new_path->nb = ++anthill->nb_paths;
 	new_path->len = path_len(new_path);

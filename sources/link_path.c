@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 11:29:57 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/04/17 11:21:58 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/06/21 14:29:45 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int			link_to_end(t_lem_in *anthill, t_room **tmp, t_path *path)
 		print_error(anthill, 7);
 	anthill->reverse_path = *tmp;
 	path->second_last = *tmp;
-	update_flow(anthill, (*tmp)->id, anthill->end->id);
+	update_flow(anthill, *tmp, anthill->end);
 	(*tmp)->checked = PATH;
 	if (!(add_connect(&path->route, *tmp)))
 		print_error(anthill, 7);
@@ -33,7 +33,7 @@ int			link_to_end(t_lem_in *anthill, t_room **tmp, t_path *path)
 static void	create_link(t_lem_in *anthill, t_connect *tmp,\
 t_connect *route, t_path *path)
 {
-	update_flow(anthill, tmp->room->id, route->room->id);
+	update_flow(anthill, tmp->room, route->room);
 	anthill->reverse_path = tmp->room;
 	if (!(add_connect(&path->route, tmp->room)))
 		print_error(anthill, 7);

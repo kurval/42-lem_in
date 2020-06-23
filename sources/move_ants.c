@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/28 10:50:09 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/06/17 10:58:16 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/06/23 18:06:03 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,25 +77,25 @@ static void	div_ants(t_lem_in *anthill, t_path *s_p)
 {
 	int		i;
 	int		cost;
-	t_path	*current_path;
 	t_path	*best_path;
 
 	i = 0;
 	s_p->ant_s = 0;
 	while (i < anthill->ants)
 	{
-		current_path = s_p;
-		while (current_path && i < anthill->ants)
+		best_path = s_p;
+		while (best_path && i < anthill->ants)
 		{
-			if (current_path->type != NEG && cost >\
-			current_path->len + current_path->ant_s && current_path != s_p)
-				best_path = current_path;
-			else
-				best_path = s_p;
-			best_path->ant_s++;
-			cost = best_path->ant_s + best_path->len;
-			current_path = best_path->next;
-			i++;
+			if (best_path->type != NEG)
+			{
+				if (!(cost > best_path->len + best_path->ant_s &&\
+				best_path != s_p))
+					best_path = s_p;
+				best_path->ant_s++;
+				cost = best_path->ant_s + best_path->len;
+				i++;
+			}
+			best_path = best_path->next;
 		}
 	}
 }
