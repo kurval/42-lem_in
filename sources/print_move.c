@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/10 18:40:27 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/06/23 17:39:20 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/06/25 18:26:32 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	move(t_lem_in *anthill, t_room *tmp, t_path *path)
 	nbr = path->nb;
 	if (path->nb >= 5)
 		nbr = path->nb % 5;
-	if (!anthill->flag && anthill->print)
+	if (!anthill->flags->flag_col && anthill->print)
 		print_standard(tmp);
 	else if (anthill->print)
 	{

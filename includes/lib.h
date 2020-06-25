@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 20:26:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/06/21 10:26:14 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/06/25 13:51:48 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define GREEN			"\033[32m"
 # define EOC			"\033[0m"
 # define ERR	"(line %d): %s\n"
-# define MSG1	"usage: ./lem-in [-p] < [source file]"
+# define MSG1	"usage: ./lem-in [[-p][-c][-e]] < [source file]"
 # define MSG2	"room name starts with L"
 # define MSG3	"room format: (room x y)"
 # define MSG4	"invalid coordinate (must be a positive integer)"
@@ -50,13 +50,12 @@ typedef struct			s_lem_in
 	int					nodes;
 	int					nb_paths;
 	unsigned int		room_count;
-	int					flag;
-	int					moves;
 	int					**flow;
 	int					id;
 	int					extra;
 	int					print;
 	int					level;
+	struct s_flags		*flags;
 	struct s_ants		*ant_lst;
 	struct s_room		*room;
 	struct s_link		*link;
@@ -69,6 +68,13 @@ typedef struct			s_lem_in
 	struct s_room		*reverse_path;
 	struct s_connect	*que;
 }						t_lem_in;
+
+typedef struct			s_flags
+{
+	int					flag;
+	int					flag_err;
+	int					flag_col;
+}						t_flags;
 
 typedef struct			s_room
 {

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/28 10:50:09 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/06/23 18:06:03 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/06/25 18:24:15 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,8 @@ static void	div_ants(t_lem_in *anthill, t_path *s_p)
 	t_path	*best_path;
 
 	i = 0;
-	s_p->ant_s = 0;
+	cost = 0;
+	reset_ants(s_p);
 	while (i < anthill->ants)
 	{
 		best_path = s_p;
@@ -109,9 +110,10 @@ int			move_ants(t_lem_in *anthill, t_path *path)
 {
 	t_room	*tmp;
 	t_path	*current_path;
+	int		moves;
 
 	tmp = NULL;
-	anthill->moves = 0;
+	moves = 0;
 	anthill->finish = 0;
 	anthill->start->ant_here = anthill->ant_lst;
 	div_ants(anthill, path);
@@ -119,10 +121,10 @@ int			move_ants(t_lem_in *anthill, t_path *path)
 	{
 		current_path = path;
 		make_move(anthill, current_path, tmp, path);
-		anthill->moves++;
+		moves++;
 		anthill->print ? ft_printf("\n") : 0;
 	}
-	anthill->flag && anthill->print ?\
-	ft_printf(WHT "\nMoves: %d\n" EOC, anthill->moves) : 0;
-	return (anthill->moves);
+	anthill->flags->flag && anthill->print ?\
+	ft_printf(WHT "\nlines: %d\n" EOC, moves) : 0;
+	return (moves);
 }

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 10:46:37 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/06/23 18:15:46 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/06/25 13:46:46 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,7 @@ void		init_anthill(t_lem_in *anthill)
 	anthill->nodes = 0;
 	anthill->finish = 0;
 	anthill->nb_paths = 0;
-	anthill->flag = 0;
-	anthill->moves = 0;
+	anthill->flags = NULL;
 	anthill->flow = NULL;
 	anthill->id = 0;
 	anthill->extra = 0;

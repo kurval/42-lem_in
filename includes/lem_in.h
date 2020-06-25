@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:32:55 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/06/21 16:11:28 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/06/25 14:06:51 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,5 @@ void	reset_checked_rooms(t_lem_in *anthill);
 void	update_rev_paths(t_lem_in *anthill, t_path *path);
 void	reset_queue(t_connect *queue);
 void	move(t_lem_in *anthill, t_room *tmp, t_path *path);
+void	reset_ants(t_path *paths);
 #endif
