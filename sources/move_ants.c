@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/28 10:50:09 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/06/25 18:24:15 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/06/26 11:13:54 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,7 @@ static void	div_ants(t_lem_in *anthill, t_path *s_p)
 		{
 			if (best_path->type != NEG)
 			{
-				if (!(cost > best_path->len + best_path->ant_s &&\
-				best_path != s_p))
+				if (!(cost > best_path->len + best_path->ant_s))
 					best_path = s_p;
 				best_path->ant_s++;
 				cost = best_path->ant_s + best_path->len;
