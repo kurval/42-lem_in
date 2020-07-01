@@ -99,9 +99,9 @@ If I run my program with the graph below after first iterations (4 ants), I will
 
 ## Bonuses
 
--e print specific error message
--p print paths and number of lines
--c print colors
+-e print specific error message  
+-p print paths and number of lines  
+-c print colors  
 
 ## Compiling and Usage
 
