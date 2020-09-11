@@ -1,7 +1,5 @@
 # 42-lem_in
 
-![lem_in_gif](https://j.gifs.com/3QXw2M.gif)
-
 ## Goal
 
 The goal of this project is to find the quickest way to get n ants across the farm.  
