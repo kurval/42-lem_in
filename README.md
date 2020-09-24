@@ -106,8 +106,8 @@ If I run my program with the graph below after first iterations (4 ants), I will
 usage: ``./lem-in [[-p][-c][-e]] < [source file]``  
 -p flag for printing paths with colors (mind that program is faster without -p flag because I use my own printft to print colors and otherwise just write)
 
-***OR*** you can just paste this on your terminal:
-git clone https://github.com/kurval/42-lem_in.git lem_in && cd lem_in && make && ./lem-in < testmap.map  
+clone and compile: you can clone and compile the program on your terminal:
+```git clone https://github.com/kurval/42-lem_in.git lem_in && cd lem_in && make```  
 
 ## Example
 
