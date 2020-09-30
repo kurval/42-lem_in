@@ -97,7 +97,7 @@ As always error management must be flawless. This means that the input is valid 
 
 I used breadth first search (BFS) to find shortest path. At some graphs and with certain amount of ants the shortest path isn't necessarily the best solution (see the example below). Shortest path might also block BFS from finding other paths if we only observe vertexes (can't visit same vertex twise). So I lent an idea from Edmonds-Karp algorithm to take advantage of flows as well. Now I can check if edge is valid through parent vertex to child vertex. That allows my algorithm to find other paths as well on certain maps.  
   
-I have also defined weight for every vertex wich means the distance from the start. If some vertex belongs to other path I compare it's current weight to it's potential weight and if the potential weight (parent vertex weight + 1) is smaller I can add that vertex to queue.  
+I have also defined weight for every vertex which means the distance from the start. If some vertex belongs to other path I compare it's current weight to it's potential weight and if the potential weight (parent vertex weight + 1) is smaller I can add that vertex to queue.  
   
 If I run my program with the graph below after first iterations (4 ants), I will use 6 moves. After second iterations I need to use only 5 moves.
 
